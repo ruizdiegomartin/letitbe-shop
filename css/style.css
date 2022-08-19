@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    
+    background-color: #222121;
+}
+
+div {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div > h1 {
+    font-size: 8rem;
+    text-align: center;
+}
+
+div > h2 {
+    font-size: 5rem;
+    color: aliceblue;
+    text-align: center;
+}
