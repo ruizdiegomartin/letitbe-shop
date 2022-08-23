@@ -60,68 +60,65 @@
 
   
 //   sumar(num1, num2);
- let vela = 800;
- let jabonLiquido = 500;
- let splash = 700;
- let difusor = 400;
- let bolsaAromatica = 300;
- let valorParcial = 0;
- const iva = 0.21;
- let valorImpuesto = 0;
- let valorTotal = 0;
- let comprar = true;
- let producto = "";
+let vela = 800;
+let jabonLiquido = 500;
+let splash = 700;
+let difusor = 400;
+let bolsaAromatica = 300;
+let valorParcial = 0;
+const iva = 0.21;
+let valorImpuesto = 0;
+let valorTotal = 0;
+let comprar = true;
+let producto = "";
 
 function sumarProductos (producto) {
-  valorParcial = producto + valorParcial  
+ valorParcial = producto + valorParcial  
 }
 function calcularImpuestos (ValorParcial) {
-  valorImpuesto = valorParcial * iva; 
+ valorImpuesto = valorParcial * iva; 
 }
 function calcularTotal (parcial, impuestos) {
-  valorTotal = parcial + impuestos ;
+ valorTotal = parcial + impuestos ;
 }
 
 while (comprar) {
-  
-  let producto = prompt("Ingrese el nombre del producto");
+ 
+ let producto = prompt("Ingrese el nombre del producto");
 
-  if (producto === "Finalizar compra") {
-    calcularImpuestos (valorParcial);
-    console.log(valorImpuesto);
-    calcularTotal (valorParcial, valorImpuesto);
-    console.log(valorTotal);
-    alert("El valor total de la compra es de $" + valorParcial + " + IVA ($"+valorImpuesto+"). El valor final por lo tanto es de $" + valorTotal +".")
-    comprar = false;
-  }
-  else if (producto === "vela") {
-    sumarProductos (vela);
-    alert("Vela agregada al carrito")
-  }
-  else if (producto === "jabon liquido") {
-    sumarProductos (jabonLiquido);
-    alert("Jabón líquido agregado al carrito")
-  }
-  else if (producto === "splash") {
-    sumarProductos (splash);
-    alert("Splash agregado al carrito")
-  }
-  else if (producto === "difusor") {
-    sumarProductos (difusor);
-    alert("Difusor agregado al carrito")
-  }
-  else if (producto === "bolsa aromatica") {
-    sumarProductos (bolsaAromatica);
-    alert("Bolsa aromática agregada al carrito")
-  }
-  else { 
-    alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
-  }
-  // Mostrar en consola la suma parcial
-  console.log(valorParcial);
-
-  
-
+ if (producto === "Finalizar compra") {
+   calcularImpuestos (valorParcial);
+   console.log(valorImpuesto);
+   calcularTotal (valorParcial, valorImpuesto);
+   console.log(valorTotal);
+   alert("El valor total de la compra es de $" + valorParcial + " + IVA ($"+valorImpuesto+"). El valor final por lo tanto es de $" + valorTotal +".")
+   comprar = false;
+ }
+ else if (producto === "vela") {
+   sumarProductos (vela);
+   alert("Vela agregada al carrito")
+ }
+ else if (producto === "jabon liquido") {
+   sumarProductos (jabonLiquido);
+   alert("Jabón líquido agregado al carrito")
+ }
+ else if (producto === "splash") {
+   sumarProductos (splash);
+   alert("Splash agregado al carrito")
+ }
+ else if (producto === "difusor") {
+   sumarProductos (difusor);
+   alert("Difusor agregado al carrito")
+ }
+ else if (producto === "bolsa aromatica") {
+   sumarProductos (bolsaAromatica);
+   alert("Bolsa aromática agregada al carrito")
+ }
+ else { 
+   alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
+ }
+ // Mostrar en consola la suma parcial
+ console.log(valorParcial);
 
 }
 
