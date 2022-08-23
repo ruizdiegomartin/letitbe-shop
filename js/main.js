@@ -1,71 +1,9 @@
-// USER LOGIN
-
-// let userStored = "Diego"
-// let passwordStored = "Coderhouse";
-// let userName = prompt("Ingrese su nombre de usuario");
-
-// for ( i=0 ; i<3 ; i++) {
-
-//     let userPassword = prompt("Ingrese su contraseña");
-    
-//     if (userPassword === passwordStored && userName === userStored) {
-//         alert("Bienvenido/a "+userName+".");
-//         break;
-//     } 
-//     else {
-//         alert("La contraseña no coincide con el usuario ingresado. Quedan "+ (2-i) +" intentos.");
-//     }
-//     if (i===2){
-//         alert("Usuario bloqueado: ¡Lo sentimos! Límite de intentos agotado. Revise su correo electrónico para desbloquearlo.");
-//     }
-// }
-
-// let destino1 = "cordoba";
-// let destino2 = "santa fe";
-// let destino3 = "buenos aires";
-// let condition = true;
-
-// let compraPasaje = prompt("Ingrese donde quiere ir")
-
-// while (condition) {
-//     if (compraPasaje === destino1) {
-//         alert("pasaje reservado");
-//         condition= false;
-//     }
-//     else if (compraPasaje === destino2) {
-//         alert("pasaje reservado");
-//         condition= false;
-
-//     }
-//     else if (compraPasaje === destino3) {
-//         alert("pasaje reservado");
-//         condition= false;
-//     }
-//     else {
-//         compraPasaje = prompt("Destino no encontrado. Vuelva a ingresar destino")
-//     }
-// }
-
-
-// function sumar(parametro1, parametro2) {
-//     if ( isNaN(parametro1) || isNaN(parametro2) ) {
-//       alert("No puedes tener campos vacios");
-//     } else {
-//       alert(parametro1 + parametro2);
-//     }
-//   }
-
-//     let num1 = parseFloat(prompt("Ingresa el primer numero"));
-//     let num2 = parseFloat(prompt("Ingresa el segundo numero"));
-
-  
-//   sumar(num1, num2);
 let vela = 800;
 let jabonLiquido = 500;
 let splash = 700;
 let difusor = 400;
 let bolsaAromatica = 300;
-let valorParcial = 0;
+let subtotal = 0;
 const iva = 0.21;
 let valorImpuesto = 0;
 let valorTotal = 0;
@@ -73,44 +11,47 @@ let comprar = true;
 let producto = "";
 
 function sumarProductos (producto) {
- valorParcial = producto + valorParcial  
+ subtotal = producto + subtotal  
 }
-function calcularImpuestos (ValorParcial) {
- valorImpuesto = valorParcial * iva; 
+function calcularImpuestos (precio) {
+ valorImpuesto = precio * iva; 
 }
 function calcularTotal (parcial, impuestos) {
  valorTotal = parcial + impuestos ;
 }
+function financiamiento (cuotas) {
+  return valorTotal / cuotas;
+}
+
+alert("Ingrese el nombre del producto para añadirlo al carrito: \n VELA \n JABON LIQUIDO \n DIFUSOR \n SPLASH \n BOLSA AROMATICA \n Para finalizar la compra escriba: FINALIZAR COMPRA ")
 
 while (comprar) {
  
  let producto = prompt("Ingrese el nombre del producto");
 
- if (producto === "Finalizar compra") {
-   calcularImpuestos (valorParcial);
-   console.log(valorImpuesto);
-   calcularTotal (valorParcial, valorImpuesto);
-   console.log(valorTotal);
-   alert("El valor total de la compra es de $" + valorParcial + " + IVA ($"+valorImpuesto+"). El valor final por lo tanto es de $" + valorTotal +".")
+ if (producto === "FINALIZAR COMPRA" || producto === "finalizar compra" || producto === "Finalizar compra" ) {
+   calcularImpuestos (subtotal);
+   calcularTotal (subtotal, valorImpuesto);
+   alert("El valor total de la compra es de $" + subtotal + " + IVA ($"+valorImpuesto+"). El valor final por lo tanto es de $" + valorTotal +".")
    comprar = false;
  }
- else if (producto === "vela") {
+ else if (producto === "VELA" || producto === "vela" || producto === "Vela" ) {
    sumarProductos (vela);
    alert("Vela agregada al carrito")
  }
- else if (producto === "jabon liquido") {
+ else if (producto === "JABON LIQUIDO" || producto === "jabon liquido" || producto === "Jabon liquido" ) {
    sumarProductos (jabonLiquido);
    alert("Jabón líquido agregado al carrito")
  }
- else if (producto === "splash") {
+ else if (producto === "SPLASH" || producto === "splash" || producto === "Splash" ) {
    sumarProductos (splash);
    alert("Splash agregado al carrito")
  }
- else if (producto === "difusor") {
+ else if (producto === "DIFUSOR" || producto === "difusor" || producto === "Difusor" ) {
    sumarProductos (difusor);
    alert("Difusor agregado al carrito")
  }
- else if (producto === "bolsa aromatica") {
+ else if (producto === "BOLSA AROMATICA" || producto === "bolsa aromatica" || producto === "Bolsa aromatica" ) {
    sumarProductos (bolsaAromatica);
    alert("Bolsa aromática agregada al carrito")
  }
@@ -118,7 +59,24 @@ while (comprar) {
    alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
  }
  // Mostrar en consola la suma parcial
- console.log(valorParcial);
+ console.log(subtotal);
 
 }
 
+//TEST 2
+
+let formaPago = prompt("Seleccione como desea abonar su compra: \n DEBITO \n CREDITO \n CUOTAS");
+
+switch (formaPago) {
+  case "DEBITO":
+  alert("Se debitará de su tarjeta de débito el siguiente monto: $"+valorTotal+".")  
+  break;  
+  case "CREDITO":
+  alert("Se acreditará un pago de $"+valorTotal+" en su tarjeta de crédito")
+  break;
+  case "CUOTAS":
+  let cuotas = 0
+  cuotas = parseInt(prompt("Ingrese cantidad de cuotas"));
+  alert("Su pago será acreditado en "+cuotas+" cuotas de $"+financiamiento(cuotas)+"." );
+  break;
+}
