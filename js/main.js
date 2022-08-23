@@ -65,7 +65,7 @@ while (comprar) {
 
 //TEST 2
 
-let formaPago = prompt("Seleccione como desea abonar su compra: \n DEBITO \n CREDITO \n CUOTAS");
+let formaPago = prompt("Seleccione como desea abonar su compra, usando la palabra correspondiente: \n DEBITO \n CREDITO \n CUOTAS");
 
 switch (formaPago) {
   case "DEBITO":
@@ -75,8 +75,17 @@ switch (formaPago) {
   alert("Se acreditará un pago de $"+valorTotal+" en su tarjeta de crédito")
   break;
   case "CUOTAS":
-  let cuotas = 0
-  cuotas = parseInt(prompt("Ingrese cantidad de cuotas"));
-  alert("Su pago será acreditado en "+cuotas+" cuotas de $"+financiamiento(cuotas)+"." );
+  let cuotas = 0;
+  let cuotasAprobado = true;
+  cuotas = parseInt(prompt("Ingrese cantidad de cuotas: \n3\n6\n12"));
+  while (cuotasAprobado) {
+  if (cuotas === 3 || cuotas === 6 || cuotas === 12 ) {
+    alert("Su pago será acreditado en "+cuotas+" cuotas de $"+financiamiento(cuotas)+"." );
+    cuotasAprobado= false;
+  }
+  else {
+    cuotas = parseInt(prompt("Ingrese un número de cuotas válido: 3, 6 o 12 cuotas."));
+  }
+}
   break;
 }
