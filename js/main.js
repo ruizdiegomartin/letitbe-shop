@@ -1,14 +1,18 @@
+// PRODUCTOS Y PRECIOS
 let vela = 800;
 let jabonLiquido = 500;
 let splash = 700;
 let difusor = 400;
 let bolsaAromatica = 300;
+
+//VALORES SUBTOTALES Y TOTALES
+
 let subtotal = 0;
 const iva = 0.21;
 let valorImpuesto = 0;
 let valorTotal = 0;
-let comprar = true;
-let producto = "";
+
+
 
 function sumarProductos (producto) {
  subtotal = producto + subtotal  
@@ -23,11 +27,16 @@ function financiamiento (cuotas) {
   return valorTotal / cuotas;
 }
 
-alert("Ingrese el nombre del producto para añadirlo al carrito: \n VELA \n JABON LIQUIDO \n DIFUSOR \n SPLASH \n BOLSA AROMATICA \n Para finalizar la compra escriba: FINALIZAR COMPRA ")
+// EXPLICACIÓN DE COMO INGRESAR PRODUCTOS AL CARRITO Y CÓMO FINALIZAR LA COMPRA.
+
+alert("Explicación del simulador de carrito.\nIngrese el nombre del producto para añadirlo al carrito: \n VELA \n JABON LIQUIDO \n DIFUSOR \n SPLASH \n BOLSA AROMATICA \n Para finalizar la compra escriba: FINALIZAR COMPRA ")
+let comprar = true;
+
+// CARRITO DE COMPRA
 
 while (comprar) {
  
- let producto = prompt("Ingrese el nombre del producto");
+ let producto = prompt("Ingrese el nombre del producto que desea agregar al carrito:\nVELA\nJABON LIQUIDO\nDIFUSOR\nSPLASH\nBOLSA AROMATICA\nPara finalizar la compra escriba:\nFINALIZAR COMPRA");
 
  if (producto === "FINALIZAR COMPRA" || producto === "finalizar compra" || producto === "Finalizar compra" ) {
    calcularImpuestos (subtotal);
@@ -59,20 +68,20 @@ while (comprar) {
    alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
  }
  // Mostrar en consola la suma parcial
- console.log(subtotal);
+ console.log("producto añadido: "+producto+ " = "+subtotal);
 
 }
 
-//TEST 2
+//SELECCIONAR FORMAS DE PAGO
 
 let formaPago = prompt("Seleccione como desea abonar su compra, usando la palabra correspondiente: \n DEBITO \n CREDITO \n CUOTAS");
 
 switch (formaPago) {
   case "DEBITO":
-  alert("Se debitará de su tarjeta de débito el siguiente monto: $"+valorTotal+".")  
+  alert("Se debitará de su tarjeta de débito el siguiente monto: $"+valorTotal+".");  
   break;  
   case "CREDITO":
-  alert("Se acreditará un pago de $"+valorTotal+" en su tarjeta de crédito")
+  alert("Se acreditará un pago de $"+valorTotal+" en su tarjeta de crédito");
   break;
   case "CUOTAS":
   let cuotas = 0;
@@ -90,5 +99,5 @@ switch (formaPago) {
   break;
 }
 
-prompt("Ingrese su número de tarjeta de crédito")
-alert("Fondos insuficientes. Su cuenta ha sido inhibida, la AFIP se dirige a su domicilio.")
+prompt("Ingrese su número de tarjeta de crédito");
+alert("Fondos insuficientes. Su cuenta ha sido inhibida, la AFIP se dirige a su domicilio.");
