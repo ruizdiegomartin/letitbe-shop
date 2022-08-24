@@ -89,3 +89,6 @@ switch (formaPago) {
 }
   break;
 }
+
+prompt("Ingrese su número de tarjeta de crédito")
+alert("Fondos insuficientes. Su cuenta ha sido inhibida, la AFIP se dirige a su domicilio.")
