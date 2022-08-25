@@ -1,0 +1,12 @@
+@import "var/variables";
+@import "var/mixins";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "layout/navigator";
+@import "layout/footer";
+@import "layout/productos";
+
+@import "components/buttons";
+@import "components/cards";

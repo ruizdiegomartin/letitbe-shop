@@ -4,19 +4,137 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Let It Be: Productos aromáticos y decorativos. Souvenirs para eventos y celebraciones. Venta mayorista y minorista"/>
+    <meta name="keywords" content="aromáticos, decoración, perfumería, velas, splash, difusores, jabón, souvenirs, decorativo, aromas, fragancias, productos, mayorista, minorista"/>
+    <meta name="author" content="Diego Martin Ruiz"/>
+    <meta name="copyright" content="Let It Be Shop"/>
+    <link rel="icon" type="image/png" href="../img/let-it-be-logo.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <title> Diego Martin Ruiz - JavaScript</title>
+    <title> LET IT BE | Productos </title>
 </head>
 <body>
-    <main>
-        <div>
-            <h1> Proyecto JavaScript </h1>
-            <h2> Diego Martin Ruiz</h2>
+  <!-- HEADER -->
+  <header>
+    <!-- NAVIGATOR -->
+    <nav class="navbar navbar-expand-lg white navigator-bar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html"> <img src="../img/let-it-be-logo.jpg" class="logo-img" alt="let-it-be-logo"> </a>
+        <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-icon top-bar"></span>
+          <span class="toggler-icon middle-bar"></span>
+          <span class="toggler-icon bottom-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Inicio</a>
+            <li class="nav-item">
+              <a class="nav-link" href="./novedades.html">Novedades</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./productos.html">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contacto.html">FAQs & Contacto</a>
+            </li>
+          </ul>
         </div>
-    </main>
-    <script src="./js/main.js"></script>
+      </div>
+    </nav>
+  </header>
+  <!-- MAIN -->
+  <main>
+    <div class="title-container">
+      <h1 class="title-container__title"> SHOP </h1>
+    </div>
+    <div class="products-container">
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product_soy-candle.jpg" alt="Vela de soja en cuenco de madera">
+        <h2 class="product-card__title">VELA DE SOJA</h2>
+        <p class="product-card__description">Vela hecha a base de soja, en cuenco de madera. Variedad de aromas.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product_splash.jpg" alt="Splash aromatizador en envase plástico">
+        <h2 class="product-card__title">SPLASH</h2>
+        <p class="product-card__description">Difusor aromático en splash de plástico. Variedad de aromas. </p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product_difusor.jpg" alt="Difusor de aroma en botella de vidrio con varillas">
+        <h2 class="product-card__title">DIFUSOR</h2>
+        <p class="product-card__description"> Difusor aromático en envase de vidrio. Incluye los palillos.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product_bubble-candle.jpg" alt="Vela de soja con diseño de burbujas">
+        <h2 class="product-card__title">VELA BURBUJA</h2>
+        <p class="product-card__description"> Vela hecha a base de soja con diseño de burbujas. No incluye porta-vela.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product_liquid-soap.jpg" alt="Jabon líquido con envase aplicador de plástico">
+        <h2 class="product-card__title">JABÓN LÍQUIDO</h2>
+        <p class="product-card__description"> Jabón líquido en dispensador de plástico. Variedad de aromas.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product_nordic-blanket.jpg" alt="Manta nórdica tejida a mano">
+        <h2 class="product-card__title">MANTA NÓRDICA</h2>
+        <p class="product-card__description">Manta estilo nórdico confeccionada con lana. Variedad de colores.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/vela-silver.png" alt="Vela de soja en envase metálico plateado">
+        <h2 class="product-card__title">VELA SILVER</h2>
+        <p class="product-card__description"> Vela aromatizadora hecha de soja en envase metálico.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product-aromatizador-auto.JPG" alt="Difusor de aroma colgante para auto">
+        <h2 class="product-card__title">DIFUSOR DE AUTO</h2>
+        <p class="product-card__description"> Aromatizador colgante para perfumar tu auto.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="../img/product-bolsa-aromatizadora.JPG" alt="Bolsa aromatizadora de muebles">
+        <h2 class="product-card__title">BOLSA AROMATIZANTE</h2>
+        <p class="product-card__description"> Bolsitas aromatizadoras para los muebles.</p>
+        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+      </article>
+    </div>
+  </main>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <p class="footer-container__text">Síguenos en redes...</p>
+      <ul class="footer-container__icons">
+        <li><a href="https://www.instagram.com/let_itbeshop/" target="_blank"><i class='bx bxl-instagram-alt'></i></a></li>
+        <li><a href="./error404.html" target="_blank"><i class='bx bx-envelope'></i></a></li>
+        <li><a href="https://www.facebook.com/letitbeshop" target="_blank"><i class='bx bxl-facebook-square'></i></a></li>
+      </ul>
+      <p class="footer-container__copyright">© 2022 Let It Be</p>
+    </div>
+  </footer>
+  <!-- SCRIPT  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="./js/main.js"></script>
 </body>
 </html>

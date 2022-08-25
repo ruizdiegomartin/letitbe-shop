@@ -6,8 +6,9 @@ alert("BIENVENIDO. Acceda en su cuenta para continuar.");
 let userStored = "Diego10";
 let passwordStored = "coderhouse";
 let autentication = false;
-let user = prompt("Ingrese su usuario")
+
 for (i=0 ; i<3 ; i++) {
+  let user = prompt("Ingrese su usuario");
   let password = prompt("Ingrese su contraseña");
   if (password === passwordStored && user === userStored) {
     alert("Usuario autentificado. Bienvenido "+user+".")
@@ -15,12 +16,12 @@ for (i=0 ; i<3 ; i++) {
     break;
   }
   else {
-    alert("Contraseña incorrecta. Le quedan "+ (2 - i) +" intentos.")
+    alert("La contraseña no coincide con el usuario ingresado. Le quedan "+ (2 - i) +" intentos.")
   }
   
 }
 if (i === 3) {
-  alert("Usuario bloqueado. Ha llegado al límite de intentos para ingresar. Para desbloquear su usuario espere 24hs o comuníquese con soporte.")
+  alert("Usuario bloqueado. Ha llegado al límite de intentos. Para desbloquear su usuario espere 24hs o comuníquese con soporte.")
 }
 
 
@@ -38,6 +39,7 @@ let impuesto = 0;
 let valorTotal = 0;
 const iva = 0.21;
 
+//FUNCIONES
 
 function sumarProductos (producto) {
  subtotal = producto + subtotal  
@@ -130,9 +132,9 @@ switch (formaPago) {
   break;
 }
 
-prompt("Ingrese número de tarjeta de crédito");
+let creditCard = prompt("Ingrese número de tarjeta de crédito");
 
-alert("Pago rechazado. Fondos insuficientes.");
+alert("Pago rechazado. Su tarjeta "+creditCard+" tiene fondos insuficientes.");
 
 }
 

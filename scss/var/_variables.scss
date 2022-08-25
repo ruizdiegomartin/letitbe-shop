@@ -1,0 +1,12 @@
+$color-main: #e2a694; 
+$color-white: #fff;
+$color-black: #0c0c0c;
+$color-grey: #2c2c2c;
+$color-opacity: #000000c4;
+
+/* Display flex centrado */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

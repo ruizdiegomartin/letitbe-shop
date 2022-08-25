@@ -1,0 +1,34 @@
+
+/* Media queries mixins */
+
+@mixin tablet-resolution {
+    @media screen and (max-width: 1024px){
+        @content;
+    }
+}
+
+@mixin mobile-landscape-resolution {
+    @media screen and (max-width: 768px){
+        @content;
+    }
+}
+
+@mixin mobile-portrait-resolution {
+    @media screen and (max-width: 478px){
+        @content;
+    }
+}
+
+@mixin form-input {
+        width: 80%;
+        padding: 12px 5px;
+        border: none;
+        border-bottom: solid 2px $color-black;
+        outline: none;
+        margin-bottom: 2rem;
+        border-radius: 0;
+}
+
+
+
+
