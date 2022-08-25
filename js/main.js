@@ -1,3 +1,29 @@
+
+//USER LOGIN
+
+alert("BIENVENIDO. Acceda en su cuenta para continuar.");
+
+let userStored = "Diego10";
+let passwordStored = "coderhouse";
+let autentication = false;
+let user = prompt("Ingrese su usuario")
+for (i=0 ; i<3 ; i++) {
+  let password = prompt("Ingrese su contraseña");
+  if (password === passwordStored && user === userStored) {
+    alert("Usuario autentificado. Bienvenido "+user+".")
+    autentication = true;
+    break;
+  }
+  else {
+    alert("Contraseña incorrecta. Le quedan "+ (2 - i) +" intentos.")
+    
+  }
+  if (i === 3) {
+    alert("Usuario bloqueado. Ha llegado al límite de intentos para ingresar. Para desbloquear su usuario comuníquese con soporte.")
+  }
+}
+
+
 // PRODUCTOS Y PRECIOS
 let vela = 800;
 let jabonLiquido = 500;
@@ -8,9 +34,9 @@ let bolsaAromatica = 300;
 //VALORES SUBTOTALES Y TOTALES
 
 let subtotal = 0;
-const iva = 0.21;
-let valorImpuesto = 0;
+let impuesto = 0;
 let valorTotal = 0;
+const iva = 0.21;
 
 
 
@@ -18,7 +44,7 @@ function sumarProductos (producto) {
  subtotal = producto + subtotal  
 }
 function calcularImpuestos (precio) {
- valorImpuesto = precio * iva; 
+ impuesto = precio * iva; 
 }
 function calcularTotal (parcial, impuestos) {
  valorTotal = parcial + impuestos ;
@@ -29,50 +55,58 @@ function financiamiento (cuotas) {
 
 // EXPLICACIÓN DE COMO INGRESAR PRODUCTOS AL CARRITO Y CÓMO FINALIZAR LA COMPRA.
 
-alert("Explicación del simulador de carrito.\nIngrese el nombre del producto para añadirlo al carrito: \n VELA \n JABON LIQUIDO \n DIFUSOR \n SPLASH \n BOLSA AROMATICA \n Para finalizar la compra escriba: FINALIZAR COMPRA ")
 let comprar = true;
+let carritoFinalizado = false;
 
 // CARRITO DE COMPRA
 
-while (comprar) {
+while (comprar && autentication) {
  
  let producto = prompt("Ingrese el nombre del producto que desea agregar al carrito:\nVELA\nJABON LIQUIDO\nDIFUSOR\nSPLASH\nBOLSA AROMATICA\nPara finalizar la compra escriba:\nFINALIZAR COMPRA");
 
  if (producto === "FINALIZAR COMPRA" || producto === "finalizar compra" || producto === "Finalizar compra" ) {
    calcularImpuestos (subtotal);
-   calcularTotal (subtotal, valorImpuesto);
-   alert("El valor total de la compra es de $" + subtotal + " + IVA ($"+valorImpuesto+"). El valor final por lo tanto es de $" + valorTotal +".")
+   calcularTotal (subtotal, impuesto);
+   alert("El valor total de la compra es de $" + subtotal + " + IVA ($"+impuesto+"). El valor final por lo tanto es de $" + valorTotal +".")
    comprar = false;
+   carritoFinalizado = true;
  }
  else if (producto === "VELA" || producto === "vela" || producto === "Vela" ) {
    sumarProductos (vela);
+   console.log("Producto añadido: "+producto+ ". Subtotal = $"+subtotal);
    alert("Vela agregada al carrito")
  }
  else if (producto === "JABON LIQUIDO" || producto === "jabon liquido" || producto === "Jabon liquido" ) {
    sumarProductos (jabonLiquido);
+   console.log("Producto añadido: "+producto+ ". Subtotal = $"+subtotal);
    alert("Jabón líquido agregado al carrito")
  }
  else if (producto === "SPLASH" || producto === "splash" || producto === "Splash" ) {
    sumarProductos (splash);
+   console.log("Producto añadido: "+producto+ ". Subtotal = $"+subtotal);
    alert("Splash agregado al carrito")
  }
  else if (producto === "DIFUSOR" || producto === "difusor" || producto === "Difusor" ) {
    sumarProductos (difusor);
+   console.log("Producto añadido: "+producto+ ". Subtotal = $"+subtotal);
    alert("Difusor agregado al carrito")
  }
  else if (producto === "BOLSA AROMATICA" || producto === "bolsa aromatica" || producto === "Bolsa aromatica" ) {
    sumarProductos (bolsaAromatica);
+   console.log("Producto añadido: "+producto+ ". Subtotal = $"+subtotal);
    alert("Bolsa aromática agregada al carrito")
  }
  else { 
    alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
  }
  // Mostrar en consola la suma parcial
- console.log("producto añadido: "+producto+ " = "+subtotal);
+ 
 
 }
 
 //SELECCIONAR FORMAS DE PAGO
+
+if (carritoFinalizado) {
 
 let formaPago = prompt("Seleccione como desea abonar su compra, usando la palabra correspondiente: \n DEBITO \n CREDITO \n CUOTAS");
 
@@ -99,5 +133,10 @@ switch (formaPago) {
   break;
 }
 
-prompt("Ingrese su número de tarjeta de crédito");
-alert("Fondos insuficientes. Su cuenta ha sido inhibida, la AFIP se dirige a su domicilio.");
+prompt("Ingrese número de tarjeta de crédito");
+
+alert("Pago rechazado. Fondos insuficientes.");
+
+}
+
+
