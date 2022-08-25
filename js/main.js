@@ -16,11 +16,11 @@ for (i=0 ; i<3 ; i++) {
   }
   else {
     alert("Contraseña incorrecta. Le quedan "+ (2 - i) +" intentos.")
-    
   }
-  if (i === 3) {
-    alert("Usuario bloqueado. Ha llegado al límite de intentos para ingresar. Para desbloquear su usuario comuníquese con soporte.")
-  }
+  
+}
+if (i === 3) {
+  alert("Usuario bloqueado. Ha llegado al límite de intentos para ingresar. Para desbloquear su usuario espere 24hs o comuníquese con soporte.")
 }
 
 
@@ -37,7 +37,6 @@ let subtotal = 0;
 let impuesto = 0;
 let valorTotal = 0;
 const iva = 0.21;
-
 
 
 function sumarProductos (producto) {
@@ -99,8 +98,6 @@ while (comprar && autentication) {
  else { 
    alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
  }
- // Mostrar en consola la suma parcial
- 
 
 }
 
