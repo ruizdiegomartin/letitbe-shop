@@ -7,6 +7,10 @@ let userStored = "Diego10";
 let passwordStored = "coderhouse";
 let autentication = false;
 
+userLogin();
+
+function userLogin (){ 
+
 for (i=0 ; i<3 ; i++) {
   let user = prompt("Ingrese su usuario");
   let password = prompt("Ingrese su contraseña");
@@ -23,7 +27,7 @@ for (i=0 ; i<3 ; i++) {
 if (i === 3) {
   alert("Usuario bloqueado. Ha llegado al límite de intentos. Para desbloquear su usuario espere 24hs o comuníquese con soporte.")
 }
-
+}
 
 // PRODUCTOS Y PRECIOS
 let vela = 800;
