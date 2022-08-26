@@ -108,6 +108,9 @@ while (comprar && autentication) {
 if (carritoFinalizado) {
 
 let formaPago = prompt("Seleccione como desea abonar su compra, usando la palabra correspondiente: \n DEBITO \n CREDITO \n CUOTAS");
+while (formaPago !== "DEBITO" && formaPago !== "CREDITO" && formaPago !== "CUOTAS") {
+  formaPago = prompt("Ingrese una forma de pago válida:\nDEBITO\nCREDITO\nCUOTAS");
+}
 
 switch (formaPago) {
   case "DEBITO":
