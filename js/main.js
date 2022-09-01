@@ -1,56 +1,4 @@
 
-
-
-// // PRODUCTOS Y PRECIOS
-// let vela = 800;
-// let jabonLiquido = 500;
-// let splash = 700;
-// let difusor = 400;
-// let bolsaAromatica = 300;
-
-// //VALORES SUBTOTALES Y TOTALES
-
-// let subtotal = 0;
-// let impuesto = 0;
-// let valorTotal = 0;
-// const iva = 0.21;
-
-// //FUNCIONES
-
-// function sumarProductos (producto) {
-//  subtotal = producto + subtotal  
-// }
-// function calcularImpuestos (precio) {
-//  impuesto = precio * iva; 
-// }
-// function calcularTotal (parcial, impuestos) {
-//  valorTotal = parcial + impuestos ;
-// }
-
-
-// // EXPLICACIÓN DE COMO INGRESAR PRODUCTOS AL CARRITO Y CÓMO FINALIZAR LA COMPRA.
-
-
-
-
-
-// // TYPEOF
-
-// let numero = 15;
-// let palabra = "texto";
-// const userLogin = () => {
-//   alert("Acceda a su cuenta")
-// }
-// let aprobado = true;
-
-// console.log(typeof numero);
-// console.log(typeof palabra);
-// console.log(typeof userLogin);
-// console.log(typeof aprobado);
-
-
-
-
 //FUNCION CONSTRUCTORA
 
 function Product (product,price, type, stock) {
@@ -59,12 +7,21 @@ function Product (product,price, type, stock) {
   this.type = type;
   this.stock = stock;
   this.addToCart = (amount) => {
-    for (i=0 ; i<amount; i++ ) {
-    console.log("Producto añadido: "+this.name+". Cantidad: "+amount+".");
-    cart.push(product);
-    this.stock = --stock;
-    total = total + this.price;
+    if (this.stock === 0) {
+      alert("Producto fuera de stock.")
+    } 
+    else if (this.stock < amount){
+      alert("La cantidad ingresada supera la disponibilidad que hay en stock de este producto.\nEl stock actual de este producto es de: "+this.stock+" unidades.")
     }
+    else {
+      for (i=0 ; i<amount; i++ ) {
+      console.log("Producto añadido: "+this.name+". Cantidad: "+amount+".");
+      cart.push(product);
+      this.stock = --stock;
+      total = total + this.price;
+      productAdded = true; 
+      }
+    }    
   }
 }
 
@@ -104,13 +61,14 @@ userLogin();
 // CART ARRAY 
 
 const cart = []
-let total = 0;
 
 // SHOPPING
 
-let shopping = true;
-let pay = false;
 let cantidad = 0;
+let productAdded = false;
+let shopping = true;
+let total = 0;
+let pay = false;
 
 // CARRITO DE COMPRA
 
@@ -118,40 +76,56 @@ while (shopping && autentication) {
  
   let producto = prompt("Ingrese el nombre del producto que desea agregar al carrito:\nVELA\nJABON LIQUIDO\nDIFUSOR\nSPLASH\nBOLSA AROMATICA\nPara finalizar la compra escriba:\nFINALIZAR COMPRA");
   
- if (producto === "FINALIZAR COMPRA" || producto === "finalizar compra" || producto === "Finalizar compra" ) {
-   alert("El valor total de su compra es de $"+total+".")
-   alert("Usted lleva los siguientes productos:\n"+cart.join("\n")+".")
-   shopping = false;
-   pay = true;
- }
- else if (producto === "VELA" || producto === "vela" || producto === "Vela" ) {
-  cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
-  product1.addToCart(cantidad);
-  alert(product1.name+" agregado al carrito")
- }
- else if (producto === "DIFUSOR" || producto === "difusor" || producto === "Difusor" ) {
-  cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
-  product2.addToCart(cantidad);
-  alert(product2.name+" agregado al carrito")
- }
- else if (producto === "BOLSA AROMATICA" || producto === "bolsa aromatica" || producto === "Bolsa aromatica" ) {
-  cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
-  product3.addToCart(cantidad);
-  alert(product3.name+" agregado al carrito")
- }
- else if (producto === "SPLASH" || producto === "splash" || producto === "Splash" ) {
-  cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
-  product4.addToCart(cantidad);
-  alert(product4.name+" agregado al carrito")
- }
- else if (producto === "JABON LIQUIDO" || producto === "jabon liquido" || producto === "Jabon liquido" ) {
-  cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
-  product5.addToCart(cantidad);
-  alert(product5.name+" agregado al carrito")
- }
- else { 
-   alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.")
- }
+  if (producto === "FINALIZAR COMPRA" || producto === "finalizar compra" || producto === "Finalizar compra" ) {
+    alert("El valor total de su compra es de $"+total+".");
+    console.log("Valor total de la compra: "+total);
+    alert("Usted lleva los siguientes productos:\n"+cart.join("\n")+".");
+    shopping = false;
+    pay = true;
+  }
+  else if (producto === "VELA" || producto === "vela" || producto === "Vela" ) {
+    cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
+    product1.addToCart(cantidad);
+    if (productAdded === true){
+      alert(product1.name+" añadido al carrito.");
+      productAdded = false;
+    }
+  }
+  else if (producto === "DIFUSOR" || producto === "difusor" || producto === "Difusor" ) {
+    cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
+    product2.addToCart(cantidad);
+    if (productAdded === true){
+      alert(product2.name+" añadido al carrito.");
+      productAdded = false;
+    }
+  }
+  else if (producto === "BOLSA AROMATICA" || producto === "bolsa aromatica" || producto === "Bolsa aromatica" ) {
+    cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
+    product3.addToCart(cantidad);
+    if (productAdded === true){
+      alert(product3.name+" añadido al carrito.");
+      productAdded = false;
+    }
+  }
+  else if (producto === "SPLASH" || producto === "splash" || producto === "Splash" ) {
+    cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
+    product4.addToCart(cantidad);
+    if (productAdded === true){
+      alert(product4.name+" añadido al carrito.");
+      productAdded = false;
+    }
+  }
+  else if (producto === "JABON LIQUIDO" || producto === "jabon liquido" || producto === "Jabon liquido" ) {
+    cantidad = parseInt(prompt("Ingrese la cantidad que desea llevar"));
+    product5.addToCart(cantidad);
+    if (productAdded === true){
+      alert(product5.name+" añadido al carrito.");
+      productAdded = false;
+    }
+  }
+  else { 
+    alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.");
+  }
 }
 
 // FORMAS DE PAGO
@@ -166,7 +140,7 @@ if (pay) {
 
 let paymentSelect = parseInt(prompt("Seleccione como desea abonar su compra, colocando el número correspondiente:\n1.Débito en un pago.\n2.Crédito en un pago.\n3.Tarjeta de crédito en cuotas."));
 while (paymentSelect  !== 1 && paymentSelect  !== 2 && paymentSelect  !== 3) {
-  paymentSelect = prompt("Ingrese una forma de pago válida:\n1.Débito en un pago.\n2.Crédito en un pago.\n3.Tarjeta de crédito en cuotas");
+  paymentSelect = prompt("Ingrese una forma de pago válida:\n1) Débito en un pago.\n2) Crédito en un pago.\n3) Tarjeta de crédito en cuotas");
 }
 
 switch (paymentSelect ) {
@@ -192,6 +166,8 @@ switch (paymentSelect ) {
 
 // ADDING DEBIT/CREDIT CARD
 
+const Cards = []
+
 function PaymentCard (number, cvv, expireDate, name, dni) {
   this.number = number;
   this.cvv = cvv;
@@ -201,20 +177,80 @@ function PaymentCard (number, cvv, expireDate, name, dni) {
 }
 
 const newCard = () => {
-
 let numeroTarjeta = prompt("Ingrese el número de su tarjeta");
 let cvv = prompt("Ingrese el código de seguridad");
 let fechaVencimiento = prompt("Ingrese la fecha de expiración de su tarjeta.");
 let titular = prompt ("Ingrese el nombre del titular, tal cual figura en la tarjeta.")
 let dni = prompt("Ingrese el DNI del titular.")
-
-const userCreditCard = new PaymentCard (numeroTarjeta, cvv, fechaVencimiento, titular, dni);
-
+const userCard = new PaymentCard (numeroTarjeta, cvv, fechaVencimiento, titular, dni);
+Cards.push(userCard);
 }
 
+alert("Ya casi estamos listos... seleccioná tu tarjeta para pagar.")
 newCard();
-console.log(userCreditCard);
+console.log(Cards);
 
-alert("Su pago ha sido procesado correctamente.\nEl pedido se está preparando, nos comunicaremos con usted para coordinar la entrega.");
+alert("Su pago ha sido procesado correctamente.\nEl pedido se está preparando... nos pondremos en contacto para coordinar la entrega.");
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
