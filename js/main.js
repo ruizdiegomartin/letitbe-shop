@@ -1,10 +1,11 @@
 
 //FUNCION CONSTRUCTORA
 
-function Product (product,price, type, stock) {
+function Product (id, product, price, category, stock) {
+  this.id = id;
   this.name = product;
   this.price = price;
-  this.type = type;
+  this.category = category;
   this.stock = stock;
   this.addToCart = (amount) => {
     if (this.stock === 0) {
@@ -14,7 +15,7 @@ function Product (product,price, type, stock) {
       alert("La cantidad ingresada supera la disponibilidad que hay en stock de este producto.\nEl stock actual de este producto es de: "+this.stock+" unidades.")
     }
     else {
-      for (i=0 ; i<amount; i++ ) {
+      for (let i=0 ; i<amount; i++ ) {
       console.log("Producto añadido: "+this.name+". Cantidad: "+amount+".");
       cart.push(product);
       this.stock = --stock;
@@ -27,11 +28,34 @@ function Product (product,price, type, stock) {
 
 // PRODUCTS
 
-const product1 = new Product ("Vela de soja", 600, "Velas", 20);
-const product2 = new Product ("Difusor aromático", 500, "Difusores", 35);
-const product3 = new Product ("Bolsa aromática", 300, "Difusores", 15);
-const product4 = new Product ("Splash difusor", 700, "Difusores", 25)
-const product5 = new Product ("Jabón líquido", 650, "Limpieza", 23)
+const product1 = new Product (1, "Vela de soja", 600, "velas", 20);
+const product2 = new Product (2, "Difusor aromático", 500, "difusores", 35);
+const product3 = new Product (3, "Bolsa aromática", 300, "difusores", 15);
+const product4 = new Product (4, "Splash difusor", 700, "difusores", 25);
+const product5 = new Product (5, "Jabón líquido", 650, "limpieza", 23);
+
+productsCatalog = [];
+productsCatalog.push(product1, product2, product3, product4, product5);
+
+// FILTERS
+
+function categoryFilter (arr,filter) {
+  const filtered = arr.filter((el)=>{
+   return el.category.includes(filter)
+  })
+  return filtered;
+ }
+
+function priceFilter (arr, comparación, valor) {
+  return arr.filter((el)=> {
+    switch (comparación) {
+      case 1: 
+      return el.price>=valor;
+      case 2: 
+      return el.price<=valor;
+    }
+  })
+}
 
 //USER LOGIN
 
@@ -73,8 +97,8 @@ let pay = false;
 // CARRITO DE COMPRA
 
 while (shopping && autentication) {
- 
-  let producto = prompt("Ingrese el nombre del producto que desea agregar al carrito:\nVELA\nJABON LIQUIDO\nDIFUSOR\nSPLASH\nBOLSA AROMATICA\nPara finalizar la compra escriba:\nFINALIZAR COMPRA");
+  
+  let producto = prompt("Ingrese el nombre del producto que desea agregar al carrito:\nVELA\nJABON LIQUIDO\nDIFUSOR\nSPLASH\nBOLSA AROMATICA\nPara filtrar un producto escriba: FILTRAR\nPara buscar por ID escriba: buscarID\nPara finalizar la compra escriba: FINALIZAR COMPRA");
   
   if (producto === "FINALIZAR COMPRA" || producto === "finalizar compra" || producto === "Finalizar compra" ) {
     alert("El valor total de su compra es de $"+total+".");
@@ -123,6 +147,28 @@ while (shopping && autentication) {
       productAdded = false;
     }
   }
+  else if (producto === "filtrar" || producto === "FILTRAR" || producto === "Filtrar") {
+    let userSelection = parseInt(prompt("Seleccione la opción:\n1) Filtrar productos por categoría.\n2) Filtrar productos por precio."))
+    switch (userSelection) {
+      case 1: 
+        let filter = prompt("Ingrese la categoría que desea filtrar.\nCategorías: difusores, velas, limpieza.");
+        console.log(categoryFilter(productsCatalog, filter));
+        break;
+      case 2: 
+        let priceComparation = parseInt(prompt("Ingrese que filtro desea usar:\n1) Mayor o igual que...\n2) Menor o igual que..."))
+        let valueComparation = parseInt(prompt("Ingrese el precio de comparación."));
+        const precioFiltrado = priceFilter(productsCatalog, priceComparation, valueComparation);
+        console.log(precioFiltrado);
+        break;
+    }
+  }
+  else if (producto === "buscarID" || producto === "buscarId" || producto === "BUSCARID" || producto === "buscarid" || producto === "BuscarID") {
+    let searchId = parseInt(prompt("Ingrese el ID del producto que desea buscar..."));
+    while ((searchId === "" || isNaN(searchId) || searchId <= 0  || searchId > productsCatalog.length)) {
+      searchId = parseInt(prompt("Error en la búsqueda, vuelva a ingresar el ID. (Número entre 1 y 5)"));
+    }
+    const found = productsCatalog.find((el)=> el.id === searchId);
+    console.log(found);}
   else { 
     alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.");
   }
