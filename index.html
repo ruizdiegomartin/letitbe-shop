@@ -57,7 +57,7 @@
     <div class="title-container">
       <h1 class="title-container__title"> SHOP </h1>
     </div>
-    <div class="products-container">
+    <div class="products-container" id="main-container">
       <article class="product-card" data-aos="fade-up">
         <img class="product-card__img" src="./img/product_soy-candle.jpg" alt="Vela de soja en cuenco de madera">
         <h2 class="product-card__title">VELA DE SOJA</h2>
@@ -112,6 +112,23 @@
         <p class="product-card__description"> Bolsitas aromatizadoras para los muebles.</p>
         <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
       </article>
+      <h3 id="cart-greeting"> ¡Bienvenido/a! Agregá productos al carrito para continuar.</h3>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th class="theader"> PRODUCTO </th>
+            <th class="theader"> PRECIO UNITARIO </th>
+            <th class="theader"> CANTIDAD </th>
+            <th class="theader"> TOTAL POR PRODUCTO </th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+
+        </tbody >
+        <tfoot id="cart-foot">
+
+        </tfoot>
+      </table>
     </div>
   </main>
   <!-- FOOTER -->

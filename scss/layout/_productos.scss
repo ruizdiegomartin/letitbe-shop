@@ -30,7 +30,33 @@ main {
     margin: 0 auto;
     padding: 100px 0;
     justify-content: space-around;
-}    
+}  
+
+.cart-table {
+    border: solid 3px black;
+    width: 80%;
+    margin: 0 auto;
+    
+    
+}
+
+.theader {
+    text-align: center;
+    border: solid 3px black;
+    background-color: $color-black;
+    color: $color-white;
+    padding: 5px;
+    
+}
+
+.tbody {
+    text-align: center;
+    border: solid 3px black;
+    background-color: $color-opacity;
+    color: $color-white;
+    padding: 5px;
+    
+}
 
 
 

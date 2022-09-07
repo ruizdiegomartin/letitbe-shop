@@ -185,6 +185,28 @@ main {
   justify-content: space-around;
 }
 
+.cart-table {
+  border: solid 3px black;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.theader {
+  text-align: center;
+  border: solid 3px black;
+  background-color: #0c0c0c;
+  color: #fff;
+  padding: 5px;
+}
+
+.tbody {
+  text-align: center;
+  border: solid 3px black;
+  background-color: rgba(0, 0, 0, 0.768627451);
+  color: #fff;
+  padding: 5px;
+}
+
 /* Index - CTA Button*/
 .cta-btn {
   display: inline-block;

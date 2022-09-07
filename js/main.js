@@ -37,6 +37,29 @@ const product5 = new Product (5, "Jabón líquido", 650, "limpieza", 23);
 productsCatalog = [];
 productsCatalog.push(product1, product2, product3, product4, product5);
 
+// FUNCTION
+
+const showInTable = (product) => {
+  let newRow = document.createElement("tr");
+      newRow.innerHTML = ` <tr>
+      <td class="tbody"> ${product.name} </td>
+      <td class="tbody"> $${product.price} </td>
+      <td class="tbody"> ${parseInt(cantidad)} </td>
+      <td class="tbody"> $${parseInt(product.price) * parseInt(cantidad)} </td>
+      </tr> `
+      document.getElementById("cart-body").append(newRow);
+}
+const showTotalInTable = () => {
+  let newRow = document.createElement("tr");
+      newRow.innerHTML = ` <tr>
+      <td class="theader"> </td>
+      <td class="theader"> </td>
+      <td class="theader"> </td>
+      <td class="theader"> Total $${total} </td>
+      </tr> `
+      document.getElementById("cart-foot").append(newRow);
+}
+
 // FILTERS
 
 function categoryFilter (arr,filter) {
@@ -57,7 +80,7 @@ function priceFilter (arr, comparación, valor) {
   })
 }
 
-//USER LOGIN
+// //USER LOGIN
 
 alert("BIENVENIDO A LET IT BE SHOP.\nAcceda a su cuenta para continuar.");
 
@@ -104,6 +127,7 @@ while (shopping && autentication) {
     alert("El valor total de su compra es de $"+total+".");
     console.log("Valor total de la compra: "+total);
     alert("Usted lleva los siguientes productos:\n"+cart.join("\n")+".");
+    showTotalInTable();
     shopping = false;
     pay = true;
   }
@@ -112,7 +136,8 @@ while (shopping && autentication) {
     product1.addToCart(cantidad);
     if (productAdded === true){
       alert(product1.name+" añadido al carrito.");
-      productAdded = false;
+      showInTable(product1);
+      productAdded = false;    
     }
   }
   else if (producto === "DIFUSOR" || producto === "difusor" || producto === "Difusor" ) {
@@ -120,6 +145,7 @@ while (shopping && autentication) {
     product2.addToCart(cantidad);
     if (productAdded === true){
       alert(product2.name+" añadido al carrito.");
+      showInTable(product2);
       productAdded = false;
     }
   }
@@ -128,6 +154,7 @@ while (shopping && autentication) {
     product3.addToCart(cantidad);
     if (productAdded === true){
       alert(product3.name+" añadido al carrito.");
+      showInTable(product3);
       productAdded = false;
     }
   }
@@ -136,6 +163,7 @@ while (shopping && autentication) {
     product4.addToCart(cantidad);
     if (productAdded === true){
       alert(product4.name+" añadido al carrito.");
+      showInTable(product4);
       productAdded = false;
     }
   }
@@ -144,6 +172,7 @@ while (shopping && autentication) {
     product5.addToCart(cantidad);
     if (productAdded === true){
       alert(product5.name+" añadido al carrito.");
+      showInTable(product5);
       productAdded = false;
     }
   }
@@ -238,7 +267,14 @@ console.log(Cards);
 
 alert("Su pago ha sido procesado correctamente.\nEl pedido se está preparando... nos pondremos en contacto para coordinar la entrega.");
 
+let titleChange = document.getElementById("cart-greeting");
+
+titleChange.innerText = "¡Gracias por tu compra! Esperamos que vuelvas pronto...";
+
 }
+
+
+
 
 
 
