@@ -55,7 +55,7 @@ function userLogin () {
     document.querySelector(".login-body").append(welcomeDiv);
     showError = true;
     autentication = true;
-    setTimeout( function() { window.location.href = "JAVASCRIPT/pages/login.hmtl"; }, 3000 );
+    setTimeout( function() { window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/"; }, 3000 );
   }
   else {
     while (showError === true) {
