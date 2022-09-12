@@ -1,0 +1,88 @@
+
+.main-cart {
+    height: 100vh;
+    background-color: $color-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 90%;
+}
+
+.cart-sections{
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.carrito-tabla {
+    height: fit-content;
+}
+
+.summary-card {
+    position: relative;
+    padding: 1rem;
+    width: 350px;
+    min-height: 400px;
+    background-color: #272626;
+    & h2 {
+        color: white;
+    }
+}
+
+.summary-groups {
+    display: flex;
+    align-items: center;
+    & h4 {
+        font-size: 1rem;
+        color: gray;
+    }
+    & p {
+        margin-left: 1rem;
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    & input {
+        max-width: 75px;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+}
+
+.btn-buyNow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 1rem;
+    border: none;
+    text-decoration: none;
+    color: $color-white;
+    background-color: #575555;
+    transition: all 200ms;
+    &:hover{
+        background-color: #161616;
+        color: $color-white;
+    }
+    &:active {
+        transform: translate(0,4px);
+    }
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: $color-main;
+    &:hover {
+        color: #e44a61;
+    }
+    &:active {
+        scale: 0.9;
+    }
+}
+
+
+

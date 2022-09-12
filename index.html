@@ -36,13 +36,13 @@
             <li class="nav-item">
               <a class="nav-link" href="../index.html">Inicio</a>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/login.html">Login</a>
+              <a class="nav-link" href="./pages/login.html"><i class="fa-solid fa-circle-user"></i></a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="./productos.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./nosotros.html">Nosotros</a>
+              <a class="nav-link" href="./pages/cart.html">Carrito</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./contacto.html">FAQs & Contacto</a>
@@ -58,81 +58,159 @@
       <h1 class="title-container__title"> SHOP </h1>
     </div>
     <div class="products-container" id="main-container">
-      <article class="product-card" data-aos="fade-up">
+      <!-- <article class="product-card" data-aos="fade-up">
         <img class="product-card__img" src="./img/product_soy-candle.jpg" alt="Vela de soja en cuenco de madera">
         <h2 class="product-card__title">VELA DE SOJA</h2>
         <p class="product-card__description">Vela hecha a base de soja, en cuenco de madera. Variedad de aromas.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
-      </article>
-      <article class="product-card" data-aos="fade-up">
-        <img class="product-card__img" src="./img/product_splash.jpg" alt="Splash aromatizador en envase plástico">
-        <h2 class="product-card__title">SPLASH</h2>
-        <p class="product-card__description">Difusor aromático en splash de plástico. Variedad de aromas. </p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+        <p class="product-card__price"> $500 </p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn1"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount1">
+        </div>
       </article>
       <article class="product-card" data-aos="fade-up">
         <img class="product-card__img" src="./img/product_difusor.jpg" alt="Difusor de aroma en botella de vidrio con varillas">
         <h2 class="product-card__title">DIFUSOR</h2>
         <p class="product-card__description"> Difusor aromático en envase de vidrio. Incluye los palillos.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
-      </article>
-      <article class="product-card" data-aos="fade-up">
-        <img class="product-card__img" src="./img/product_bubble-candle.jpg" alt="Vela de soja con diseño de burbujas">
-        <h2 class="product-card__title">VELA BURBUJA</h2>
-        <p class="product-card__description"> Vela hecha a base de soja con diseño de burbujas. No incluye porta-vela.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
-      </article>
-      <article class="product-card" data-aos="fade-up">
-        <img class="product-card__img" src="./img/product_liquid-soap.jpg" alt="Jabon líquido con envase aplicador de plástico">
-        <h2 class="product-card__title">JABÓN LÍQUIDO</h2>
-        <p class="product-card__description"> Jabón líquido en dispensador de plástico. Variedad de aromas.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
-      </article>
-      <article class="product-card" data-aos="fade-up">
-        <img class="product-card__img" src="./img/product_nordic-blanket.jpg" alt="Manta nórdica tejida a mano">
-        <h2 class="product-card__title">MANTA NÓRDICA</h2>
-        <p class="product-card__description">Manta estilo nórdico confeccionada con lana. Variedad de colores.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
-      </article>
-      <article class="product-card" data-aos="fade-up">
-        <img class="product-card__img" src="./img/vela-silver.png" alt="Vela de soja en envase metálico plateado">
-        <h2 class="product-card__title">VELA SILVER</h2>
-        <p class="product-card__description"> Vela aromatizadora hecha de soja en envase metálico.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
-      </article>
-      <article class="product-card" data-aos="fade-up">
-        <img class="product-card__img" src="./img/product-aromatizador-auto.JPG" alt="Difusor de aroma colgante para auto">
-        <h2 class="product-card__title">DIFUSOR DE AUTO</h2>
-        <p class="product-card__description"> Aromatizador colgante para perfumar tu auto.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn3"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount3">
+        </div>
       </article>
       <article class="product-card" data-aos="fade-up">
         <img class="product-card__img" src="./img/product-bolsa-aromatizadora.JPG" alt="Bolsa aromatizadora de muebles">
         <h2 class="product-card__title">BOLSA AROMATIZANTE</h2>
         <p class="product-card__description"> Bolsitas aromatizadoras para los muebles.</p>
-        <a href="./error404.html" class="buy-btn">Añadir al carrito</a>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn9"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount9">
+        </div>
       </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="./img/product_splash.jpg" alt="Splash aromatizador en envase plástico">
+        <h2 class="product-card__title">SPLASH</h2>
+        <p class="product-card__description">Difusor aromático en splash de plástico. Variedad de aromas. </p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn2"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount2">
+        </div>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="./img/product_liquid-soap.jpg" alt="Jabon líquido con envase aplicador de plástico">
+        <h2 class="product-card__title">JABÓN LÍQUIDO</h2>
+        <p class="product-card__description"> Jabón líquido en dispensador de plástico. Variedad de aromas.</p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn5"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount5">
+        </div>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="./img/product_nordic-blanket.jpg" alt="Manta nórdica tejida a mano">
+        <h2 class="product-card__title">MANTA NÓRDICA</h2>
+        <p class="product-card__description">Manta estilo nórdico confeccionada con lana. Variedad de colores.</p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn6"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount6">
+        </div>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="./img/product-aromatizador-auto.JPG" alt="Difusor de aroma colgante para auto">
+        <h2 class="product-card__title">DIFUSOR DE AUTO</h2>
+        <p class="product-card__description"> Aromatizador colgante para perfumar tu auto.</p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn8"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount8">
+        </div>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="./img/vela-silver.png" alt="Vela de soja en envase metálico plateado">
+        <h2 class="product-card__title">VELA SILVER</h2>
+        <p class="product-card__description"> Vela aromatizadora hecha de soja en envase metálico.</p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn7"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount7">
+        </div>
+      </article>
+      <article class="product-card" data-aos="fade-up">
+        <img class="product-card__img" src="./img/product_bubble-candle.jpg" alt="Vela de soja con diseño de burbujas">
+        <h2 class="product-card__title">VELA BURBUJA</h2>
+        <p class="product-card__description"> Vela hecha a base de soja con diseño de burbujas. No incluye porta-vela.</p>
+        <div class="product-card__buy-group"> 
+          <button type="button" class="buy-btn" id="buy-btn4"> Añadir al carrito </button>
+          <input type="number" class="buy-number" id="buy-amount4">
+        </div>
+      </article> -->
       <h3 id="cart-greeting"> ¡Bienvenido/a! Agregá productos al carrito para continuar.</h3>
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th class="theader"> PRODUCTO </th>
-            <th class="theader"> PRECIO UNITARIO </th>
-            <th class="theader"> CANTIDAD </th>
-            <th class="theader"> TOTAL POR PRODUCTO </th>
-          </tr>
-        </thead>
-        <tbody id="cart-body">
-
-        </tbody >
-        <tfoot id="cart-foot">
-
-        </tfoot>
-      </table>
+      <!-- <div class="cart-container">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th class="theader"> PRODUCTO </th>
+              <th class="theader"> PRECIO UNITARIO </th>
+              <th class="theader"> CANTIDAD </th>
+              <th class="theader"> TOTAL POR PRODUCTO </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+          </tbody >
+          <tfoot id="cart-foot">
+          </tfoot>
+        </table>
+        <button class="finish-btn buy-btn" id="finish-btn"> Finalizar compra </button>
+      </div> -->
+      <div class="wrapper">
+        <h1> Carrito </h1>
+        <div class="cart-sections">
+            <table class="cart-table">
+                <thead class="carrito-tabla">
+                  <tr>
+                    <th class="theader">PRODUCTO</th>
+                    <th class="theader">PRECIO</th>
+                    <th class="theader">CANTIDAD</th>
+                    <th class="theader">TOTAL</th>
+                    <th class="theader"></th>
+                  </tr>
+                </thead>
+                <tbody id="cart-body">
+                  <tr id="table-example">
+                    <td class="tbody"> PRODUCT NAME </td>
+                    <td class="tbody"> PRICE </td>
+                    <td class="tbody"> <input class="number-amount" type="number"> </td>
+                    <td class="tbody"> PRECIO TOTAL </td>
+                    <td class="tbody" id="row-delete"></td>
+                  </tr>
+                  
+                </tbody >
+                <tfoot id="cart-foot">
+                </tfoot>
+              </table>
+            <div class="summary-card">
+                <h2> Resumen </h2>
+                <div class="summary-groups">
+                    <h4> Orden total: </h4>
+                    <p id="total-price"> $0 </p>
+                </div>
+                <div class="summary-groups">
+                    <h4> Código de descuento: </h4>
+                    <input type="text" maxlength="5">
+                </div>
+                <div class="summary-groups">
+                    <h4> Costo de envío: </h4>
+                    <p></p>
+                </div>
+                <div class="summary-groups">
+                    <h4> Subtotal: </h4>
+                    <p></p>
+                </div>
+                <button class="btn-buyNow" id="finish-btn"> Finalizar </button>
+            </div>
+        </div>
+    </div>
     </div>
   </main>
   <!-- FOOTER -->
-  <footer>
+   <footer>
     <div class="footer-container">
       <p class="footer-container__text">Síguenos en redes...</p>
       <ul class="footer-container__icons">
@@ -143,7 +221,8 @@
       <p class="footer-container__copyright">© 2022 Let It Be</p>
     </div>
   </footer>
-  <!-- SCRIPT  -->
+  <!-- SCRIPT   -->
+  <script src="https://kit.fontawesome.com/44947348f6.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous">
@@ -155,3 +234,4 @@
   <script src="./js/main.js"></script>
 </body>
 </html>
+

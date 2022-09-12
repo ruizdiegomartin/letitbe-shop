@@ -34,10 +34,9 @@ main {
 
 .cart-table {
     border: solid 3px black;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-    
-    
+    padding: 10px; 
 }
 
 .theader {
@@ -51,13 +50,65 @@ main {
 
 .tbody {
     text-align: center;
-    border: solid 3px black;
     background-color: $color-opacity;
     color: $color-white;
     padding: 5px;
+    gap: 10px
     
 }
 
+.buy-number {
+    display: inline-block;
+    width: 20%;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.cart-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.finish-btn {
+    margin-top: 1rem;
+    margin-left: auto;
+    width: 20%;
+}
+
+.newRow-product{
+    border: solid 3px $color-black;
+    margin-bottom: 1rem;
+}
+
+.td-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: $color-opacity;
+    color: $color-white;
+    padding: 5px;
+}
+
+.delete-cart-item-btn {
+    background: none;
+    border: none;
+    color: $color-main;;
+    &:hover{
+        color: pink;
+    }
+    &:active {
+        scale: 0.9;
+    }
+}
+
+.number-amount {
+    width: 50px;
+    text-align: center;
+}
 
 
 

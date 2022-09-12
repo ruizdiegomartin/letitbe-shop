@@ -36,13 +36,13 @@
             <li class="nav-item">
               <a class="nav-link" href="../index.html">Inicio</a>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./login.html">Login</a>
+              <a class="nav-link" href="./login.html">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./productos.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./cart.html">Carrito</a>
+              <a class="nav-link active" href="./cart.html" aria-current="page">Carrito</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./contacto.html">FAQs & Contacto</a>
@@ -53,21 +53,46 @@
     </nav>
   </header>
   <!-- MAIN -->
-  <main class="login-body">
-    <form action="" class="form" id="login-form">
-        <h1 class="form__title">User Login</h1>
-        <p class="form__description">Ingrese a su cuenta para acceder al carrito de compras.</p>
-
-        <div class="form__group">
-          <label for="email" class="form__label">Email</label>
-          <input id="user-input" type="text" class="form__input" placeholder="" autocomplete="off"> 
-        </div>
-        <div class="form__group" id="password-div">
-          <label for="password" class="form__label">Password</label>
-          <input id="password-input" type="password" class="form__input" placeholder="">
-        </div>
-        <button type="button" id="login-btn" class="form__button">Ingresar</button>
-    </form>
+  <main class="main-cart">
+    <!-- <div class="wrapper">
+      <h1> Carrito </h1>
+      <div class="cart-sections">
+          <table class="cart-table">
+              <thead class="carrito-tabla">
+                <tr>
+                  <th class="theader">PRODUCTO</th>
+                  <th class="theader">PRECIO</th>
+                  <th class="theader">CANTIDAD</th>
+                  <th class="theader">TOTAL</th>
+                </tr>
+              </thead>
+              <tbody id="cart-body">
+              </tbody >
+              <tfoot id="cart-foot">
+              </tfoot>
+            </table>
+          <div class="summary-card">
+              <h2> Resumen </h2>
+              <div class="summary-groups">
+                  <h4> Orden total: </h4>
+                  <p> $100 </p>
+              </div>
+              <div class="summary-groups">
+                  <h4> Código de descuento: </h4>
+                  <p> ATR10 </p>
+              </div>
+              <div class="summary-groups">
+                  <h4> Costo de envío: </h4>
+                  <p> $300 </p>
+              </div>
+              <div class="summary-groups">
+                  <h4> Subtotal: </h4>
+                  <p> $2100 </p>
+              </div>
+              <button class="btn-buyNow buy-btn"> Finalizar </button>
+          </div>
+      </div>
+  </div> -->
   </main>
     <!-- FOOTER -->
   <footer>
@@ -90,6 +115,6 @@
   <script>
     AOS.init();
   </script>
-  <script src="../js/login/login.js"></script>
+  <!-- <script src="../js/main.js"></script> -->
 </body>
 </html>
