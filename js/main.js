@@ -23,6 +23,27 @@ const product7 = new Product (7,"./img/product-aromatizador-auto.JPG", "Difusor 
 const product8 = new Product (8,"./img/vela-silver.png", "Vela silver", 750, "velas", 20, 1);
 const product9 = new Product (9,"./img/product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
 
+const cart = JSON.parse(localStorage.getItem("carrito")) || [];
+cart.forEach(product => {
+      const newProductRow = document.createElement("tr");
+      newProductRow.classList.add("newRow-product");
+      newProductRow.innerHTML = `
+      <td class="tbody"> ${product.name} </td>
+      <td class="tbody"> $${product.price} </td>
+      <td class="tbody"> <input id="numberAmount${product.id}" class="number-amount" type="number" min="0" max="${product.stock}"> </td>
+      <td class="tbody"> $${parseInt(product.price)} </td>
+      `
+      const deleteButton = createDeleteButton(product);
+      newProductRow.append(deleteButton);
+      
+      document.querySelector("#cart-body").append(newProductRow);
+           
+});
+cart.forEach(product => {
+  document.querySelector(`#numberAmount${product.id}`).value = product.amount;
+})
+console.log(cart);
+
 productsCatalog = [];
 productsCatalog.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
 
@@ -83,10 +104,12 @@ showProducts();
 let tableExample = true;
 
 function showInTable(product) {
-  
-  const productExist = cart.includes(product);
-  if (product.stock > 0 && productExist === false ) {
-    const newProductRow = document.createElement("tr");
+  // const productExist = cart.includes(product);
+  const findProductInCartStoraged = cart.find (el => el.id === product.id)
+  const existInStorage = cart.includes(findProductInCartStoraged);
+
+  if (product.stock > 0 && existInStorage === false ) {
+      const newProductRow = document.createElement("tr");
       newProductRow.classList.add("newRow-product");
       newProductRow.innerHTML = `
       <td class="tbody"> ${product.name} </td>
@@ -103,7 +126,7 @@ function showInTable(product) {
 }
 
 function amountCounter (product) {
-  const amountModifier = document.querySelector(`#numberAmount${product.id}`).value;
+  const amountModifier = parseInt(document.querySelector(`#numberAmount${product.id}`).value);
   const productFoundToModify = cart.find(el => el.id === product.id);
   if (amountModifier <= product.stock) {
     productFoundToModify.amount = amountModifier;
@@ -113,6 +136,7 @@ function amountCounter (product) {
     productFoundToModify.amount = product.stock;
     document.querySelector(`#numberAmount${product.id}`).value = product.stock;
   }
+  modifylocalStorage();
 }
 
 // function modifyAmount (product) {
@@ -122,28 +146,39 @@ function amountCounter (product) {
 
 // }
 
+function modifylocalStorage () {
+  localStorage.setItem("carrito", JSON.stringify(cart));
+}
+
 function addToCart (productToAdd) {
+  
+  const findProductInCartStoraged = cart.find (el => el.id === productToAdd.id)
+  const existInStorage = cart.includes(findProductInCartStoraged);
+  // console.log();
+  // const productExist = cart.includes(productToAdd);
+  // console.log(cart);
+  // console.log(productToAdd);
+  // console.log(productExist);
+
+  
   if (productToAdd.stock === 0 || productToAdd.amount > productToAdd.stock) {
     createOutOfStockBanner(productToAdd);
   } 
   else {
-  // else if (this.stock < amount){
-  //   alert("La cantidad ingresada supera la disponibilidad que hay en stock de este producto.\nEl stock actual de este producto es de: "+this.stock+" unidades.")
-  // }
-  // else {
-    // for (let i=0 ; i<amount; i++ ) {
-    const productExist = cart.includes(productToAdd);
-    if (productExist === false) {
+
+    if (existInStorage === false) {
     cart.push(productToAdd);
     document.querySelector(`#numberAmount${productToAdd.id}`).value = 1;
+    
     console.log(cart);
     productAdded = true; 
     }
     else {
       const findProductAmount = cart.find(el => el.id === productToAdd.id)
       findProductAmount.amount++;
-      document.querySelector(`#numberAmount${productToAdd.id}`).value = findProductAmount.amount;
+      document.querySelector(`#numberAmount${productToAdd.id}`).value = parseInt(findProductAmount.amount);
     }
+    modifylocalStorage();
   }
     // }
   // }    
@@ -186,11 +221,15 @@ function deleteCartProduct (product) {
   const cartBody = document.querySelector("#cart-body");
   cartBody.removeChild(rows[findIndexOfObject]);
   product.stock = (product.stock)+1;
+  modifylocalStorage();
 }
 
 function showTotalInTable() {
+  let totalForProduct = 0;
+  total = 0;
   cart.forEach(product => {
-    let totalForProduct = product.amount * product.price;
+    
+    totalForProduct = product.amount * product.price;
     total = total + totalForProduct;
   });
 
@@ -235,7 +274,6 @@ function priceFilter (arr, comparación, valor) {
 
 // CART ARRAY 
 
-const cart = []
 
 
 // SHOPPING
