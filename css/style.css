@@ -192,20 +192,28 @@ main {
   padding: 10px;
 }
 
+.product-card {
+  position: relative;
+}
+
 .theader {
   text-align: center;
-  border: solid 3px black;
   background-color: #0c0c0c;
+  color: #fff;
+  padding: 5px;
+}
+
+.newRow-product {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.768627451);
   color: #fff;
   padding: 5px;
 }
 
 .tbody {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.768627451);
   color: #fff;
   padding: 5px;
-  gap: 10px;
 }
 
 .buy-number {
@@ -228,37 +236,38 @@ main {
   width: 20%;
 }
 
-.newRow-product {
-  border: solid 3px #0c0c0c;
-  margin-bottom: 1rem;
-}
-
-.td-delete {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.768627451);
-  color: #fff;
-  padding: 5px;
-}
-
-.delete-cart-item-btn {
-  background: none;
-  border: none;
-  color: #e2a694;
-}
-.delete-cart-item-btn:hover {
-  color: pink;
-}
-.delete-cart-item-btn:active {
-  scale: 0.9;
-}
-
 .number-amount {
   width: 50px;
   text-align: center;
+}
+
+.out-of-stock-banner-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.768627451);
+  border-radius: 5px 5px 0 0;
+}
+.out-of-stock-banner-div p {
+  color: red;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.display-hide {
+  display: none;
+}
+
+.display-show {
+  display: block;
+}
+
+.cart-container {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 100px;
 }
 
 .main-cart {
@@ -281,6 +290,12 @@ main {
 
 .carrito-tabla {
   height: fit-content;
+}
+
+.newRow-product {
+  position: relative;
+  border: solid 3px #0c0c0c;
+  margin-bottom: 1rem;
 }
 
 .summary-card {
@@ -338,12 +353,46 @@ main {
   background: none;
   border: none;
   color: #e2a694;
+  position: absolute;
+  margin-top: 10px;
+  right: 10px;
 }
 .delete-btn:hover {
   color: #e44a61;
 }
 .delete-btn:active {
   scale: 0.9;
+}
+
+.discount-number {
+  color: #e44a61;
+  font-size: 0.8rem;
+}
+
+.continueToPayBtn-div {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.continueToPayBtn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  background-color: #3a3a3a;
+  transition: all 200ms;
+}
+.continueToPayBtn:hover {
+  background-color: #161616;
+  color: #fff;
+}
+.continueToPayBtn:active {
+  transform: translate(4px, 4px);
 }
 
 .login-body {

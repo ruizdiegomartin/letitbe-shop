@@ -1,4 +1,10 @@
 
+.cart-container{
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
 .main-cart {
     height: 100vh;
     background-color: $color-main;
@@ -19,6 +25,12 @@
 
 .carrito-tabla {
     height: fit-content;
+}
+
+.newRow-product{
+    position: relative;
+    border: solid 3px $color-black;
+    margin-bottom: 1rem;
 }
 
 .summary-card {
@@ -76,6 +88,9 @@
     background: none;
     border: none;
     color: $color-main;
+    position: absolute;
+    margin-top: 10px;
+    right:10px;
     &:hover {
         color: #e44a61;
     }
@@ -84,5 +99,38 @@
     }
 }
 
+.discount-number{
+    color: #e44a61;
+    font-size: .8rem;
+}
+
+// <div class="">
+// <button class="" id="continueToPayBtn"> Continuar compra </button>
+
+.continueToPayBtn-div {
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.continueToPayBtn {
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    color: $color-white;
+    background-color: #3a3a3a;
+    transition: all 200ms;
+    &:hover{
+        background-color: #161616;
+        color: $color-white;
+    }
+    &:active {
+        transform: translate(4px,4px);
+    }
+}
 
 

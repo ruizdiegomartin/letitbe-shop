@@ -39,22 +39,28 @@ main {
     padding: 10px; 
 }
 
+.product-card {
+    position: relative;
+}
+
 .theader {
     text-align: center;
-    border: solid 3px black;
     background-color: $color-black;
     color: $color-white;
     padding: 5px;
-    
 }
 
-.tbody {
+.newRow-product{
     text-align: center;
     background-color: $color-opacity;
     color: $color-white;
     padding: 5px;
-    gap: 10px
-    
+}
+
+.tbody {
+    text-align: center;
+    color: $color-white;
+    padding: 5px;
 }
 
 .buy-number {
@@ -77,37 +83,45 @@ main {
     width: 20%;
 }
 
-.newRow-product{
-    border: solid 3px $color-black;
-    margin-bottom: 1rem;
-}
 
-.td-delete {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    background-color: $color-opacity;
-    color: $color-white;
-    padding: 5px;
-}
 
-.delete-cart-item-btn {
-    background: none;
-    border: none;
-    color: $color-main;;
-    &:hover{
-        color: pink;
-    }
-    &:active {
-        scale: 0.9;
-    }
-}
+// .td-delete {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//     text-align: center;
+//     background-color: $color-opacity;
+//     color: $color-white;
+//     padding: 5px;
+// }
+
 
 .number-amount {
     width: 50px;
     text-align: center;
+}
+
+.out-of-stock-banner-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    position: absolute;
+    background-color: $color-opacity;
+    border-radius: 5px 5px 0 0;
+    & p {
+        color: red;
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+}
+
+.display-hide {
+    display: none;
+}
+.display-show {
+    display: block;
 }
 
 
