@@ -277,11 +277,13 @@ main {
 
 .filters-container {
   display: flex;
+  border-radius: 0.5rem;
+  background-color: rgba(223, 146, 122, 0.8784313725);
   width: 90%;
   align-items: flex-start;
   justify-content: space-evenly;
   margin: 3rem auto 0;
-  padding: 25px 25px 0 25px;
+  padding: 30px 25px;
 }
 .filters-container__price-filter {
   display: flex;

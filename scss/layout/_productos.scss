@@ -138,11 +138,13 @@ main {
 
 .filters-container {
     display: flex;
+    border-radius: .5rem;
+    background-color: #df927ae0; 
     width: 90%;
     align-items: flex-start;
     justify-content: space-evenly;
     margin: 3rem auto 0;
-    padding: 25px 25px 0 25px;
+    padding: 30px 25px;
     &__price-filter {
         display: flex;
         flex-direction: column;
