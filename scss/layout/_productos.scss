@@ -2,6 +2,10 @@ main {
     background-color: #e2a694;
 }
 
+.main-products {
+    margin-top: 77px;
+}
+
 .title-container{
     background-color: $color-opacity;
     color: $color-white;
@@ -22,6 +26,7 @@ main {
         }
     }
 }
+
 .products-container{
     display: flex;
     flex-wrap: wrap;
@@ -128,9 +133,8 @@ main {
     border: solid 3px palevioletred;
     border-color: #e2a694;
     border-radius: 50%;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
-
 
 .filters-container {
     display: flex;
@@ -170,7 +174,20 @@ main {
 }
 
 
-
+.user-login-required {
+    color: #f5f1f1;
+    background-color: palevioletred;
+    position: fixed;
+    padding: 2rem;
+    border-radius: 1rem;
+    top: calc(50vh - 47px);
+    border: solid 3px rgb(212, 92, 132);
+    & p {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 0;
+    }
+}
 
 
 

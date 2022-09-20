@@ -89,7 +89,7 @@ function addToCart (productToAdd) {
     else {
       if (existInStorage === false) {
       cart.push(productToAdd);
-      productAdded = true; 
+      // productAdded = true; 
       }
       else {
         const findProductAmount = cart.find(el => el.id === productToAdd.id)
@@ -103,9 +103,9 @@ function addToCart (productToAdd) {
   else {
     const userLoginRequired = document.createElement("div");
     userLoginRequired.classList.add("user-login-required");
-    userLoginRequired.innerHTML = ` <p class="login-advise-required"> Debe loguearse para acceder al carrito de compras. </p>`
+    userLoginRequired.innerHTML = ` <p class="login-advise-required"> Ingrese a su cuenta para acceder al carrito de compras. </p>`
     document.querySelector("#main-container").append(userLoginRequired)
-    setTimeout( function() { document.querySelector("#main-container").removeChild(userLoginRequired) }, 3000 );
+    setTimeout( function() { document.querySelector("#main-container").removeChild(userLoginRequired) }, 2500 );
   }  
 }
 

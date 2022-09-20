@@ -152,6 +152,10 @@ main {
   background-color: #e2a694;
 }
 
+.main-products {
+  margin-top: 77px;
+}
+
 .title-container {
   background-color: rgba(0, 0, 0, 0.768627451);
   color: #fff;
@@ -268,7 +272,7 @@ main {
   border: solid 3px palevioletred;
   border-color: #e2a694;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .filters-container {
@@ -306,6 +310,21 @@ main {
 .show-filters button {
   margin-left: 50%;
   transform: translate(-50%);
+}
+
+.user-login-required {
+  color: #f5f1f1;
+  background-color: palevioletred;
+  position: fixed;
+  padding: 2rem;
+  border-radius: 1rem;
+  top: calc(50vh - 47px);
+  border: solid 3px rgb(212, 92, 132);
+}
+.user-login-required p {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0;
 }
 
 .cart-container {
@@ -453,6 +472,9 @@ main {
 .cart-nav-link {
   position: relative;
 }
+.cart-nav-link i {
+  font-size: 1.1rem;
+}
 
 .login-body {
   font-family: "Montserrat", sans-serif;
@@ -559,6 +581,26 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.logout-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  background-color: azure;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.logout-div h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.logout-div p {
+  text-align: center;
+  line-height: 2rem;
+  padding: 0.5rem;
+  color: #5c5a5a;
 }
 
 .payment-main {

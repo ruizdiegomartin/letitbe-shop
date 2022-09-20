@@ -72,7 +72,7 @@ function showTotalInTable() {
   });
   // PROMO DESCUENTO
   let promCode = document.querySelector("#promotionCode").value
-  if (promCode === "ABC12"){
+  if (promCode === "LET10"){
     descuento = total * 0.2;
     finalTotal = total - descuento;
     document.querySelector("#discount").classList.replace("display-hide","display-show")
