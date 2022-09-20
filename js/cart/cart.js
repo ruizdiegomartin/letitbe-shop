@@ -105,7 +105,7 @@ document.querySelector("#finish-btn").addEventListener("click", ()=> {
 
 document.querySelector("#continueToPayBtn").addEventListener("click", (e)=>{
   e.preventDefault();
-  if (readyToPay === true){
+  if (readyToPay === true && finalTotal > 0){
     window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment.html"
   }
 });
