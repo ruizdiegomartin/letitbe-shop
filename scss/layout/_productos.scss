@@ -124,10 +124,50 @@ main {
     display: block;
 }
 
+.fa-circle-user {
+    border: solid 3px palevioletred;
+    border-color: #e2a694;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
 
 
+.filters-container {
+    display: flex;
+    width: 90%;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin: 3rem auto 0;
+    padding: 25px 25px 0 25px;
+    &__price-filter {
+        display: flex;
+        flex-direction: column;
+        & input {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    }
+    &__find-product-id {
+        display: flex;
+        flex-direction: column;
+        & input {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    }
+}
 
-
+.show-filters{
+    padding: 5rem 0 0 0;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    & button {
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+}
 
 
 

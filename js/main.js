@@ -23,33 +23,34 @@ const product7 = new Product (7,"./img/product-aromatizador-auto.JPG", "Difusor 
 const product8 = new Product (8,"./img/vela-silver.png", "Vela silver", 750, "velas", 20, 1);
 const product9 = new Product (9,"./img/product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
 
-const cart = JSON.parse(localStorage.getItem("carrito")) || [];
-cart.forEach(product => {
-      const newProductRow = document.createElement("tr");
-      newProductRow.classList.add("newRow-product");
-      newProductRow.innerHTML = `
-      <td class="tbody"> ${product.name} </td>
-      <td class="tbody"> $${product.price} </td>
-      <td class="tbody"> <input id="numberAmount${product.id}" class="number-amount" type="number" min="0" max="${product.stock}"> </td>
-      <td class="tbody"> $${parseInt(product.price)} </td>
-      `
-      const deleteButton = createDeleteButton(product);
-      newProductRow.append(deleteButton);
-      
-      document.querySelector("#cart-body").append(newProductRow);
-           
-});
-cart.forEach(product => {
-  document.querySelector(`#numberAmount${product.id}`).value = product.amount;
-})
-console.log(cart);
+// PRODUCTS ARRAY
 
 productsCatalog = [];
 productsCatalog.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
 
-function showProducts (products) {
+// CARRITO REFRESH IN VARIABLE
+
+const cart = JSON.parse(localStorage.getItem("carrito")) || [];
+console.log(cart);
+
+// CART ICON COUNTER
+
+function refreshCartCounter () {
+// Actualiza el contador de productos en el carrito, del icono del NAV.
+let counter = localStorage.getItem("carrito-counter");
+if (counter>0) {
+  const cartCounterNumber = document.querySelector(".cart-counter");
+  cartCounterNumber.innerText = counter;
+  }
+}
+refreshCartCounter();
+
+// SHOW PRODUCTS CARDS
+
+function showProducts (array) {
+  // Renderiza las cards de productos.
   document.querySelector("#main-container").innerHTML = "";
-  productsCatalog.forEach(product => {
+  array.forEach(product => {
     const productCard = document.createElement("article");
     productCard.classList.add("product-card")
     productCard.innerHTML = 
@@ -60,72 +61,86 @@ function showProducts (products) {
       ` 
     const buyButton = createBuyButton(product);
     productCard.append(buyButton);
-
-    document.querySelector("#main-container").append(productCard);
-    
+    document.querySelector("#main-container").append(productCard); 
   });
 }
 
 function createBuyButton (product) {
+  // Crea el botón de añadir al carrito de las cards.
   const button = document.createElement("button");
   button.classList.add("buy-btn")
   button.innerText = "Añadir al carrito";
   button.addEventListener("click", ()=>{
-    showInTable(product);
     addToCart(product);
-    
   })
   return button;
 }
 
-
-
-showProducts();
-
-// for (const elements of productsCatalog) {
-//   createBuyButton(elements.id);
-// }
-
-// function createBuyButton (productID) {
-//   let buyButton = document.createElement("button");
-//   buyButton.innerText ="Añadir al carrito";
-//   buyButton.setAttribute("id", productID);
-//   buyButton.classList.add("boton-de-compra-clase");
-//   productCard.append(buyButton);
-// }
-
-// addToChartBtn = document.querySelector("add.btn")
-
-
-// FUNCTION
-
-
-
-let tableExample = true;
-
-function showInTable(product) {
-  // const productExist = cart.includes(product);
-  const findProductInCartStoraged = cart.find (el => el.id === product.id)
-  const existInStorage = cart.includes(findProductInCartStoraged);
-
-  if (product.stock > 0 && existInStorage === false ) {
-      const newProductRow = document.createElement("tr");
-      newProductRow.classList.add("newRow-product");
-      newProductRow.innerHTML = `
-      <td class="tbody"> ${product.name} </td>
-      <td class="tbody"> $${product.price} </td>
-      <td class="tbody"> <input id="numberAmount${product.id}" class="number-amount" type="number" min="0" max="${product.stock}"> </td>
-      <td class="tbody"> $${parseInt(product.price)} </td>
-      `
-      const deleteButton = createDeleteButton(product);
-      newProductRow.append(deleteButton);
-
-      document.querySelector("#cart-body").append(newProductRow);
+function addToCart (productToAdd) {
+  // Añade un producto al array de carrito.
+  let autentication = localStorage.getItem("autentication");
+  console.log(autentication);
+  if (autentication) {
+    const findProductInCartStoraged = cart.find (el => el.id === productToAdd.id)
+    const existInStorage = cart.includes(findProductInCartStoraged);
+    if (productToAdd.stock === 0 || productToAdd.amount > productToAdd.stock) {
+      createOutOfStockBanner(productToAdd);
+    } 
+    else {
+      if (existInStorage === false) {
+      cart.push(productToAdd);
+      productAdded = true; 
+      }
+      else {
+        const findProductAmount = cart.find(el => el.id === productToAdd.id)
+        findProductAmount.amount++;
+      }
+      modifylocalStorage();
+      cartCounter();
+      refreshCartCounter ();
+    } 
   } 
-  else {}
+  else {
+    const userLoginRequired = document.createElement("div");
+    userLoginRequired.classList.add("user-login-required");
+    userLoginRequired.innerHTML = ` <p class="login-advise-required"> Debe loguearse para acceder al carrito de compras. </p>`
+    document.querySelector("#main-container").append(userLoginRequired)
+    setTimeout( function() { document.querySelector("#main-container").removeChild(userLoginRequired) }, 3000 );
+  }  
 }
 
+function createDeleteButton (product) {
+  // Crea el boton para borrar la fila del producto en el carrito html, y en el array del carrito.
+  const eraseBtn = document.createElement("button");
+  eraseBtn.classList.add("delete-btn")
+  eraseBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`
+  eraseBtn.addEventListener("click", () => {
+    deleteCartProduct(product);
+  })
+  return eraseBtn;
+}
+
+function deleteCartProduct (product) {
+  // Borra el producto del array del carrito, y despues borra la fila del producto en el html. Funciona buscando el índice del producto en el array que coincide con el que ingresa por parámetro, y luego lo corta del array.
+  const findIndexOfObject = cart.indexOf(product);
+  cart.splice(findIndexOfObject, 1);
+  const rows = document.querySelectorAll(".newRow-product");
+  console.log(cart);
+  const cartBody = document.querySelector("#cart-body");
+  cartBody.removeChild(rows[findIndexOfObject]);
+  product.stock = (product.stock)+1;
+  modifylocalStorage();
+  cartCounter ()
+}
+
+// SHOW PRODUCT CALL
+
+showProducts(productsCatalog);
+
+// FUNCTIONS OF AMOUNT IMPUTS OF CART
+
 function amountCounter (product) {
+  // Actualiza el amount de productos de acuerdo a lo ingresado por el input number de la tabla, y luego lo actualiza en storage.
   const amountModifier = parseInt(document.querySelector(`#numberAmount${product.id}`).value);
   const productFoundToModify = cart.find(el => el.id === product.id);
   if (amountModifier <= product.stock) {
@@ -139,119 +154,47 @@ function amountCounter (product) {
   modifylocalStorage();
 }
 
-// function modifyAmount (product) {
-//   productsCatalog.forEach(product => { 
-//     document.querySelector(`numberAmount${product.id}`).value
-//     });
-
-// }
-
 function modifylocalStorage () {
   localStorage.setItem("carrito", JSON.stringify(cart));
 }
 
-function addToCart (productToAdd) {
+function cartCounter() {
+  // Cuenta los productos que hay en el STORAGE del array carrito, y actualiza el contador del STORAGE.
+  const carritoAMOUNT = JSON.parse(localStorage.getItem("carrito"));  
+  let counter = carritoAMOUNT.length;
   
-  const findProductInCartStoraged = cart.find (el => el.id === productToAdd.id)
-  const existInStorage = cart.includes(findProductInCartStoraged);
-  // console.log();
-  // const productExist = cart.includes(productToAdd);
-  // console.log(cart);
-  // console.log(productToAdd);
-  // console.log(productExist);
+  localStorage.setItem("carrito-counter", counter);
+}
 
-  
-  if (productToAdd.stock === 0 || productToAdd.amount > productToAdd.stock) {
-    createOutOfStockBanner(productToAdd);
-  } 
-  else {
-
-    if (existInStorage === false) {
-    cart.push(productToAdd);
-    document.querySelector(`#numberAmount${productToAdd.id}`).value = 1;
-    
-    console.log(cart);
-    productAdded = true; 
+function refreshCartCounter () {
+  // Actualiza el contador de productos en el carrito, del icono del NAV.
+  let counter = localStorage.getItem("carrito-counter");
+  if (counter>0) {
+    const cartCounterNumber = document.querySelector(".cart-counter");
+    cartCounterNumber.classList.remove("d-none")
+    cartCounterNumber.innerText = counter;
     }
-    else {
-      const findProductAmount = cart.find(el => el.id === productToAdd.id)
-      findProductAmount.amount++;
-      document.querySelector(`#numberAmount${productToAdd.id}`).value = parseInt(findProductAmount.amount);
-    }
-    modifylocalStorage();
-  }
-    // }
-  // }    
-}
-   
-
-
-function createOutOfStockBanner (productToAdd) {
-
-  
-  const outOfStockBanner = document.createElement("div");
-    outOfStockBanner.classList.add("out-of-stock-banner-div");
-    outOfStockBanner.innerHTML = `<p class="out-of-stock-banner"> SIN STOCK </p>`
-    const findIndexOfObject = productsCatalog.indexOf(productToAdd);
-    const cards = document.querySelectorAll(".product-card");
-    // cartBody.removeChild(rows[findIndexOfObject]);
-    const cardSelected = cards[findIndexOfObject]
-    cardSelected.prepend(outOfStockBanner);
-    
-  
-}
-
-
-
-function createDeleteButton (product) {
-  const eraseBtn = document.createElement("button");
-  eraseBtn.classList.add("delete-btn")
-  eraseBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`
-  eraseBtn.addEventListener("click", () => {
-    deleteCartProduct(product);
-  })
-  return eraseBtn;
-}
-
-function deleteCartProduct (product) {
-  const findIndexOfObject = cart.indexOf(product);
-  cart.splice(findIndexOfObject, 1);
-  const rows = document.querySelectorAll(".newRow-product");
-  console.log(cart);
-  const cartBody = document.querySelector("#cart-body");
-  cartBody.removeChild(rows[findIndexOfObject]);
-  product.stock = (product.stock)+1;
-  modifylocalStorage();
-}
-
-function showTotalInTable() {
-  let totalForProduct = 0;
-  total = 0;
-  cart.forEach(product => {
-    
-    totalForProduct = product.amount * product.price;
-    total = total + totalForProduct;
-  });
-
-  let promCode = document.querySelector("#promotionCode").value
-  if (promCode === "ABC12"){
-    descuento = total * 0.2;
-    finalTotal = total - descuento;
-    document.querySelector("#discount").classList.replace("display-hide","display-show")
-    document.querySelector("#discount").innerHTML = `<p class="discount-number"> Descuento: -$${descuento}</p>`
-  }
   else {
-    finalTotal = total;
+      const cartCounterNumber = document.querySelector(".cart-counter");
+      cartCounterNumber.innerText = "0";
+      cartCounterNumber.classList.add("d-none")
   }
-  let totalPrice = document.querySelector("#total-price");
-  totalPrice.innerText = ` $${total}`
-
-  document.querySelector("#summarySubtotal").innerText = ` $${finalTotal}`
 }
+refreshCartCounter();
 
+//FILTERS
 
+let displayFilters = false; 
+document.querySelector("#showFilters").addEventListener("click", ()=>{
+  if (displayFilters === false) {
+  document.querySelector(".filters-container").classList.remove("d-none");
+  displayFilters = true;
+  }
+  else {document.querySelector(".filters-container").classList.add("d-none");
+  displayFilters = false;}
+})
 
-// FILTERS
+// CATEGORIES FILTER
 
 function categoryFilter (arr,filter) {
   const filtered = arr.filter((el)=>{
@@ -260,88 +203,130 @@ function categoryFilter (arr,filter) {
   return filtered;
  }
 
+ 
+let limpieza = document.querySelector("#limpiezaCheck");
+limpieza.addEventListener("change", ()=>{
+  if (limpieza.checked) {
+    const categoryFiltered = categoryFilter(productsCatalog, "limpieza");
+    showProducts(categoryFiltered);
+  }
+  else {
+    showProducts(productsCatalog);
+  } 
+});
+
+let velas = document.querySelector("#velasCheck");
+velas.addEventListener("change", ()=>{
+  if (velas.checked) {
+    const categoryFiltered = categoryFilter(productsCatalog, "velas");
+    showProducts(categoryFiltered);
+  }
+  else {
+    showProducts(productsCatalog);
+  } 
+});
+
+let difusores = document.querySelector("#difusoresCheck");
+difusores.addEventListener("change", ()=>{
+  if (difusores.checked) {
+    const categoryFiltered = categoryFilter(productsCatalog, "difusores");
+    showProducts(categoryFiltered);
+  }
+  else {
+    showProducts(productsCatalog);
+  } 
+});
+
+let otros = document.querySelector("#otrosCheck");
+otros.addEventListener("change", ()=>{
+  if (otros.checked) {
+    const categoryFiltered = categoryFilter(productsCatalog, "otros");
+    showProducts(categoryFiltered);
+  }
+  else {
+    showProducts(productsCatalog);
+  } 
+});
+   
+// PRICE FILTER
+
 function priceFilter (arr, comparación, valor) {
   return arr.filter((el)=> {
     switch (comparación) {
       case 1: 
-      return el.price>=valor;
+      return el.price>valor;
       case 2: 
-      return el.price<=valor;
+      return el.price<valor;
     }
   })
 }
 
+document.querySelector("#priceRangeBtn").addEventListener("click", ()=>{
+  let lowRangeValue = parseFloat(document.querySelector("#lowerRange").value);
+  let higherRangeValue = parseFloat(document.querySelector("#higherRange").value);
+ 
+  if ( !isNaN(lowRangeValue) && isNaN(higherRangeValue) ){
+    const lowRangeArray = (priceFilter(productsCatalog, 1, lowRangeValue));
+    showProducts(lowRangeArray);
+    createGoBackBtn();
+    document.querySelector("#priceRangeBtn").classList.replace("d-show", "d-none");
+  }
+  else if ( isNaN(lowRangeValue) && !isNaN(higherRangeValue) ){
+    const highRangeArray = (priceFilter(productsCatalog, 2, higherRangeValue));
+    showProducts(highRangeArray);
+    createGoBackBtn();
+    document.querySelector("#priceRangeBtn").classList.replace("d-show", "d-none");
+  }
+});
 
-// CART ARRAY 
+function createGoBackBtn () {
+  const goBackButton = document.createElement("button");
+  goBackButton.classList.add("go-back-button","buy-btn")
+  goBackButton.innerText = "Volver";
+  document.querySelector(".filters-container__price-filter").append(goBackButton);
 
+  goBackButton.addEventListener("click", ()=>{
+    showProducts(productsCatalog);
+    document.querySelector(".filters-container__price-filter").removeChild(goBackButton);
+    document.querySelector("#priceRangeBtn").classList.replace("d-none", "d-show");
+  })
+}
 
+// ID SEARCH
 
-// SHOPPING
+document.querySelector("#findProductIdBtn").addEventListener("click", ()=>{
+  let idInput = parseInt(document.querySelector("#findProductId").value);
 
-let finalTotal = 0;
-let descuento = 0;
-let cantidad = 0;
-let productAdded = false;
-let shopping = true;
-let total = 0;
-let pay = false;
+  if (!isNaN(idInput) && idInput > 0 && idInput < productsCatalog.length) { 
+    const idFound = productsCatalog.find((el)=> el.id === idInput);
+    const arrayForFound = []
+    arrayForFound.push(idFound);
+    showProducts(arrayForFound);
+    createSearchIDGoBackBtn();
+    document.querySelector("#findProductIdBtn").classList.replace("d-show", "d-none");
+    }
+  else { 
+    const idNotFound = document.createElement("p");
+    idNotFound.classList.add("id-search-error")
+    idNotFound.innerText = "ID no encontrado."
+    document.querySelector(".filters-container__find-product-id").append(idNotFound);
+    setTimeout( function() { document.querySelector(".filters-container__find-product-id").removeChild(idNotFound); }, 5000 );
+  }
+})
 
-// CARRITO DE COMPRA
+function createSearchIDGoBackBtn () {
+  const goBackButton = document.createElement("button");
+  goBackButton.classList.add("go-back-button","buy-btn")
+  goBackButton.innerText = "Volver";
+  document.querySelector(".filters-container__find-product-id").append(goBackButton);
 
-// while (shopping && autentication) {   MODIFICAR ESTO DESPUES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  
-  // let producto = prompt("Ingrese el nombre del producto que desea agregar al carrito:\nVELA\nJABON LIQUIDO\nDIFUSOR\nSPLASH\nBOLSA AROMATICA\nPara filtrar un producto escriba: FILTRAR\nPara buscar por ID escriba: buscarID\nPara finalizar la compra escriba: FINALIZAR COMPRA");
-  
-  document.querySelector("#finish-btn").addEventListener("click", ()=> {
-    
-    console.log("Valor total de la compra: "+total);
-    cart.forEach(product => {
-      amountCounter (product);
-    });
-    showTotalInTable();
-    document.querySelector("#cart-greeting").innerText = "¡Gracias por tu compra! Esperamos que vuelvas pronto...";
-    console.log(cart);
-    shopping = false;
-    pay = true;
-    
-  }) 
-  
-//   else if (producto === "filtrar" || producto === "FILTRAR" || producto === "Filtrar") {
-//     let userSelection = parseInt(prompt("Seleccione la opción:\n1) Filtrar productos por categoría.\n2) Filtrar productos por precio."))
-//     switch (userSelection) {
-//       case 1: 
-//         let filter = prompt("Ingrese la categoría que desea filtrar.\nCategorías: difusores, velas, limpieza.");
-//         console.log(categoryFilter(productsCatalog, filter));
-//         break;
-//       case 2: 
-//         let priceComparation = parseInt(prompt("Ingrese que filtro desea usar:\n1) Mayor o igual que...\n2) Menor o igual que..."))
-//         let valueComparation = parseInt(prompt("Ingrese el precio de comparación."));
-//         const precioFiltrado = priceFilter(productsCatalog, priceComparation, valueComparation);
-//         console.log(precioFiltrado);
-//         break;
-//     }
-//   }
-//   else if (producto === "buscarID" || producto === "buscarId" || producto === "BUSCARID" || producto === "buscarid" || producto === "BuscarID") {
-//     let searchId = parseInt(prompt("Ingrese el ID del producto que desea buscar..."));
-//     while ((searchId === "" || isNaN(searchId) || searchId <= 0  || searchId > productsCatalog.length)) {
-//       searchId = parseInt(prompt("Error en la búsqueda, vuelva a ingresar el ID. (Número entre 1 y 5)"));
-//     }
-//     const found = productsCatalog.find((el)=> el.id === searchId);
-//     console.log(found);}
-//   else { 
-//     alert("El producto ingresado es incorrecto. Por favor, vuelva a ingresar producto.");
-//   }
-// }
+  goBackButton.addEventListener("click", ()=>{
+    showProducts(productsCatalog);
+    document.querySelector(".filters-container__find-product-id").removeChild(goBackButton);
+    document.querySelector("#findProductIdBtn").classList.replace("d-none", "d-show");
+  })
+}
 
-// // FORMAS DE PAGO
-
-// const financing = (cuotas) => {
-//   return total / cuotas;
-// }
-// let cuotas = 0;
-// let cuotasAprobado = true;
-
-// if (pay) {
 
 // let paymentSelect = parseInt(prompt("Seleccione como desea abonar su compra, colocando el número correspondiente:\n1.Débito en un pago.\n2.Crédito en un pago.\n3.Tarjeta de crédito en cuotas."));
 // while (paymentSelect  !== 1 && paymentSelect  !== 2 && paymentSelect  !== 3) {
@@ -369,30 +354,3 @@ let pay = false;
 //   break;
 // }
 
-// // ADDING DEBIT/CREDIT CARD
-
-// const Cards = []
-
-// function PaymentCard (number, cvv, expireDate, name, dni) {
-//   this.number = number;
-//   this.cvv = cvv;
-//   this.expireDate = expireDate;
-//   this.name = name;
-//   this.dni = dni;
-// }
-
-// const newCard = () => {
-// let numeroTarjeta = prompt("Ingrese el número de su tarjeta");
-// let cvv = prompt("Ingrese el código de seguridad");
-// let fechaVencimiento = prompt("Ingrese la fecha de expiración de su tarjeta.");
-// let titular = prompt ("Ingrese el nombre del titular, tal cual figura en la tarjeta.")
-// let dni = prompt("Ingrese el DNI del titular.")
-// const userCard = new PaymentCard (numeroTarjeta, cvv, fechaVencimiento, titular, dni);
-// Cards.push(userCard);
-// }
-
-// alert("Ya casi estamos listos... seleccioná tu tarjeta para pagar.")
-// newCard();
-// console.log(Cards);
-
-// alert("Su pago ha sido procesado correctamente.\nEl pedido se está preparando... nos pondremos en contacto para coordinar la entrega.");

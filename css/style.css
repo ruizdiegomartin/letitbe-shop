@@ -264,14 +264,58 @@ main {
   display: block;
 }
 
+.fa-circle-user {
+  border: solid 3px palevioletred;
+  border-color: #e2a694;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
+
+.filters-container {
+  display: flex;
+  width: 90%;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin: 3rem auto 0;
+  padding: 25px 25px 0 25px;
+}
+.filters-container__price-filter {
+  display: flex;
+  flex-direction: column;
+}
+.filters-container__price-filter input {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.filters-container__find-product-id {
+  display: flex;
+  flex-direction: column;
+}
+.filters-container__find-product-id input {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.show-filters {
+  padding: 5rem 0 0 0;
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.show-filters button {
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+
 .cart-container {
   width: 80%;
   margin: 0 auto;
   padding-bottom: 100px;
 }
 
-.main-cart {
-  height: 100vh;
+.cart-main {
+  min-height: calc(100vh - 77px - 95px);
   background-color: #e2a694;
   display: flex;
   align-items: center;
@@ -392,6 +436,24 @@ main {
   transform: translate(4px, 4px);
 }
 
+.cart-counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  background-color: #e44a61;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+}
+
+.cart-nav-link {
+  position: relative;
+}
+
 .login-body {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -497,6 +559,110 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.payment-main {
+  min-height: calc(100vh - 77px - 95px);
+  background-color: #e2a694;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.payment-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+}
+
+.card-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.paymentSubmitBtn {
+  margin-top: 1rem;
+}
+
+.example-credit-card {
+  position: relative;
+  padding: 5px;
+  background: linear-gradient(90deg, rgb(8, 7, 7) 0%, rgb(48, 46, 46) 35%, rgb(61, 56, 56) 100%);
+  width: 400px;
+  height: 250px;
+  border-radius: 1rem;
+}
+.example-credit-card__bank {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 1rem 1rem 1rem 0;
+  text-align: end;
+}
+.example-credit-card img {
+  width: 50px;
+  margin-left: 1rem;
+}
+.example-credit-card__number {
+  width: 90%;
+  color: #fff;
+  margin: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+.example-credit-card__valid-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+.example-credit-card__valid-container h4 {
+  color: #fff;
+  font-size: 0.6rem;
+  margin-bottom: 0;
+}
+.example-credit-card__valid-container p {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+.example-credit-card__cardholder {
+  color: #fff;
+  margin: 0.5rem 0 0 1rem;
+  width: 70%;
+}
+.example-credit-card__cvv-example {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.payment-done {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.payment-done i {
+  color: #3eb42e;
+  font-size: 2rem;
+}
+.payment-done__confirmed {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.payment-done__thanks {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.payment-done__info {
+  font-size: 1.1rem;
+  color: #504d4d;
 }
 
 /* Index - CTA Button*/

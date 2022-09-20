@@ -23,7 +23,7 @@
   <!-- HEADER -->
   <header>
     <!-- NAVIGATOR -->
-    <nav class="navbar navbar-expand-lg white navigator-bar">
+    <nav class="navbar navbar-expand-lg bg-white navigator-bar fixed-top" >
       <div class="container-fluid">
         <a class="navbar-brand" href="../index.html"> <img src="./img/let-it-be-logo.jpg" class="logo-img" alt="let-it-be-logo"> </a>
         <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,16 +36,16 @@
             <li class="nav-item">
               <a class="nav-link" href="../index.html">Inicio</a>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/login.html"><i class="fa-solid fa-circle-user"></i></a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="./productos.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./pages/cart.html">Carrito</a>
+              <a class="nav-link cart-nav-link" href="./pages/cart.html"> <i class="fa-solid fa-cart-shopping"></i> <div class="cart-counter d-none" id="cartCounter"> </div></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./contacto.html">FAQs & Contacto</a>
+              <a class="nav-link" href="./contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/login.html"><i class="fa-solid fa-circle-user"></i></a>
             </li>
           </ul>
         </div>
@@ -57,82 +57,46 @@
     <div class="title-container">
       <h1 class="title-container__title"> SHOP </h1>
     </div>
+    <div class="show-filters">
+      <button id="showFilters" class="buy-btn"> FILTRAR <i class="fa-solid fa-filter"></i></button>
+    </div>
+    <section class="filters-container d-none">
+      <div class="filters-container__price-filter">
+        <h3> Filtrar por precio </h3>
+        <label for="lowerRange" class="range-inputs-labels"> Buscar precio mayor a...</label>
+        <input class="range-input" id="lowerRange" type="text" placeholder="Ingrese un valor..."> 
+        <label for="higherRange">Buscar precio menor a...</label>
+        <input class="range-input" id="higherRange" type="text" placeholder="Ingrese un valor...">
+        <button id="priceRangeBtn" class="buy-btn d-show"> Buscar </button>
+      </div>
+      <div class="filters-container__category-search-filter">
+        <h3> Filtrar por categorías </h3>
+        <p> Seleccione la categoria a filtrar.</p>
+        <div class="category-checkbox-groups">
+          <input id="limpiezaCheck" type="checkbox">
+          <label for="limpiezaCheck"> Limpieza </label>
+        </div>
+        <div class="category-checkbox-groups">
+          <input id="velasCheck" type="checkbox">
+          <label for="velasCheck"> Velas </label>
+        </div>
+        <div class="category-checkbox-groups">
+          <input id="difusoresCheck" type="checkbox">
+          <label for="difusoresCheck"> Difusores </label>
+        </div>
+        <div class="category-checkbox-groups">
+          <input id="otrosCheck" type="checkbox">
+          <label for="otrosCheck"> Otros </label>
+        </div>      
+      </div>
+      <div class="filters-container__find-product-id">
+        <h3> Buscar por ID </h3>
+        <input id="findProductId" type="search" placeholder="Ingrese el ID...">
+        <button class="buy-btn d-show" id="findProductIdBtn"> Buscar </button>
+      </div>
+    </section>
     <div class="products-container" id="main-container">
     </div>
-    <article class="cart-container">
-      <h3 id="cart-greeting"> ¡Bienvenido/a! Agregá productos al carrito para continuar.</h3>
-      <!-- <div class="cart-container">
-        <table class="cart-table">
-          <thead>
-            <tr>
-              <th class="theader"> PRODUCTO </th>
-              <th class="theader"> PRECIO UNITARIO </th>
-              <th class="theader"> CANTIDAD </th>
-              <th class="theader"> TOTAL POR PRODUCTO </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="cart-body">
-          </tbody >
-          <tfoot id="cart-foot">
-          </tfoot>
-        </table>
-        <button class="finish-btn buy-btn" id="finish-btn"> Finalizar compra </button>
-      </div> -->
-      <div class="wrapper">
-        <h1> Carrito </h1>
-        <div class="cart-sections">
-            <table class="cart-table">
-                <thead class="carrito-tabla">
-                  <tr>
-                    <th class="theader">PRODUCTO</th>
-                    <th class="theader">PRECIO</th>
-                    <th class="theader">CANTIDAD</th>
-                    <th class="theader">TOTAL</th>
-                    <th class="theader"></th>
-                  </tr>
-                </thead>
-                <tbody id="cart-body">
-                  <!-- <tr id="table-example">
-                    <td class="tbody"> PRODUCT NAME </td>
-                    <td class="tbody"> PRICE </td>
-                    <td class="tbody"> <input class="number-amount" type="number"> </td>
-                    <td class="tbody"> PRECIO TOTAL </td>
-                    <td class="tbody" id="row-delete"></td>
-                  </tr> -->
-                </tbody >
-                <tfoot id="cart-foot">
-                </tfoot>
-              </table>
-            <div class="summary-card">
-                <h2> Resumen </h2>
-                <div class="summary-groups">
-                    <h4> Orden total: </h4>
-                    <p id="total-price"> $0 </p>
-                </div>
-                <div class="summary-groups">
-                    <h4> Código de descuento: </h4>
-                    <input id="promotionCode" type="text" maxlength="5">
-                </div>
-                <div id="discount" class="discount display-hide"> 
-                </div>
-                <div class="summary-groups">
-                    <h4> Costo de envío: </h4>
-                    <p></p>
-                </div>
-                <div class="summary-groups">
-                    <h4> Subtotal: </h4>
-                    <p id="summarySubtotal"></p>
-                </div>
-                <button class="btn-buyNow" id="finish-btn"> Calcular compra </button>
-            </div>
-        </div>
-        <div class="continueToPayBtn-div">
-          <button class="continueToPayBtn" id="continueToPayBtn"> Continuar con la compra </button>
-        </div>
-    </div>
-  </article>
- 
   </main>
   <!-- FOOTER -->
    <footer>

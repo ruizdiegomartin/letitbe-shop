@@ -1,0 +1,110 @@
+.payment-main {
+    min-height: calc((100vh - 77px) - 95px);
+    background-color: $color-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.payment-container {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+
+}
+.card-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.paymentSubmitBtn{
+    margin-top: 1rem;
+}
+
+
+
+// CARD EXAMPLE
+
+.example-credit-card{
+    position: relative;
+    padding: 5px;
+    background: linear-gradient(90deg, rgba(8,7,7,1) 0%, rgba(48,46,46,1) 35%, rgba(61,56,56,1) 100%);
+    width: 400px;
+    height: 250px;
+    border-radius: 1rem;
+    &__bank {
+        font-size: 1.2rem;
+        color: $color-white;
+        margin: 1rem 1rem 1rem 0;
+        text-align: end;
+    }
+    & img {
+        width: 50px;
+        margin-left: 1rem;
+    }
+    &__number {
+        width: 90%;
+        color: $color-white;
+        margin: .5rem 1rem;
+        font-size: 1.5rem;
+    }
+    &__valid-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+        & h4{
+            color: $color-white;
+            font-size: .6rem;
+            margin-bottom: 0;
+        }
+        & p {
+            color: $color-white;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }    
+    }
+    &__cardholder {
+        color: $color-white;
+        margin: .5rem 0 0 1rem;
+        width: 70%;
+    }
+    &__cvv-example{
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        color: $color-white;
+        margin-bottom: 5px;
+    }
+}
+
+// PAYMENT CHECK
+
+.payment-done {
+    padding: 1.5rem;
+    background-color: $color-white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & i{
+        color: #3eb42e;
+        font-size: 2rem;
+    }
+    &__confirmed {
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    &__thanks {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    &__info{
+        font-size: 1.1rem;
+        color: #504d4d;
+    }
+}
+

@@ -53,56 +53,40 @@
     </nav>
   </header>
   <!-- MAIN -->
-  <main class="cart-main">
-    <article class="cart-container">
-    <h3 id="cart-greeting"> ¡Bienvenido/a! Agregá productos al carrito para continuar.</h3>
-    <div class="wrapper">
-      <h1> Carrito </h1>
-      <div class="cart-sections">
-          <table class="cart-table">
-              <thead class="carrito-tabla">
-                <tr>
-                  <th class="theader">PRODUCTO</th>
-                  <th class="theader">PRECIO</th>
-                  <th class="theader">CANTIDAD</th>
-                  <th class="theader">TOTAL</th>
-                  <th class="theader"></th>
-                </tr>
-              </thead>
-              <tbody id="cart-body">
-              </tbody >
-              <tfoot id="cart-foot">
-              </tfoot>
-            </table>
-          <div class="summary-card">
-              <h2> Resumen </h2>
-              <div class="summary-groups">
-                  <h4> Orden total: </h4>
-                  <p id="total-price"> $0 </p>
-              </div>
-              <div class="summary-groups">
-                  <h4> Código de descuento: </h4>
-                  <input id="promotionCode" type="text" maxlength="5">
-              </div>
-              <div id="discount" class="discount display-hide"> 
-              </div>
-              <div class="summary-groups">
-                  <h4> Costo de envío: </h4>
-                  <p></p>
-              </div>
-              <div class="summary-groups">
-                  <h4> Subtotal: </h4>
-                  <p id="summarySubtotal"></p>
-              </div>
-              <button class="btn-buyNow" id="finish-btn"> Calcular compra </button>
+  <main class="payment-main">
+    <article class="payment-container">
+        <section class="payment-card-data-section">
+          <form action="">
+            <div class="card-group">
+              <label for="cardNumber"> NÚMERO DE LA TARJETA </label>
+              <input id="cardNumber" type="text" required>
+            </div>
+            <div class="card-group">
+              <label for="cardName"> NOMBRE Y APELLIDO </label>
+              <input id="cardName" type="text" required>
+            </div>
+            <div class="expirationDate-container">
+              <input id="expireInput" type="text" placeholder="00 / 00" required> <input id="cvvInput" type="text" placeholder="CVV" required>
+            </div>
+            <div class="payment-submit-container">
+              <button type="submit" id="paymentSubmitBtn" class="paymentSubmitBtn buy-btn"> PROCESAR PAGO </button>
+            </div>
+          </form>
+        </section>
+        <section class="payment-card-example-section">
+          <div class="example-credit-card"> 
+            <p class="example-credit-card__bank"> BANK NAME </p>
+            <img class="card-chip-img" src="../img/card-chip.png" alt="card chip">
+            <p class="card-number-example example-credit-card__number" id="cardNumberExample">0000 - 0000 - 0000 - 0000</p>
+            <div class="valid-thru-date example-credit-card__valid-container">
+                <h4 class="example-credit-card__valid-thru"> VALID THRU: </h4>
+                <p class="example-credit-card__expire-date" id="expireExample"> 00/00 </p>
+            </div>
+            <p id="cardholderExample" class="example-credit-card__cardholder"> CARDHOLDER </p>
+            <p class="example-credit-card__cvv-example" id="cvvExample">CVV</p>
           </div>
-      </div>
-      <div class="continueToPayBtn-div">
-        <button class="continueToPayBtn" id="continueToPayBtn"> Continuar con la compra </button>
-      </div>
-    </div>
-    </article>
-    
+        </section>
+      </article>
   </main>
   <!-- FOOTER -->
   <footer>
@@ -122,7 +106,6 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous">
   </script>
-  <script src="../js/cart/cart.js"></script>
-  <!-- <script src="../js/main.js"></script> -->
+  <script src="../js/payment/payment.js"></script>
 </body>
 </html>
