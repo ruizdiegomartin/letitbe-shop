@@ -2,7 +2,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     background-color: $color-main;
-    height:100vh;
+    min-height: calc(100vh - 172px);
     display: grid;
     justify-content: center;
     align-items: center;
