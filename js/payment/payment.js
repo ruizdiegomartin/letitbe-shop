@@ -89,6 +89,13 @@ function clearStorage (){
     localStorage.removeItem("precioCompra");
 }
 
+document.querySelector("#cvvInput").addEventListener("focus", ()=>{
+    document.querySelector(".example-credit-card").classList.add("example-credit-card-flip")
+})
+
+document.querySelector("#cvvInput").addEventListener("blur", ()=>{
+    document.querySelector(".example-credit-card").classList.remove("example-credit-card-flip")
+})
 
 
 

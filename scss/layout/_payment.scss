@@ -7,16 +7,20 @@
     flex-wrap: wrap;
 }
 
-.payment-container {
+.payment-container-div {
     display: flex;
     width: 80%;
     align-items: center;
     justify-content: space-evenly;
     & button{
+        margin-top: 1rem;
         width: 100%;
         height: 3rem;
         background-color: palevioletred;
         border: solid 3px #d85681;
+        &:hover{
+            background-color: #d85681;
+        }
     }
 }
 .card-group {
@@ -38,11 +42,6 @@
     }
 }
 
-.paymentSubmitBtn{
-    margin-top: 1rem;
-}
-
-
 
 // CARD EXAMPLE
 
@@ -53,11 +52,28 @@
     width: 400px;
     height: 250px;
     border-radius: 1rem;
+    box-shadow: 4px 4px 30px #83828298;
+    transition: transform 500ms ease-out;
     &__bank {
         font-size: 1.2rem;
         color: $color-white;
         margin: 1rem 1rem 1rem 0;
         text-align: end;
+    }
+    &__signature {
+        background-color: white;
+        height: 2.5rem;
+        width: 100%;
+        display: none;
+        & p{
+            padding: .2rem;
+            background-color: grey;
+            width: 3rem;
+            margin-bottom: 0;
+            margin-left: 1rem;
+            text-align: center;
+            transform: rotateY(180deg);
+        }
     }
     & img {
         width: 50px;
@@ -125,5 +141,17 @@
         font-size: 1.1rem;
         color: #504d4d;
     }
+}
+
+.example-credit-card-flip {
+    transform: rotateY(-180deg);
+        .card-chip-img{
+            display: none;
+        }
+        .example-credit-card__signature{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
 }
 

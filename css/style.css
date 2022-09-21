@@ -616,17 +616,21 @@ main {
   flex-wrap: wrap;
 }
 
-.payment-container {
+.payment-container-div {
   display: flex;
   width: 80%;
   align-items: center;
   justify-content: space-evenly;
 }
-.payment-container button {
+.payment-container-div button {
+  margin-top: 1rem;
   width: 100%;
   height: 3rem;
   background-color: palevioletred;
   border: solid 3px #d85681;
+}
+.payment-container-div button:hover {
+  background-color: #d85681;
 }
 
 .card-group {
@@ -648,10 +652,6 @@ main {
   border: solid 2px palevioletred;
 }
 
-.paymentSubmitBtn {
-  margin-top: 1rem;
-}
-
 .example-credit-card {
   position: relative;
   padding: 5px;
@@ -659,12 +659,29 @@ main {
   width: 400px;
   height: 250px;
   border-radius: 1rem;
+  box-shadow: 4px 4px 30px rgba(131, 130, 130, 0.5960784314);
+  transition: transform 500ms ease-out;
 }
 .example-credit-card__bank {
   font-size: 1.2rem;
   color: #fff;
   margin: 1rem 1rem 1rem 0;
   text-align: end;
+}
+.example-credit-card__signature {
+  background-color: white;
+  height: 2.5rem;
+  width: 100%;
+  display: none;
+}
+.example-credit-card__signature p {
+  padding: 0.2rem;
+  background-color: grey;
+  width: 3rem;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  text-align: center;
+  transform: rotateY(180deg);
 }
 .example-credit-card img {
   width: 50px;
@@ -729,6 +746,18 @@ main {
 .payment-done__info {
   font-size: 1.1rem;
   color: #504d4d;
+}
+
+.example-credit-card-flip {
+  transform: rotateY(-180deg);
+}
+.example-credit-card-flip .card-chip-img {
+  display: none;
+}
+.example-credit-card-flip .example-credit-card__signature {
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 .payment-select-main {
