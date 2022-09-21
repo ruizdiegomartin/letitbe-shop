@@ -29,6 +29,53 @@
         border-radius: 0;
 }
 
-
+@mixin checkbox-style {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 25px 0;      
+    @include mobile-landscape-resolution {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    & label{
+        margin: 0 25px;
+        @include mobile-landscape-resolution{
+        order: 1;
+        margin: 0;
+        }  
+    }
+    & input{
+        appearance: none;
+        height: 50px;
+        min-width: 50px;
+        background-color: #d5d5d5;
+        border-radius: 5px;
+        cursor: pointer;
+        @extend .flex-center;
+        @include mobile-landscape-resolution{
+            order: 2;
+            margin: 25px 0 0 0;
+        }  
+        &:hover{
+            background-color: #aca9a9;
+            scale: 1.1;
+        }
+        &:checked{
+            background-color: $color-main;
+        }
+        &::after{
+            font-family: "Font Awesome 5 Free";
+            content: "\f00c";
+            font-weight: 900;
+            font-size: 40px;
+            color: $color-white;
+            display: none;
+        }
+        &:checked::after{
+            display: block; 
+        }
+    }
+}
 
 

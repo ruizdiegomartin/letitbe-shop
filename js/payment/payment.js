@@ -65,7 +65,7 @@ document.querySelector("#paymentSubmitBtn").addEventListener("click", (e)=>{
     payCard.push(userCard);
     console.log(payCard);
     createPaymentCheckedAdvise();
-    localStorage.clear();
+    clearStorage();
     refreshCartCounter();
 })
 
@@ -83,6 +83,11 @@ function createPaymentCheckedAdvise (){
     document.querySelector(".payment-main").append(paymentChecked);   
 }
 
+function clearStorage (){
+    localStorage.removeItem("carrito");
+    localStorage.removeItem("carrito-counter");
+    localStorage.removeItem("precioCompra");
+}
 
 
 

@@ -114,20 +114,22 @@
 }
 
 .continueToPayBtn {
+    width: 265px;
     display: inline-block;
     padding: .5rem 1rem;
     border-radius: 10px;
     border: none;
     text-decoration: none;
     color: $color-white;
-    background-color: #3a3a3a;
+    background-color: palevioletred;
+    border: solid 3px #d85681;
     transition: all 200ms;
     &:hover{
-        background-color: #161616;
+        background-color: #d85681;
         color: $color-white;
     }
     &:active {
-        transform: translate(4px,4px);
+        scale: 0.9;
     }
 }
 

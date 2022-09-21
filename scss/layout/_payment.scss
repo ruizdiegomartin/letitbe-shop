@@ -10,13 +10,32 @@
 .payment-container {
     display: flex;
     width: 80%;
+    align-items: center;
     justify-content: space-evenly;
-
+    & button{
+        width: 100%;
+        height: 3rem;
+        background-color: palevioletred;
+        border: solid 3px #d85681;
+    }
 }
 .card-group {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
+    & label {
+        margin-bottom: .2rem;
+    }
+    & input{
+        border: none;
+        border-radius: 1rem;
+        padding: .2rem 1rem;
+        max-width: 300px;
+        outline: black;
+        &:focus{
+            border: solid 2px palevioletred; 
+        }
+    }
 }
 
 .paymentSubmitBtn{

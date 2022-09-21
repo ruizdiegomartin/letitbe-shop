@@ -1,0 +1,164 @@
+.payment-select-main {
+    min-height: calc(100vh - 172px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.payments-wrapper {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 80%;
+    margin: 0 auto;
+    gap: 5rem;
+}
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 1rem;
+    background-color: $color-main;
+    width: 60%;
+}
+
+.payments-groups {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: .2rem;
+    @include checkbox-style;
+    & label {
+        margin-left: 1rem;
+    }
+    & input{
+        margin-left: 2rem;
+    }
+    & i {
+        margin: 0 2.5rem 0 auto;
+        font-size: 2rem;
+        color: #646262;
+    }
+    &:hover{
+        box-shadow: 2px 2px 25px #838181d3;
+    }
+}
+
+// RESUME
+
+.payment-resume {
+    width: 40%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: .3rem;
+    & h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 700;
+    }
+    & h3{
+        font-size: 1.2rem;
+    }
+}
+
+.price-resume {
+    font-size: 2rem;
+    font-weight: 700;
+    & span{
+        font-size: .8rem;
+    }
+}
+
+.resume-ul-list{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    
+}
+.product-li{
+    width: 80%;
+    padding: .5rem;
+    border-radius: 2rem;
+    background-color: #f0eaea;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    & p {
+        margin-bottom: 0;  
+        margin-left: .5rem;
+    }
+}
+
+.product-img-item{
+    width: 3rem;
+    border-radius: 50%;
+}
+
+
+
+// BUTTON
+
+.button-div{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width:80%;
+    padding: 1rem 0 1rem 1rem;
+    margin-top: 1rem;
+    & button{
+        color: #f0eaea;
+        font-weight: 700;
+        border-radius: 1.5rem;
+        padding: .5rem 2rem;
+        background-color: #d85681; 
+        border: solid 3px #d85681;
+        &:hover{
+            background-color: palevioletred;
+        }
+        &:active{
+            scale: 0.9;
+        }
+    }
+}
+
+// BANCARY PAY DIV
+
+.bancary-pay-div {
+    background-color: white;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: .5rem;
+    & h3{
+        text-align: center;
+        margin-bottom: 1rem;
+        & i{
+            font-size: 2rem;
+            color: #239c23;
+        }
+    }
+    & p {
+        color: #383737;
+        line-height: 2rem;
+        text-align: center;
+        & span{
+            font-size: 1.3rem;
+            color:#d85681;
+        }
+    }
+}

@@ -13,15 +13,15 @@ function Product (id, img, product, price, category, stock, amount) {
 
 // PRODUCTS
 
-const product1 = new Product (1,"./img/product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
-const product2 = new Product (2,"./img/product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
-const product3 = new Product (3,"./img/product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
-const product4 = new Product (4,"./img/product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
-const product5 = new Product (5,"./img/product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
-const product6 = new Product (6,"./img/product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 10, 1);
-const product7 = new Product (7,"./img/product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
-const product8 = new Product (8,"./img/vela-silver.png", "Vela silver", 750, "velas", 20, 1);
-const product9 = new Product (9,"./img/product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
+const product1 = new Product (1,"product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
+const product2 = new Product (2,"product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
+const product3 = new Product (3,"product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
+const product4 = new Product (4,"product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
+const product5 = new Product (5,"product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
+const product6 = new Product (6,"product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 10, 1);
+const product7 = new Product (7,"product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
+const product8 = new Product (8,"vela-silver.png", "Vela silver", 750, "velas", 20, 1);
+const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
 
 // PRODUCTS ARRAY
 
@@ -54,7 +54,7 @@ function showProducts (array) {
     const productCard = document.createElement("article");
     productCard.classList.add("product-card")
     productCard.innerHTML = 
-      ` <img class="product-card__img" src="${product.img}" alt="${product.name}">
+      ` <img class="product-card__img" src="./img/${product.img}" alt="${product.name}">
         <h2 class="product-card__title">${product.name}</h2>
         <p class="product-card__description">Vela hecha a base de soja, en cuenco de madera. Variedad de aromas.</p>
         <p class="product-card__price"> $${product.price} </p>
@@ -101,11 +101,7 @@ function addToCart (productToAdd) {
     } 
   } 
   else {
-    const userLoginRequired = document.createElement("div");
-    userLoginRequired.classList.add("user-login-required");
-    userLoginRequired.innerHTML = ` <p class="login-advise-required"> Ingrese a su cuenta para acceder al carrito de compras. </p>`
-    document.querySelector("#main-container").append(userLoginRequired)
-    setTimeout( function() { document.querySelector("#main-container").removeChild(userLoginRequired) }, 2500 );
+    adviseAlert("#main-container","Ingrese a su cuenta para acceder al carrito de compras.")
   }  
 }
 
@@ -181,6 +177,17 @@ function refreshCartCounter () {
   }
 }
 refreshCartCounter();
+
+//FUNCION ALERT
+
+function adviseAlert (contenedorPadre, msj) {
+  // Crea un mensaje de alerta en pantalla que dura dos segundos.
+  const userLoginRequired = document.createElement("div");
+    userLoginRequired.classList.add("user-login-required");
+    userLoginRequired.innerHTML = ` <p class="login-advise-required">${msj}</p>`
+    document.querySelector(contenedorPadre).append(userLoginRequired)
+    setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000 )
+}
 
 //FILTERS
 
@@ -353,4 +360,5 @@ function createSearchIDGoBackBtn () {
 // }
 //   break;
 // }
+
 

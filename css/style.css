@@ -1,5 +1,5 @@
 /* Display flex centrado */
-.flex-center {
+.flex-center, .payments-groups input {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -440,21 +440,23 @@ main {
 }
 
 .continueToPayBtn {
+  width: 265px;
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: none;
   text-decoration: none;
   color: #fff;
-  background-color: #3a3a3a;
+  background-color: palevioletred;
+  border: solid 3px #d85681;
   transition: all 200ms;
 }
 .continueToPayBtn:hover {
-  background-color: #161616;
+  background-color: #d85681;
   color: #fff;
 }
 .continueToPayBtn:active {
-  transform: translate(4px, 4px);
+  scale: 0.9;
 }
 
 .cart-counter {
@@ -617,13 +619,33 @@ main {
 .payment-container {
   display: flex;
   width: 80%;
+  align-items: center;
   justify-content: space-evenly;
+}
+.payment-container button {
+  width: 100%;
+  height: 3rem;
+  background-color: palevioletred;
+  border: solid 3px #d85681;
 }
 
 .card-group {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
+}
+.card-group label {
+  margin-bottom: 0.2rem;
+}
+.card-group input {
+  border: none;
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+  max-width: 300px;
+  outline: black;
+}
+.card-group input:focus {
+  border: solid 2px palevioletred;
 }
 
 .paymentSubmitBtn {
@@ -707,6 +729,213 @@ main {
 .payment-done__info {
   font-size: 1.1rem;
   color: #504d4d;
+}
+
+.payment-select-main {
+  min-height: calc(100vh - 172px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.payments-wrapper {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 80%;
+  margin: 0 auto;
+  gap: 5rem;
+}
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 1rem;
+  background-color: #e2a694;
+  width: 60%;
+}
+
+.payments-groups {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 25px 0;
+}
+@media screen and (max-width: 768px) {
+  .payments-groups {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.payments-groups label {
+  margin: 0 25px;
+}
+@media screen and (max-width: 768px) {
+  .payments-groups label {
+    order: 1;
+    margin: 0;
+  }
+}
+.payments-groups input {
+  appearance: none;
+  height: 50px;
+  min-width: 50px;
+  background-color: #d5d5d5;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .payments-groups input {
+    order: 2;
+    margin: 25px 0 0 0;
+  }
+}
+.payments-groups input:hover {
+  background-color: #aca9a9;
+  scale: 1.1;
+}
+.payments-groups input:checked {
+  background-color: #e2a694;
+}
+.payments-groups input::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  font-weight: 900;
+  font-size: 40px;
+  color: #fff;
+  display: none;
+}
+.payments-groups input:checked::after {
+  display: block;
+}
+.payments-groups label {
+  margin-left: 1rem;
+}
+.payments-groups input {
+  margin-left: 2rem;
+}
+.payments-groups i {
+  margin: 0 2.5rem 0 auto;
+  font-size: 2rem;
+  color: #646262;
+}
+.payments-groups:hover {
+  box-shadow: 2px 2px 25px rgba(131, 129, 129, 0.8274509804);
+}
+
+.payment-resume {
+  width: 40%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+.payment-resume h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+.payment-resume h3 {
+  font-size: 1.2rem;
+}
+
+.price-resume {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.price-resume span {
+  font-size: 0.8rem;
+}
+
+.resume-ul-list {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.product-li {
+  width: 80%;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  background-color: #f0eaea;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.product-li p {
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+}
+
+.product-img-item {
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.button-div {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 80%;
+  padding: 1rem 0 1rem 1rem;
+  margin-top: 1rem;
+}
+.button-div button {
+  color: #f0eaea;
+  font-weight: 700;
+  border-radius: 1.5rem;
+  padding: 0.5rem 2rem;
+  background-color: #d85681;
+  border: solid 3px #d85681;
+}
+.button-div button:hover {
+  background-color: palevioletred;
+}
+.button-div button:active {
+  scale: 0.9;
+}
+
+.bancary-pay-div {
+  background-color: white;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.bancary-pay-div h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.bancary-pay-div h3 i {
+  font-size: 2rem;
+  color: #239c23;
+}
+.bancary-pay-div p {
+  color: #383737;
+  line-height: 2rem;
+  text-align: center;
+}
+.bancary-pay-div p span {
+  font-size: 1.3rem;
+  color: #d85681;
 }
 
 /* Index - CTA Button*/

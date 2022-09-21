@@ -27,7 +27,7 @@ function userLogin () {
       loginError = true;
       autentication = true;
       localStorage.setItem("autentication", autentication)
-      setTimeout( function() { window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/"; }, 3000 );
+      setTimeout( function() { window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/"; }, 2000 );
     }
     else {
       while (loginError === true) {

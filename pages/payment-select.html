@@ -17,7 +17,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <title> LET IT BE | Carrito </title>
+    <title> LET IT BE | Productos </title>
 </head>
 <body>
     <!-- HEADER -->
@@ -50,56 +50,35 @@
     </nav>
   </header>
   <!-- MAIN -->
-  <main class="cart-main">
-    <article class="cart-container">
-    <h3 id="cart-greeting"> ¡Bienvenido/a! Agregá productos al carrito para continuar.</h3>
-    <div class="wrapper">
-      <h1> Carrito </h1>
-      <div class="cart-sections">
-          <table class="cart-table">
-              <thead class="carrito-tabla">
-                <tr>
-                  <th class="theader">PRODUCTO</th>
-                  <th class="theader">PRECIO</th>
-                  <th class="theader">CANTIDAD</th>
-                  <th class="theader">TOTAL</th>
-                  <th class="theader"></th>
-                </tr>
-              </thead>
-              <tbody id="cart-body">
-              </tbody >
-              <tfoot id="cart-foot">
-              </tfoot>
-            </table>
-          <div class="summary-card">
-              <h2> Resumen </h2>
-              <div class="summary-groups">
-                  <h4> Orden total: </h4>
-                  <p id="total-price"> $0 </p>
-              </div>
-              <div class="summary-groups">
-                  <h4> Código de descuento: </h4>
-                  <input id="promotionCode" type="text" maxlength="5">
-              </div>
-              <div id="discount" class="discount display-hide"> 
-              </div>
-              <div class="summary-groups">
-                  <h4> Costo de envío: </h4>
-                  <p></p>
-              </div>
-              <div class="summary-groups">
-                  <h4> Subtotal: </h4>
-                  <p id="summarySubtotal"></p>
-              </div>
-              <button class="btn-buyNow" id="finish-btn"> Calcular compra </button>
-          </div>
-      </div>
-      <div class="continueToPayBtn-div">
-        <button class="continueToPayBtn" id="continueToPayBtn"> Continuar con la compra </button>
-      </div>
+  <main class="payment-select-main">
+    <div class="payments-wrapper">
+        <section class="payment-container">
+            <div class="payments-groups">
+                <input type="checkbox" id="cashPay">
+                <label for="cashPay">Pagar con transferencia bancaria.</label>    
+                <i class="fa-solid fa-money-bill-transfer"></i>
+            </div>  
+            <div class="payments-groups">
+                <input type="checkbox" id="cardPay">
+                <label for="cardPay">Pagar con tarjeta de débito o crédito en un pago.</label>
+                <i class="fa-regular fa-credit-card"></i>
+            </div> 
+            <div class="payments-groups">
+                <input type="checkbox" id="installmentsPay">
+                <label for="installmentsPay">Pagar con crédito en cuotas.</label>
+                <i class="fa-sharp fa-solid fa-building-columns"></i>
+            </div>     
+        </section>
+        <section class="payment-resume">
+            <h2> RESUMEN DE COMPRA </h2>
+            <ul class="resume-ul-list" id="buyListResume"></ul>
+            <h3> VALOR TOTAL </h3>
+            <p class="price-resume" id="priceResume"></p>
+        </section>
     </div>
-    </article>
-    
+    <div class="button-div">
+        <button id="confirmBuyButton"> Pagar ahora </button>
+    </div>
   </main>
   <!-- FOOTER -->
   <footer>
@@ -119,7 +98,6 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous">
   </script>
-  <script src="../js/cart/cart.js"></script>
-  <!-- <script src="../js/main.js"></script> -->
+  <script src="../js/payment-select/payment-select.js"></script>
 </body>
 </html>

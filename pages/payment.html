@@ -17,7 +17,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <title> LET IT BE | Productos </title>
+    <title> LET IT BE | Pay </title>
 </head>
 <body>
     <!-- HEADER -->
@@ -55,18 +55,23 @@
         <section class="payment-card-data-section">
           <form action="">
             <div class="card-group">
-              <label for="cardNumber"> NÚMERO DE LA TARJETA </label>
+              <label for="cardNumber"> Número de la tarjeta </label>
               <input id="cardNumber" type="text" required>
             </div>
             <div class="card-group">
-              <label for="cardName"> NOMBRE Y APELLIDO </label>
+              <label for="cardName"> Nombre del titular </label>
               <input id="cardName" type="text" required>
             </div>
-            <div class="expirationDate-container">
-              <input id="expireInput" type="text" placeholder="00 / 00" required> <input id="cvvInput" type="text" placeholder="CVV" required>
+            <div class="expirationDate-container card-group">
+              <label for="expireInput"> Fecha de expiración </label>
+              <input id="expireInput" type="text" placeholder="00 / 00" required> 
+            </div>
+            <div class="card-group">
+              <label for="cvvInput">Número de seguridad </label>
+              <input id="cvvInput" type="text" placeholder="CVV" required>
             </div>
             <div class="payment-submit-container">
-              <button type="submit" id="paymentSubmitBtn" class="paymentSubmitBtn buy-btn"> PROCESAR PAGO </button>
+              <button type="submit" id="paymentSubmitBtn" class="paymentSubmitBtn buy-btn"> PROCESAR PAGO <i class="fa-regular fa-credit-card"></i></button>
             </div>
           </form>
         </section>
