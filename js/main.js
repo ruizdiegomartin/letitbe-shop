@@ -335,30 +335,4 @@ function createSearchIDGoBackBtn () {
 }
 
 
-// let paymentSelect = parseInt(prompt("Seleccione como desea abonar su compra, colocando el número correspondiente:\n1.Débito en un pago.\n2.Crédito en un pago.\n3.Tarjeta de crédito en cuotas."));
-// while (paymentSelect  !== 1 && paymentSelect  !== 2 && paymentSelect  !== 3) {
-//   paymentSelect = prompt("Ingrese una forma de pago válida:\n1) Débito en un pago.\n2) Crédito en un pago.\n3) Tarjeta de crédito en cuotas");
-// }
-
-// switch (paymentSelect ) {
-//   case 1:
-//   alert("¡Gracias por elegirnos!\nSe debitará de su tarjeta de débito el siguiente monto: $"+total+".");  
-//   break;  
-//   case 2:
-//   alert("¡Gracias por elegirnos!\nSe acreditará un pago de $"+total+" en su tarjeta de crédito");
-//   break;
-//   case 3:
-//   cuotas = parseInt(prompt("Ingrese cantidad de cuotas: \n3\n6\n12"));
-//   while (cuotasAprobado) {
-//   if (cuotas === 3 || cuotas === 6 || cuotas === 12 ) {
-//     alert("¡Gracias por elegirnos!\nSu pago será acreditado en "+cuotas+" cuotas de $"+financing(cuotas)+"." );
-//     cuotasAprobado= false;
-//   }
-//   else {
-//     cuotas = parseInt(prompt("Ingrese un número de cuotas válido: 3, 6 o 12 cuotas."));
-//   }
-// }
-//   break;
-// }
-
 
