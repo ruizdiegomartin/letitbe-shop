@@ -56,19 +56,19 @@
           <form action="">
             <div class="card-group">
               <label for="cardNumber"> Número de la tarjeta </label>
-              <input id="cardNumber" type="text" required>
+              <input id="cardNumber" type="text" maxlength="12" placeholder="XXXX-XXXX-XXXX-XXXX" required>
             </div>
             <div class="card-group">
               <label for="cardName"> Nombre del titular </label>
-              <input id="cardName" type="text" required>
+              <input id="cardName" type="text" maxlength="35" required>
             </div>
             <div class="expirationDate-container card-group">
               <label for="expireInput"> Fecha de expiración </label>
-              <input id="expireInput" type="text" placeholder="00 / 00" required> 
+              <input id="expireInput" type="text" maxlength="4" placeholder="mm/yy" required> 
             </div>
             <div class="card-group">
               <label for="cvvInput">Número de seguridad </label>
-              <input id="cvvInput" type="text" placeholder="CVV" required>
+              <input id="cvvInput" type="text" maxlength="3"  placeholder="CVV" required>
             </div>
             <div class="payment-submit-container">
               <button type="submit" id="paymentSubmitBtn" class="paymentSubmitBtn buy-btn"> PROCESAR PAGO <i class="fa-regular fa-credit-card"></i></button>

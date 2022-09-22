@@ -162,3 +162,53 @@
         }
     }
 }
+
+// FINANCING DIV
+
+.financing-div{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    & button{
+        border: none;
+        border-radius: 1rem;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        margin: .5rem 2rem;
+        padding: 1rem;
+        & p{
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            & span{
+                font-size: .8rem;
+            }
+        }
+        &:hover{
+            background-color: #d85681;
+            color: #f0eaea;
+            scale: 1.02;
+        }
+        &:active{
+            scale: 0.9;
+        }
+    }
+}
+
+.financing-amount{
+    font-weight: 700;
+    margin-right: .3rem;
+}
+
+.pay-amount-total {
+    margin-left: auto;
+    & span{
+        font-size: .8rem;
+    }
+}
+
+.decimals{
+    color: #646262;
+    font-size: .8rem;
+    margin-top: 5px;
+}

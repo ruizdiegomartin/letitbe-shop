@@ -967,6 +967,54 @@ main {
   color: #d85681;
 }
 
+.financing-div {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.financing-div button {
+  border: none;
+  border-radius: 1rem;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 2rem;
+  padding: 1rem;
+}
+.financing-div button p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+.financing-div button p span {
+  font-size: 0.8rem;
+}
+.financing-div button:hover {
+  background-color: #d85681;
+  color: #f0eaea;
+  scale: 1.02;
+}
+.financing-div button:active {
+  scale: 0.9;
+}
+
+.financing-amount {
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+
+.pay-amount-total {
+  margin-left: auto;
+}
+.pay-amount-total span {
+  font-size: 0.8rem;
+}
+
+.decimals {
+  color: #646262;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
 /* Index - CTA Button*/
 .cta-btn {
   display: inline-block;
