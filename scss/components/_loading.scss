@@ -1,0 +1,17 @@
+.loading-circle{
+    border: solid 10px white;
+    border-top: solid 10px palevioletred;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

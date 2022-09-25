@@ -81,14 +81,14 @@
     background: $color-main;
 }
 
-// .loggin-button{
-//     background: none;
-//     border: none;
-//     margin: 2px .5rem;
-//     & i{
-//         font-size: 1.5rem;
-//         &:hover{
-//             color: rgb(87, 85, 85);
-//         }
-//     }
-// }
+.navAccountButton{
+    background: none;
+    border: none;
+    margin: 2px .5rem;
+    & i{
+        font-size: 1.5rem;
+        &:hover{
+            color: rgb(87, 85, 85);
+        }
+    }
+}

@@ -1,151 +1,106 @@
-// CARRITO REFRESH RENDER
+// VARIABLES
 
+let total = 0;
+let subTotal = 0;
+let readyToPay = false;
+// let cantidad;
+// let productAdded = false;
+
+// CARRITO RENDER
 const cart = JSON.parse(localStorage.getItem("carrito")) || [];
 cart.forEach(product => {
+      const {id, img, name, price, stock} = product
       const newProductRow = document.createElement("tr");
-      newProductRow.classList.add("newRow-product");
+      newProductRow.classList.add("new-row-product");
       newProductRow.innerHTML = `
-      <td class="tbody"> ${product.name} </td>
-      <td class="tbody"> $${product.price} </td>
-      <td class="tbody"> <input id="numberAmount${product.id}" class="number-amount" type="number" min="0" max="${product.stock}"> </td>
-      <td class="tbody"> $${parseInt(product.price)} </td>
+      <td class="tbody"> <div class="cart-product-item"><img src="../img/${img}"> <p>${name}</p> </div></td>
+      <td class="tbody"> <p class="unit-price">$${price}</p></td>
+      <td class="tbody"> <input id="numberAmount${id}" class="number-amount" type="number" min="1" max="${stock}"> </td>
+      <td class="tbody" id="subtotalPrice${id}"> </td>
       `
       const deleteButton = createDeleteButton(product);
       newProductRow.append(deleteButton);
-      document.querySelector("#cart-body").append(newProductRow);
-           
+      document.querySelector("#cart-body").append(newProductRow);          
 });
 
-// RENDER PRODUCTS AMOUNTS STORAGED
-
+// PRODUCTS AMOUNTS RENDER 
 cart.forEach(product => {
   document.querySelector(`#numberAmount${product.id}`).value = product.amount;
-})
+  document.querySelector(`#subtotalPrice${product.id}`).innerText = `$${parseInt(product.amount*product.price)}`;
+});
 
-// function saveChangesInAmounts() {
-
-// cart.forEach(product => {
-//   document.querySelector(`#numberAmount${product.id}`).addEventListener("change", ()=>{
-//     let amountChange = document.querySelector(`#numberAmount${product.id}`).value; 
-//     // localStorage.setItem("carrito", JSON.stringify(product.amount = amountChange));   VER COMO SOLUCIONAR ESTO
-//   })
-// });
-// }
-// saveChangesInAmounts();
-
-function createDeleteButton (product) {
-    const eraseBtn = document.createElement("button");
-    eraseBtn.classList.add("delete-btn")
-    eraseBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`
-    eraseBtn.addEventListener("click", () => {
-      deleteCartProduct(product);
-    })
-    return eraseBtn;
-  }
-  
-  function deleteCartProduct (product) {
-    const findIndexOfObject = cart.indexOf(product);
-    cart.splice(findIndexOfObject, 1);
-    const rows = document.querySelectorAll(".newRow-product");
-    const cartBody = document.querySelector("#cart-body");
-    cartBody.removeChild(rows[findIndexOfObject]);
-    product.stock = (product.stock)+1;
-    modifylocalStorage();
-    cartCounter();
-    refreshCartCounter();
-  }
-
-let finalTotal = 0;
-let descuento = 0;
-let cantidad = 0;
-let productAdded = false;
-let shopping = true;
-let total = 0;
-let readyToPay = false;
-
-function showTotalInTable() {
-  let totalForProduct = 0;
-  total = 0;
-  cart.forEach(product => {   
-  totalForProduct = product.amount * product.price;
-  total = total + totalForProduct;
+// EVENT PRODUCT AMOUNT INPUT
+cart.forEach(product => {
+  document.querySelector(`#numberAmount${product.id}`).addEventListener("change", ()=>{
+    product.amount = parseInt(document.querySelector(`#numberAmount${product.id}`).value);
+    document.querySelector(`#subtotalPrice${product.id}`).innerText = `$${parseInt(product.amount*product.price)}`;
+    updateLocalStorage();
   });
-  // PROMO DESCUENTO
-  let promCode = document.querySelector("#promotionCode").value
-  if (promCode === "LET10"){
-    descuento = total * 0.2;
-    finalTotal = total - descuento;
-    document.querySelector("#discount").classList.replace("display-hide","display-show")
-    document.querySelector("#discount").innerHTML = `<p class="discount-number"> Descuento: -$${descuento}</p>`
-  }
-  else {
-    finalTotal = total;
-  }
-  let totalPrice = document.querySelector("#total-price");
-  totalPrice.innerText = ` $${total}`
-  document.querySelector("#summarySubtotal").innerText = ` $${finalTotal}`
-}
+});
 
 // CALCULATE PRICE BUTTON EVENT
-
 document.querySelector("#finish-btn").addEventListener("click", ()=> {
-    console.log("Valor total de la compra: "+total);
-    cart.forEach(product => {
-      amountCounter (product);
-    });
-    showTotalInTable();
-    document.querySelector("#cart-greeting").innerText = "¡Gracias por tu compra! Esperamos que vuelvas pronto...";
-    console.log(cart);
-    localStorage.setItem("precioCompra", finalTotal)
-    shopping = false;
-    readyToPay = true; 
-  }) 
+  calculateTotalsInResume();
+  console.log(cart);
+  localStorage.setItem("precioCompra", total);
+  readyToPay = true; 
+}); 
 
 // CONTINUE TO PAY BUTTON EVENT
-
 document.querySelector("#continueToPayBtn").addEventListener("click", (e)=>{
   e.preventDefault();
-  if (readyToPay === true && finalTotal > 0){
+  if (readyToPay === true && total > 0){
     window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment-select.html"
+  }
+  else{
+    adviseAlert (".cart-main", "Carrito vacío o compra sin calcular.");
   }
 });
 
-// COUNT THE AMOUNT OF PRODUCT IN EACH ROW
+// CALCULATE TOTAL AND SUBTOTAL IN RESUME
+function calculateTotalsInResume() {
+  let totalForEachProduct = 0;
+  subTotal = 0;
+  cart.forEach(product => {   
+  totalForEachProduct = product.amount * product.price;
+  subTotal = subTotal + totalForEachProduct;
+  });
+  // PROMO DESCUENT
+  applyDiscount(20, "LET10");
+  // RENDER TOTAL AND SUBTOTAL PRICES
+  document.querySelector("#total-price").innerText = ` $${subTotal}`;
+  document.querySelector("#summarySubtotal").innerText = ` $${total}`
+}
 
-function amountCounter (product) {
-  const amountModifier = parseInt(document.querySelector(`#numberAmount${product.id}`).value);
-  const productFoundToModify = cart.find(el => el.id === product.id);
-  if (amountModifier <= product.stock) {
-    productFoundToModify.amount = amountModifier;
-    productFoundToModify.stock = productFoundToModify.stock - amountModifier;
+// ADD DISCOUNT CODE
+function applyDiscount (discount, code) {
+  total = subTotal;
+  let promCode = document.querySelector("#promotionCode").value
+  if (promCode === code){
+    let discountApplied = total * (discount/100);
+    total = subTotal - discountApplied;
+    document.querySelector("#discount").classList.replace("display-hide","display-show");
+    document.querySelector("#discount").innerHTML = `<p class="discount-number"> Descuento: -$${discountApplied}</p>`
   }
   else {
-    productFoundToModify.amount = product.stock;
-    document.querySelector(`#numberAmount${product.id}`).value = product.stock;
-  }
-  modifylocalStorage();
-}
-  
-// SET ITEMS OF CARRITO IN LOCALSTORE
+  document.querySelector("#discount").classList.replace("display-show","display-hide"); 
+  total = subTotal;
+  };
+}; 
 
-function modifylocalStorage () {
+// REFRESH CARRITO IN LOCALSTORE
+function updateLocalStorage () {
   localStorage.setItem("carrito", JSON.stringify(cart));
-}
+};
 
-let cartProductsNumber;
-  
-//CART COUNTER ICON
-
-function cartCounter() {
-  
+//CART PRODUCTS COUNTER
+function cartProductsCount() {
 const carritoAMOUNT = JSON.parse(localStorage.getItem("carrito"));   
 let counter = carritoAMOUNT.length;
-
 localStorage.setItem("carrito-counter", counter);
-}
+};
 
-// REFRESH CART ICON COUNTER
-
+// REFRESH CART COUNTER ICON 
 function refreshCartCounter () {
   // Actualiza el contador de productos en el carrito, del icono del NAV.
   let counter = localStorage.getItem("carrito-counter");
@@ -159,8 +114,46 @@ function refreshCartCounter () {
       cartCounterNumber.innerText = "0";
       cartCounterNumber.classList.add("d-none")
   }
-}
-refreshCartCounter();
+}; refreshCartCounter();
+
+// DELETE PRODUCT BUTTON AND FUNCTION
+function createDeleteButton (product) {
+  //Crea el boton para borrar un producto de la fila del carrito.
+    const eraseBtn = document.createElement("button");
+    eraseBtn.classList.add("delete-btn")
+    eraseBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`
+    eraseBtn.addEventListener("click", () => {
+      deleteCartProduct(product);
+    })
+    return eraseBtn;
+}; 
+function deleteCartProduct (product) {
+  //Función que borra el producto del carrito, y de la fila de la tabla.
+  const productIndex = cart.indexOf(product);
+  cart.splice(productIndex, 1);
+  const rows = document.querySelectorAll(".new-row-product");
+  const cartBody = document.querySelector("#cart-body");
+  cartBody.removeChild(rows[productIndex]);
+  updateLocalStorage();
+  cartProductsCount();
+  refreshCartCounter();
+};
+
+// SCREEN ALERT
+function adviseAlert (contenedorPadre, msj) {
+  // Crea un mensaje de alerta en pantalla que dura dos segundos.
+  const userLoginRequired = document.createElement("div");
+    userLoginRequired.classList.add("alert-div");
+    userLoginRequired.innerHTML = ` <div class="user-login-required"><p class="login-advise-required">${msj}</p></div>`
+    document.querySelector(contenedorPadre).append(userLoginRequired)
+    setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000 )
+};
+
+
+
+
+
+
 
 
 

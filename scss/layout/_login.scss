@@ -9,12 +9,46 @@
     color: rgba(59, 58, 80, 0.911);
 }
 
+.form-container{
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    background: #000000c0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.close-button{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    &:hover{
+        scale: 1.1;
+    }
+    &:active{
+        scale: 0.9;
+    }
+    & i{
+        color: palevioletred;
+        font-size: 2rem;
+        &:hover{
+            color: #cf265e;
+        }
+    }
+}
+
 .form {
+    position: relative;
+    height: fit-content;
     background-color: white;
     width: 24rem;
     padding: 2rem;
     border-radius: .8rem;
-    position: relative;
 }
 
 .form__title{
@@ -65,7 +99,7 @@
 
 .form__button{
     display: block;
-    margin-top: 75px;
+    margin-top: 30px;
     margin-left: auto;
     padding: .7rem 2rem;
     background-color: $color-black;
@@ -117,7 +151,22 @@
 //     que quieras y añadilos al carrito. Te regalamos un código de descuento para tu 
 //     primer compra de -20%: "ABC12" </p> <button id="logoutButton"> Cerrar sesión </button>`
 
+.logout-container{
+    z-index: 10000;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: #000000c0;
+    height: 100vh;
+    width: 100vw;
+}
+
 .logout-div {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,5 +183,22 @@
         line-height: 2rem;
         padding: .5rem;
         color: #5c5a5a;
+    }
+    & button{
+        position: absolute;
+    }
+}
+
+.remember-me-group{
+    @include checkbox-style;
+    & input{
+        scale: 0.5;
+        &:hover{
+            scale: 0.51
+        }
+    }
+    & label {
+        font-size: .9rem;
+        margin: 0;
     }
 }

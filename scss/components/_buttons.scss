@@ -67,3 +67,18 @@
     }
 }
 
+.pink-btn{
+    border: solid 3px #cf265e;;
+    background-color: palevioletred;;
+    color: white;
+    font-weight: 700;
+    border-radius: 1.5rem;
+        padding: .5rem 2rem;
+        &:hover{
+        background-color: #cf265e;;
+    }
+    &:active{
+        scale: 0.9;
+    }
+}
+

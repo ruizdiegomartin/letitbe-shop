@@ -42,7 +42,7 @@
               <a class="nav-link cart-nav-link active" href="./cart.html" aria-current="page"><i class="fa-solid fa-cart-shopping"></i> <span class="cart-counter d-none" id="cartCounter"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./login.html"><i class="fa-solid fa-circle-user"></i></a>
+              <button class="navAccountButton"><i class="fa-solid fa-circle-user"></i></button>
             </li>
           </ul>
         </div>
@@ -53,22 +53,26 @@
   <main class="payment-main">
     <article class="payment-container-div">
         <section class="payment-card-data-section">
-          <form action="">
+          <form action=""  class="card-form" id="cardForm">
             <div class="card-group">
               <label for="cardNumber"> Número de la tarjeta </label>
-              <input id="cardNumber" type="text" maxlength="12" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+              <input id="cardNumber" type="text" name="number" required>
             </div>
-            <div class="card-group">
+            <div class="card-group name-input">
               <label for="cardName"> Nombre del titular </label>
-              <input id="cardName" type="text" maxlength="35" required>
+              <input id="cardName" type="text" maxlength="35" name="cardholder" required>
+              <i class="d-none fa-solid fa-circle-check"></i>
             </div>
             <div class="expirationDate-container card-group">
               <label for="expireInput"> Fecha de expiración </label>
-              <input id="expireInput" type="text" maxlength="4" placeholder="mm/yy" required> 
+              <div class="expiration-date-container">
+                <input id="expireMonth" type="text" maxlength="2" name="expirationMonth" placeholder="mm" required> 
+                <input id="expireYear" type="text" maxlength="2" name="expirationYear" placeholder="yy" required> 
+              </div>
             </div>
             <div class="card-group">
               <label for="cvvInput">Número de seguridad </label>
-              <input id="cvvInput" type="text" maxlength="3"  placeholder="CVV" required>
+              <input id="cvvInput" type="text" maxlength="3"  placeholder="CVV" name="cvv" required>
             </div>
             <div class="payment-submit-container">
               <button type="submit" id="paymentSubmitBtn" class="paymentSubmitBtn buy-btn"> PROCESAR PAGO <i class="fa-regular fa-credit-card"></i></button>
@@ -83,7 +87,10 @@
             <p class="card-number-example example-credit-card__number" id="cardNumberExample">0000 - 0000 - 0000 - 0000</p>
             <div class="valid-thru-date example-credit-card__valid-container">
                 <h4 class="example-credit-card__valid-thru"> VALID THRU: </h4>
-                <p class="example-credit-card__expire-date" id="expireExample"> 00/00 </p>
+                <div class="expire-data">
+                  <p class="example-credit-card__expire-date" id="expireMonthExample">00</p>
+                  <p class="example-credit-card__expire-date" id="expireYearExample">00</p>
+                </div> 
             </div>
             <p id="cardholderExample" class="example-credit-card__cardholder"> CARDHOLDER </p>
           </div>
@@ -108,6 +115,8 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous">
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
   <script src="../js/payment/payment.js"></script>
+  <script src="../js/login/login.js"></script>
 </body>
 </html>

@@ -8,20 +8,25 @@
 
 .payments-wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
     width: 80%;
     margin: 0 auto;
-    gap: 5rem;
 }
 
 .payment-container {
     display: flex;
     flex-direction: column;
     background-color: white;
-    gap: 1rem;
+    gap: 2rem;
     background-color: $color-main;
     width: 60%;
+    & h1{
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
 }
 
 .payments-groups {
@@ -30,7 +35,6 @@
     height: 100px;
     align-items: center;
     justify-content: start;
-    width: 100%;
     padding: 1rem;
     background-color: white;
     border-radius: .2rem;
@@ -39,12 +43,15 @@
         margin-left: 1rem;
     }
     & input{
+        scale: 0.9;
         margin-left: 2rem;
+        background-color: #f0e8e8;
     }
     & i {
+        background-color: #ffffff;
         margin: 0 2.5rem 0 auto;
         font-size: 2rem;
-        color: #646262;
+        color: #302e2e;
     }
     &:hover{
         box-shadow: 2px 2px 25px #838181d3;
@@ -54,12 +61,12 @@
 // RESUME
 
 .payment-resume {
-    width: 40%;
+    width: 30%;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
     border-radius: .3rem;
     & h2 {
         font-size: 1.5rem;
@@ -72,6 +79,7 @@
 }
 
 .price-resume {
+    margin-bottom: 0;
     font-size: 2rem;
     font-weight: 700;
     & span{

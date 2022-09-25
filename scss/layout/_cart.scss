@@ -1,16 +1,21 @@
 
-.cart-container{
-    width: 80%;
-    margin: 0 auto;
-    padding-bottom: 100px;
-}
-
 .cart-main {
     min-height: calc((100vh - 77px) - 95px);
     background-color: $color-main;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.cart-container {
+    margin: 0 auto;
+    padding-bottom: 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    & h3{
+        margin: 2rem 0;
+    }
 }
 
 .wrapper {
@@ -20,17 +25,70 @@
 .cart-sections{
     display: flex;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 3rem;
 }
 
-.carrito-tabla {
-    height: fit-content;
+.cart-table {
+    border: none;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px; 
 }
 
-.newRow-product{
-    
-    border: solid 3px $color-black;
+.theader {
+    text-align: center;
+    background-color: $color-black;
+    color: $color-white;
+    padding: 5px;
+}
+
+.tbody {
+    text-align: center;
+    color: $color-white;
+    padding: 5px;
+}
+
+.new-row-product{
+    border: none;
+    // background-color: #14141418;
+    background-color: #e0957f;
+    border-top: solid 10px $color-main;
+    border-bottom: solid 10px $color-main;
     margin-bottom: 1rem;
+}
+
+.cart-product-item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    & img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        padding: 1rem;
+    }
+    & p {
+        margin-bottom: 0;
+    }
+}
+
+.unit-price{
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.buy-number {
+    display: inline-block;
+    width: 20%;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.finish-btn {
+    margin-top: 1rem;
+    margin-left: auto;
+    width: 20%;
 }
 
 .summary-card {
@@ -50,6 +108,7 @@
     & h4 {
         font-size: 1rem;
         color: gray;
+        margin-right: 1rem;
     }
     & p {
         margin-left: 1rem;
@@ -87,10 +146,14 @@
 .delete-btn {
     background: none;
     border: none;
-    color: $color-main;
-    margin: 7px 5px 0 0;
+    color: #e44a61;
+    margin: 40px 10px 10px 10px;
+    & i{
+        font-size: 1.5rem;
+    }
     &:hover {
-        color: #e44a61;
+        scale: 1.05;
+        color: #e43650;
     }
     &:active {
         scale: 0.9;
@@ -101,9 +164,6 @@
     color: #e44a61;
     font-size: .8rem;
 }
-
-// <div class="">
-// <button class="" id="continueToPayBtn"> Continuar compra </button>
 
 .continueToPayBtn-div {
     width: 100%;
@@ -155,5 +215,5 @@
     }
 }
 
-// PAYMENT
+
 

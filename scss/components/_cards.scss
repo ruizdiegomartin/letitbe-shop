@@ -67,7 +67,7 @@
 
 .product-card{
     background-color: #ffffffc7;
-    padding: 1rem;
+    padding: 1.2rem;
     max-width: 350px;
     max-height: 550px;
     border-radius: 5px;
@@ -88,7 +88,8 @@
         font-size: 1.5rem;
         font-weight: 700;
         text-align: center;
-        padding: 10px;
+        padding: 10px 10px 5px 10px;
+        margin-bottom: 0;
     }
     &__img{
         height: 300px;

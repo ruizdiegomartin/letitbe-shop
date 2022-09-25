@@ -53,9 +53,8 @@ function selectOneCheck(input){
 const confirmButton = document.querySelector("#confirmBuyButton");
 confirmButton.addEventListener("click", ()=>{
     if (cash.checked) {
-        createBancaryPayDiv(); 
-        clearStorage();
-    }
+            createBancaryPayDiv(); 
+        } 
     else if (card.checked) {
         window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment.html"
     }
@@ -81,11 +80,12 @@ confirmButton.addEventListener("click", ()=>{
 });
 
 function adviseAlert (contenedorPadre, msj) {
+    // Crea un mensaje de alerta en pantalla que dura dos segundos.
     const userLoginRequired = document.createElement("div");
-      userLoginRequired.classList.add("user-login-required");
-      userLoginRequired.innerHTML = ` <p class="login-advise-required">${msj}</p>`
+      userLoginRequired.classList.add("alert-div");
+      userLoginRequired.innerHTML = ` <div class="user-login-required"><p class="login-advise-required">${msj}</p></div>`
       document.querySelector(contenedorPadre).append(userLoginRequired)
-      setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000);
+      setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000 )
 }
 
 function createBancaryPayDiv (){
@@ -94,6 +94,7 @@ function createBancaryPayDiv (){
     bancaryPay.classList.add("bancary-pay-div");
     bancaryPay.innerHTML = `<h3> Pedido procesado <i class="fa-solid fa-circle-check"></i></h3> <p> <span>¡Gracias por elegirnos!</span><br> Tu pedido fue procesado correctamente y será preparado una vez que se efectivice la transferencia bancaria. Luego, recibirás un correo electrónico explicando los pasos a seguir.</p>`;
     document.querySelector("main").append(bancaryPay);
+    setTimeout( function() { clearStorage(); window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/index.html";}, 5000 );
 }
 
 function clearStorage (){
@@ -131,9 +132,9 @@ function calculateCuotas(){
     totalFor4 = totalPriceFromStorage*1.60;
     //CALCULATE CUOTAS CON INTERÉS
     cuotas1 = totalFor1;
-    cuotas2 = totalFor2 / 3;
-    cuotas3 = totalFor3 / 6;
-    cuotas4 = totalFor4 / 12;
+    cuotas2 = Math.round((totalFor2 / 3));
+    cuotas3 = Math.round((totalFor3 / 6));
+    cuotas4 = Math.round((totalFor4 / 12));
     //SHOW PRECIO CUOTAS
     document.querySelector("#monthlyPay1").innerText =`$${cuotas1}`
     document.querySelector("#monthlyPay2").innerText =`$${cuotas2}`
