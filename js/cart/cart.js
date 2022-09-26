@@ -65,6 +65,7 @@ function calculateTotalsInResume() {
   totalForEachProduct = product.amount * product.price;
   subTotal = subTotal + totalForEachProduct;
   });
+  console.log(...cart);
   // PROMO DESCUENT
   applyDiscount(20, "LET10");
   // RENDER TOTAL AND SUBTOTAL PRICES

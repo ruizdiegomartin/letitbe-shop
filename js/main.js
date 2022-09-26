@@ -24,14 +24,11 @@ const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700
 productsCatalogue = [];
 productsCatalogue.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
 
-
-
 // VARIABLES
 const cart = JSON.parse(localStorage.getItem("carrito")) || [];
 const categories = ["limpieza", "velas", "difusores", "otros"];
 const checkboxInputs = document.querySelectorAll(`input[type="checkbox"]`);
 let searchIdNotFound = false;
-
 
 // SHOW PRODUCTS
 
@@ -66,15 +63,12 @@ function createBuyButton (product) {
   return button;
 }
 
-// let localAutentication = localStorage.getItem("autentication") || false;
-// let sessionAutentication = sessionStorage.getItem("autentication") || false;
-// localAutentication == false && sessionAutentication == false
 
 // ADD TO CART 
 
 function addToCart (productToAdd) {
   // Añade un producto al array de carrito.
-  let localAutentication = localStorage.getItem("autentication") || false ;
+  let localAutentication = localStorage.getItem("autentication") || false;
   let sessionAutentication = sessionStorage.getItem("autentication") || false;
   if (localAutentication == "true" || sessionAutentication == "true") {
     if (productToAdd.stock === 0) {
@@ -99,49 +93,6 @@ function addToCart (productToAdd) {
     adviseAlert("#main-container","Ingrese a su cuenta para acceder al carrito de compras.")
   }  
 }
-
-// DELETE FROM CART
-
-// CREATE DELETE BUTTON AND FUNCTION IN CART ROW FOR EACH PRODUCT
-function createDeleteButton (product) {
-  // Crea el boton para borrar la fila del producto en el carrito html, y en el array del carrito.
-  const eraseBtn = document.createElement("button");
-  eraseBtn.classList.add("delete-btn")
-  eraseBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`
-  eraseBtn.addEventListener("click", () => {
-    deleteCartProduct(product);
-  })
-  return eraseBtn;
-}
-
-function deleteCartProduct (product) {
-  // Borra el producto del array del carrito, y despues borra la fila del producto en el html. Funciona buscando el índice del producto en el array que coincide con el que ingresa por parámetro, y luego lo corta del array.
-  const findIndexOfObject = cart.indexOf(product);
-  cart.splice(findIndexOfObject, 1);
-  const rows = document.querySelectorAll(".newRow-product");
-  console.log(cart);
-  const cartBody = document.querySelector("#cart-body");
-  cartBody.removeChild(rows[findIndexOfObject]);
-  product.stock = (product.stock)+1;
-  updateLocalStorage();
-  cartCounter ()
-}
-
-// // FUNCTIONS OF AMOUNT IMPUTS OF CART
-// function amountCounter (product) {
-//   // Actualiza el amount de productos de acuerdo a lo ingresado por el input number de la tabla, y luego lo actualiza en storage con la funcion updateLocalStorage.
-//   const amountModifier = parseInt(document.querySelector(`#numberAmount${product.id}`).value);
-//   const productFoundToModify = cart.find(el => el.id === product.id);
-//   if (amountModifier <= product.stock) {
-//     productFoundToModify.amount = amountModifier;
-//     productFoundToModify.stock = productFoundToModify.stock - amountModifier;
-//   }
-//   else {
-//     productFoundToModify.amount = product.stock;
-//     document.querySelector(`#numberAmount${product.id}`).value = product.stock;
-//   }
-//   updateLocalStorage();
-// }
 
 // UPDATE CART IN LOCAL STORAGE
 
@@ -187,51 +138,6 @@ function filterCategory(category) {
     } 
   });
 };
-
-// // CATEGORY LIMPIEZA
-// let limpieza = document.querySelector("#limpiezaCheck");
-// limpieza.addEventListener("change", ()=>{
-//   if (limpieza.checked) {
-//     const categoryFiltered = categoryFilter(productsCatalogue, "limpieza");
-//     showProducts(categoryFiltered);
-//   }
-//   else {
-//     showProducts(productsCatalogue);
-//   } 
-// });
-// // CATEGORY VELAS
-// let velas = document.querySelector("#velasCheck");
-// velas.addEventListener("change", ()=>{
-//   if (velas.checked) {
-//     const categoryFiltered = categoryFilter(productsCatalogue, "velas");
-//     showProducts(categoryFiltered);
-//   }
-//   else {
-//     showProducts(productsCatalogue);
-//   } 
-// });
-// // CATEGORY DIFUSORES
-// let difusores = document.querySelector("#difusoresCheck");
-// difusores.addEventListener("change", ()=>{
-//   if (difusores.checked) {
-//     const categoryFiltered = categoryFilter(productsCatalogue, "difusores");
-//     showProducts(categoryFiltered);
-//   }
-//   else {
-//     showProducts(productsCatalogue);
-//   } 
-// });
-// // CATEGORY OTROS
-// let otros = document.querySelector("#otrosCheck");
-// otros.addEventListener("change", ()=>{
-//   if (otros.checked) {
-//     const categoryFiltered = categoryFilter(productsCatalogue, "otros");
-//     showProducts(categoryFiltered);
-//   }
-//   else {
-//     showProducts(productsCatalogue);
-//   } 
-// });
 
 // CATEGORY FILTER CHECKBOXS EVENT
 
@@ -353,16 +259,6 @@ function cartCounter() {
   localStorage.setItem("carrito-counter", counter);
 }
 
-// function refreshCartCounter () {
-//   // Actualiza el contador de productos en el carrito, del icono del NAV.
-//   let counter = localStorage.getItem("carrito-counter");
-//   if (counter>0) {
-//     const cartCounterNumber = document.querySelector(".cart-counter");
-//     cartCounterNumber.innerText = counter;
-//     }
-//   }
-//   refreshCartCounter();
-
 function refreshCartCounter () {
   // Actualiza el contador de productos en el carrito, del icono del NAV.
   let counter = localStorage.getItem("carrito-counter");
@@ -433,5 +329,6 @@ function createOutOfStockBanner (productToAdd){
   }
   else{};
 }
+
 
 
