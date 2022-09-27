@@ -79,7 +79,12 @@ function addToCart (productToAdd) {
       const existInStorage = cart.includes(findProductInCartStoraged);
       if (existInStorage === false) {
       cart.push(productToAdd);
-      notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
+      Swal.fire(
+        'Producto añadido al carrito',
+        '<i style="font-size: 3rem" class="fa-solid fa-cart-plus">',
+        'success'
+      )
+      // notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
       }
       else {
         alertProductAlreadyInCart(productToAdd);
