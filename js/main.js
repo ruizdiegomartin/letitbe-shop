@@ -376,6 +376,4 @@ function createBanner (arr, productToAdd){
     setTimeout( function() { targetCard.removeChild(banner); showAdvise = true; bannerShow = true;}, 1000);
   }
   else{};
-}
-
-console.log(cart);
+};
