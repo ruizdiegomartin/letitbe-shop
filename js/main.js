@@ -36,7 +36,7 @@ async function getProductsFromJson () {
   } catch (error) {
     console.log(error);
   }  
-}
+};
 
 getProductsFromJson();
 console.log(productsCatalogue);
@@ -77,7 +77,7 @@ function createBuyButton (product) {
     addToCart(product);
   })
   return button;
-}
+};
 
 
 // ADD TO CART 
@@ -113,13 +113,13 @@ function addToCart (productToAdd) {
   else {
     adviseAlert("#main-container","Ingrese a su cuenta para acceder al carrito de compras.")
   }  
-}
+};
 
 // UPDATE CART IN LOCAL STORAGE
 
 function updateLocalStorage () {
   localStorage.setItem("carrito", JSON.stringify(cart));
-}
+};
 
 //SHOW/HIDE FILTERS
 
@@ -132,7 +132,7 @@ document.querySelector("#showFilters").addEventListener("click", ()=>{
   else {document.querySelector(".filters-container").classList.add("d-none");
   showFilters = false;}
   showProducts(productsCatalogue);
-})
+});
 
 // CATEGORIES FILTER
 
@@ -179,7 +179,7 @@ function selectOneCheck(input){
           }
       })
   }
-}
+};
    
 // PRICE FILTER
 
@@ -192,7 +192,7 @@ function priceFilter (arr, comparación, valor) {
       return el.price<valor;
     }
   })
-}
+};
 
 document.querySelector("#priceRangeBtn").addEventListener("click", ()=>{
   let lowRangeValue = parseFloat(document.querySelector("#lowerRange").value);
@@ -226,7 +226,7 @@ function createGoBackBtn () {
     document.querySelector(".filters-container__price-filter").removeChild(goBackButton);
     document.querySelector("#priceRangeBtn").classList.replace("d-none", "d-show");
   })
-}
+};
 
 // ID SEARCH
 
@@ -255,7 +255,7 @@ function searchId(id) {
     }
     else{};
   };
-}
+};
 
 function createSearchIDGoBackBtn () {
   const goBackButton = document.createElement("button");
@@ -278,7 +278,7 @@ function cartCounter() {
   let counter = carritoAMOUNT.length;
   
   localStorage.setItem("carrito-counter", counter);
-}
+};
 
 function refreshCartCounter () {
   // Actualiza el contador de productos en el carrito, del icono del NAV.
@@ -293,7 +293,7 @@ function refreshCartCounter () {
       cartCounterNumber.innerText = "0";
       cartCounterNumber.classList.add("d-none")
   }
-}
+};
 refreshCartCounter();
 
 //FUNCION ALERT
@@ -304,7 +304,7 @@ function adviseAlert (contenedorPadre, msj) {
   userLoginRequired.innerHTML = ` <div class="user-login-required"><p class="login-advise-required">${msj}</p></div>`
   document.querySelector(contenedorPadre).append(userLoginRequired)
   setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000 )
-}
+};
 
 // FUNCTION NOTIFICATION ALERT
 function notificationAlert (contenedorPadre, msj) {
@@ -314,13 +314,13 @@ function notificationAlert (contenedorPadre, msj) {
   notification.innerHTML = ` <div class="notification-msj"><p>${msj}</p></div>`
   document.querySelector(contenedorPadre).append(notification)
   setTimeout( function() { document.querySelector(contenedorPadre).removeChild(notification) }, 1000 )
-}
+};
 
 const ProductAlreadyInCart = async function recover (productToAdd) {
   const response = await fetch("./js/data/products.json")
   const data = await response.json();
   (showAdvise === true) && createAdviseAlreadyInCart(productToAdd);
-}
+};
 
 //FUNCTION SHOW MESSAGE WHEN PRODUCT IS ALREADY IN CART
 // let showAdvise = true;
@@ -349,8 +349,8 @@ function createAdviseAlreadyInCart (arr, productToAdd){
     targetCard.append(advise);
     showAdvise = false;
     setTimeout( function() { targetCard.removeChild(advise); showAdvise = true}, 1000 );
-  }
-}
+  };
+};
 
 // FUNCTION TO CREATE BANNER WHEN PRODUCT IS OUT OF STOCK
 
@@ -358,7 +358,7 @@ const createOutOfStockBanner = async function recover (productToAdd) {
   const response = await fetch("./js/data/products.json")
   const data = await response.json();
   createBanner(data, productToAdd)
-}
+};
 
 
 let bannerShow = true;
@@ -378,4 +378,4 @@ function createBanner (arr, productToAdd){
   else{};
 }
 
-
+console.log(cart);
