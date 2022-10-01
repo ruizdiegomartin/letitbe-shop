@@ -1,25 +1,3 @@
-// // FUNCION CONSTRUCTORA
-// function Product (id, img, product, price, category, stock, amount) {
-//   this.id = id;
-//   this.img = img;
-//   this.name = product;
-//   this.price = price;
-//   this.category = category;
-//   this.stock = stock;
-//   this.amount = amount;getDataFromJsongetDataFromJson
-// }
-
-// // PRODUCTS
-// const product1 = new Product (1,"product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
-// const product2 = new Product (2,"product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
-// const product3 = new Product (3,"product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
-// const product4 = new Product (4,"product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
-// const product5 = new Product (5,"product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
-// const product6 = new Product (6,"product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 0, 1);
-// const product7 = new Product (7,"product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
-// const product8 = new Product (8,"vela-silver.png", "Vela silver", 750, "velas", 20, 1);
-// const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
-
 // // PRODUCTS ARRAY
 const productsCatalogue = [];
 // productsCatalogue.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
@@ -335,7 +313,7 @@ const showAdviseAlreadyInCart = async function recover (productToAdd) {
   const response = await fetch("./js/data/products.json")
   const data = await response.json();
   createAdviseAlreadyInCart (data, productToAdd);
-}
+};
 
 function createAdviseAlreadyInCart (arr, productToAdd){
   let foundProduct = arr.find(el=> el.id === productToAdd.id);
@@ -377,3 +355,25 @@ function createBanner (arr, productToAdd){
   }
   else{};
 };
+
+// // FUNCION CONSTRUCTORA
+// function Product (id, img, product, price, category, stock, amount) {
+//   this.id = id;
+//   this.img = img;
+//   this.name = product;
+//   this.price = price;
+//   this.category = category;
+//   this.stock = stock;
+//   this.amount = amount;getDataFromJsongetDataFromJson
+// }
+
+// // PRODUCTS
+// const product1 = new Product (1,"product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
+// const product2 = new Product (2,"product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
+// const product3 = new Product (3,"product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
+// const product4 = new Product (4,"product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
+// const product5 = new Product (5,"product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
+// const product6 = new Product (6,"product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 0, 1);
+// const product7 = new Product (7,"product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
+// const product8 = new Product (8,"vela-silver.png", "Vela silver", 750, "velas", 20, 1);
+// const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
