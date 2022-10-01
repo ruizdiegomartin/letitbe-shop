@@ -19,7 +19,7 @@
     },
     {
        "id":3,
-       "img":"product-bolsa-aromatizadora.JPG",
+       "img":"product-bolsa-aromatizadora.jpg",
        "name":"Bolsa aromática",
        "price":300,
        "category":"difusores",
@@ -55,7 +55,7 @@
     },
     {
        "id":7,
-       "img":"product-aromatizador-auto.JPG",
+       "img":"product-aromatizador-auto.jpg",
        "name":"Difusor de auto",
        "price":450,
        "category":"difusores",
