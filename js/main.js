@@ -1,28 +1,45 @@
-// FUNCION CONSTRUCTORA
-function Product (id, img, product, price, category, stock, amount) {
-  this.id = id;
-  this.img = img;
-  this.name = product;
-  this.price = price;
-  this.category = category;
-  this.stock = stock;
-  this.amount = amount;
-}
+// // FUNCION CONSTRUCTORA
+// function Product (id, img, product, price, category, stock, amount) {
+//   this.id = id;
+//   this.img = img;
+//   this.name = product;
+//   this.price = price;
+//   this.category = category;
+//   this.stock = stock;
+//   this.amount = amount;getDataFromJsongetDataFromJson
+// }
 
-// PRODUCTS
-const product1 = new Product (1,"product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
-const product2 = new Product (2,"product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
-const product3 = new Product (3,"product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
-const product4 = new Product (4,"product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
-const product5 = new Product (5,"product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
-const product6 = new Product (6,"product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 0, 1);
-const product7 = new Product (7,"product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
-const product8 = new Product (8,"vela-silver.png", "Vela silver", 750, "velas", 20, 1);
-const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
+// // PRODUCTS
+// const product1 = new Product (1,"product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
+// const product2 = new Product (2,"product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
+// const product3 = new Product (3,"product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
+// const product4 = new Product (4,"product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
+// const product5 = new Product (5,"product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
+// const product6 = new Product (6,"product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 0, 1);
+// const product7 = new Product (7,"product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
+// const product8 = new Product (8,"vela-silver.png", "Vela silver", 750, "velas", 20, 1);
+// const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);
 
-// PRODUCTS ARRAY
-productsCatalogue = [];
-productsCatalogue.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
+// // PRODUCTS ARRAY
+const productsCatalogue = [];
+// productsCatalogue.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
+let showAdvise = true;
+
+async function getProductsFromJson () {
+  try {
+    const response = await fetch("./js/data/products.json")
+    const data = await response.json();
+    data.forEach(el => {
+      productsCatalogue.push(el)
+    })
+    showProducts(data);
+  } catch (error) {
+    console.log(error);
+  }  
+};
+
+getProductsFromJson();
+console.log(productsCatalogue);
 
 // VARIABLES
 const cart = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -38,19 +55,18 @@ function showProducts (array) {
   array.forEach(product => {
     const productCard = document.createElement("article");
     productCard.classList.add("product-card");
-    const {img, name, price} = product;
+    const {id, img, name, price, category, stock, amount} = product;
     productCard.innerHTML = 
-      ` <img class="product-card__img" src="./img/${img}" alt="${name}">
-        <h2 class="product-card__title">${name}</h2>
-        <p class="product-card__description">Vela hecha a base de soja, en cuenco de madera. Variedad de aromas.</p>
-        <p class="product-card__price"> $${price} </p>
-      `; 
+      `<img class="product-card__img" src="/img/${img}" alt="${name}">
+       <h2 class="product-card__title">${name}</h2>
+       <p class="product-card__description">Vela hecha a base de soja, en cuenco de madera. Variedad de aromas.</p>
+       <p class="product-card__price"> $${price} </p>`; 
     const buyButton = createBuyButton(product);
     productCard.append(buyButton);
     document.querySelector("#main-container").append(productCard); 
   });
 };
-showProducts(productsCatalogue);
+// showProducts(productsCatalogue);
 
 function createBuyButton (product) {
   // Crea el botón de añadir al carrito de las cards de los productos.
@@ -61,7 +77,7 @@ function createBuyButton (product) {
     addToCart(product);
   })
   return button;
-}
+};
 
 
 // ADD TO CART 
@@ -79,15 +95,15 @@ function addToCart (productToAdd) {
       const existInStorage = cart.includes(findProductInCartStoraged);
       if (existInStorage === false) {
       cart.push(productToAdd);
-      Swal.fire(
-        'Producto añadido al carrito',
-        '<i style="font-size: 3rem" class="fa-solid fa-cart-plus">',
-        'success'
-      )
-      // notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
+      // Swal.fire(
+      //   'Producto añadido al carrito',
+      //   '<i style="font-size: 3rem" class="fa-solid fa-cart-plus">',
+      //   'success'
+      // )
+      notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
       }
       else {
-        alertProductAlreadyInCart(productToAdd);
+        showAdviseAlreadyInCart(productToAdd);
       }
       updateLocalStorage();
       cartCounter();
@@ -97,13 +113,13 @@ function addToCart (productToAdd) {
   else {
     adviseAlert("#main-container","Ingrese a su cuenta para acceder al carrito de compras.")
   }  
-}
+};
 
 // UPDATE CART IN LOCAL STORAGE
 
 function updateLocalStorage () {
   localStorage.setItem("carrito", JSON.stringify(cart));
-}
+};
 
 //SHOW/HIDE FILTERS
 
@@ -116,7 +132,7 @@ document.querySelector("#showFilters").addEventListener("click", ()=>{
   else {document.querySelector(".filters-container").classList.add("d-none");
   showFilters = false;}
   showProducts(productsCatalogue);
-})
+});
 
 // CATEGORIES FILTER
 
@@ -163,7 +179,7 @@ function selectOneCheck(input){
           }
       })
   }
-}
+};
    
 // PRICE FILTER
 
@@ -176,7 +192,7 @@ function priceFilter (arr, comparación, valor) {
       return el.price<valor;
     }
   })
-}
+};
 
 document.querySelector("#priceRangeBtn").addEventListener("click", ()=>{
   let lowRangeValue = parseFloat(document.querySelector("#lowerRange").value);
@@ -210,7 +226,7 @@ function createGoBackBtn () {
     document.querySelector(".filters-container__price-filter").removeChild(goBackButton);
     document.querySelector("#priceRangeBtn").classList.replace("d-none", "d-show");
   })
-}
+};
 
 // ID SEARCH
 
@@ -239,7 +255,7 @@ function searchId(id) {
     }
     else{};
   };
-}
+};
 
 function createSearchIDGoBackBtn () {
   const goBackButton = document.createElement("button");
@@ -262,7 +278,7 @@ function cartCounter() {
   let counter = carritoAMOUNT.length;
   
   localStorage.setItem("carrito-counter", counter);
-}
+};
 
 function refreshCartCounter () {
   // Actualiza el contador de productos en el carrito, del icono del NAV.
@@ -277,7 +293,7 @@ function refreshCartCounter () {
       cartCounterNumber.innerText = "0";
       cartCounterNumber.classList.add("d-none")
   }
-}
+};
 refreshCartCounter();
 
 //FUNCION ALERT
@@ -288,7 +304,7 @@ function adviseAlert (contenedorPadre, msj) {
   userLoginRequired.innerHTML = ` <div class="user-login-required"><p class="login-advise-required">${msj}</p></div>`
   document.querySelector(contenedorPadre).append(userLoginRequired)
   setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000 )
-}
+};
 
 // FUNCTION NOTIFICATION ALERT
 function notificationAlert (contenedorPadre, msj) {
@@ -298,31 +314,58 @@ function notificationAlert (contenedorPadre, msj) {
   notification.innerHTML = ` <div class="notification-msj"><p>${msj}</p></div>`
   document.querySelector(contenedorPadre).append(notification)
   setTimeout( function() { document.querySelector(contenedorPadre).removeChild(notification) }, 1000 )
-}
+};
+
+const ProductAlreadyInCart = async function recover (productToAdd) {
+  const response = await fetch("./js/data/products.json")
+  const data = await response.json();
+  (showAdvise === true) && createAdviseAlreadyInCart(productToAdd);
+};
 
 //FUNCTION SHOW MESSAGE WHEN PRODUCT IS ALREADY IN CART
-let showAdvise = true;
-function alertProductAlreadyInCart(productToAdd) {
+// let showAdvise = true;
+// function alertProductAlreadyInCart(productToAdd) {
+//   if (showAdvise === true){
+//     createAdviseAlreadyInCart(productToAdd);
+//   }
+//   else{};
+// };
+
+const showAdviseAlreadyInCart = async function recover (productToAdd) {
+  const response = await fetch("./js/data/products.json")
+  const data = await response.json();
+  createAdviseAlreadyInCart (data, productToAdd);
+}
+
+function createAdviseAlreadyInCart (arr, productToAdd){
+  let foundProduct = arr.find(el=> el.id === productToAdd.id);
+  let indexFounded = arr.indexOf(foundProduct);
+  const cards = document.querySelectorAll(".product-card");
+  const targetCard = cards[indexFounded];
   if (showAdvise === true){
-    const indexCard = productsCatalogue.indexOf(productToAdd)
-    const cards = document.querySelectorAll(".product-card");
-    const targetCard = cards[indexCard];
     const advise = document.createElement("p");
     advise.classList.add("product-advise");
     advise.innerText = "Este producto ya se encuentra en el carrito."
     targetCard.append(advise);
     showAdvise = false;
     setTimeout( function() { targetCard.removeChild(advise); showAdvise = true}, 1000 );
-  }
-  else{};
+  };
 };
 
 // FUNCTION TO CREATE BANNER WHEN PRODUCT IS OUT OF STOCK
 
+const createOutOfStockBanner = async function recover (productToAdd) {
+  const response = await fetch("./js/data/products.json")
+  const data = await response.json();
+  createBanner(data, productToAdd)
+};
+
+
 let bannerShow = true;
-function createOutOfStockBanner (productToAdd){
+function createBanner (arr, productToAdd){
   if (bannerShow === true){
-    const indexCard = productsCatalogue.indexOf(productToAdd)
+    let founded = arr.find(el=> el.id === productToAdd.id);
+    const indexCard = arr.indexOf(founded)
     const cards = document.querySelectorAll(".product-card");
     const targetCard = cards[indexCard];
     const banner = document.createElement("div");
@@ -333,7 +376,4 @@ function createOutOfStockBanner (productToAdd){
     setTimeout( function() { targetCard.removeChild(banner); showAdvise = true; bannerShow = true;}, 1000);
   }
   else{};
-}
-
-
-
+};

@@ -17,7 +17,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <title> LET IT BE | Pay </title>
+    <title> LET IT BE | Checkout </title>
 </head>
 <body>
     <!-- HEADER -->
@@ -51,6 +51,13 @@
   </header>
   <!-- MAIN -->
   <main class="payment-main">
+    <div class="progress-bar">
+      <div class="no-selected-block-div"> CARRITO <i class="fa-solid fa-cart-shopping"></i></div>
+      <span class="div-arrow"></span>
+      <div class="no-selected-block-div"> FORMAS DE PAGO </div>
+      <span class="div-arrow"></span>
+      <div class="selected-block-div"> PAGAR <i class="fa-regular fa-credit-card"></i></div>
+    </div>
     <article class="payment-container-div">
         <section class="payment-card-data-section">
           <form action=""  class="card-form" id="cardForm">
@@ -81,7 +88,7 @@
         </section>
         <section class="payment-card-example-section">
           <div class="example-credit-card"> 
-            <p class="example-credit-card__bank"> BANK NAME </p>
+            <p class="example-credit-card__bank" id="bankName"> BANK NAME </p>
             <div class="example-credit-card__signature"><p id="cvvExample">CVV</p></div>
             <img class="card-chip-img" src="../img/card-chip.png" alt="card chip">
             <p class="card-number-example example-credit-card__number" id="cardNumberExample">0000 - 0000 - 0000 - 0000</p>
@@ -116,7 +123,7 @@
     crossorigin="anonymous">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
-  <script src="../js/payment/payment.js"></script>
+  <script src="../js/checkout/checkout.js"></script>
   <script src="../js/login/login.js"></script>
 </body>
 </html>

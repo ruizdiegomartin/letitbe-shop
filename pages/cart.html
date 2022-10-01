@@ -52,54 +52,64 @@
   <!-- MAIN -->
   <main class="cart-main">
     <article class="cart-container">
-    <h3 id="cart-greeting"> ¡Bienvenido/a! Agregá productos al carrito para continuar.</h3>
-    <div class="wrapper">
-      <h1> Carrito </h1>
-      <div class="cart-sections">
-          <table class="cart-table">
-              <thead class="carrito-tabla">
-                <tr>
-                  <th class="theader">PRODUCTO</th>
-                  <th class="theader">PRECIO UNITARIO</th>
-                  <th class="theader">CANTIDAD</th>
-                  <th class="theader">TOTAL</th>
-                  <th class="theader"></th>
-                </tr>
-              </thead>
-              <tbody id="cart-body">
-              </tbody >
-              <tfoot id="cart-foot">
-              </tfoot>
-            </table>
-          <div class="summary-card">
-              <h2> Resumen </h2>
-              <div class="summary-groups">
-                  <h4> Orden total: </h4>
-                  <p id="total-price"> $0 </p>
+      <div class="wrapper">
+        <h1> Carrito </h1>
+        <div class="progress-bar">
+          <div class="selected-block-div"> CARRITO <i class="fa-solid fa-cart-shopping"></i></div>
+          <span class="div-arrow"></span>
+          <div class="no-selected-block-div"> FORMAS DE PAGO </div>
+          <span class="div-arrow"></span>
+          <div class="no-selected-block-div"> PAGAR <i class="fa-regular fa-credit-card"></i></div>
+        </div>
+        <div class="cart-sections">
+            <section class="cart-section">
+              <table class="cart-table">
+                <thead class="carrito-tabla">
+                  <tr>
+                    <th class="theader">PRODUCTO</th>
+                    <th class="theader">PRECIO UNITARIO</th>
+                    <th class="theader">CANTIDAD</th>
+                    <th class="theader">TOTAL</th>
+                    <th class="theader"></th>
+                  </tr>
+                </thead>
+                <tbody id="cart-body">
+                </tbody >
+                <tfoot id="cart-foot">
+                </tfoot>
+              </table>
+            </section>
+            <section class="cart-summary">
+              <div class="summary-card">
+                <h2> Resumen </h2>
+                <div class="summary-groups">
+                    <h4> Subtototal: </h4>
+                    <p id="total-price"> $0 </p>
+                </div>
+                <div class="summary-groups">
+                    <h4> Código de descuento: </h4>
+                    <input id="promotionCode" type="text" maxlength="5">
+                </div>
+                <div id="discount" class="discount display-hide"> 
+                </div>
+                <div class="summary-groups">
+                    <h4> Costo de envío: </h4>
+                    <p></p>
+                </div>
+                <div class="summary-groups">
+                    <h4> Orden total: </h4>
+                    <p id="summarySubtotal"></p>
+                </div>
+                <button class="btn-buyNow" id="finish-btn"> Calcular compra </button>
               </div>
-              <div class="summary-groups">
-                  <h4> Código de descuento: </h4>
-                  <input id="promotionCode" type="text" maxlength="5">
-              </div>
-              <div id="discount" class="discount display-hide"> 
-              </div>
-              <div class="summary-groups">
-                  <h4> Costo de envío: </h4>
-                  <p></p>
-              </div>
-              <div class="summary-groups">
-                  <h4> Subtotal: </h4>
-                  <p id="summarySubtotal"></p>
-              </div>
-              <button class="btn-buyNow" id="finish-btn"> Calcular compra </button>
-          </div>
+            </section>
+        </div>
+        <div class="continueToPayBtn-div">
+          <button class="continue-shopping-btn continueToPayBtn" id="continueShoppingBtn">Continuar comprando</button>
+          <button class="continueToPayBtn" id="continueToPayBtn"> Proceder a pago </button>
+        </div>
       </div>
-      <div class="continueToPayBtn-div">
-        <button class="continueToPayBtn" id="continueToPayBtn"> Continuar con la compra </button>
-      </div>
-    </div>
-    </article>
-    
+    </article> 
   </main>
   <!-- FOOTER -->
   <footer>

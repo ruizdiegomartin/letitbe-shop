@@ -1,7 +1,11 @@
 // SHOW INPUTS VALUES IN CARD EXAMPLE
 
+let bankName = "BANK NAME";
+document.querySelector("#bankName").innerText = bankName;
+
 document.querySelector("#cardNumber").addEventListener("keyup", (event)=>{
     let content = event.target.value;
+    changeBankName();
     document.querySelector("#cardNumberExample").innerText = content;
 })
 
@@ -125,15 +129,21 @@ document.querySelector("#cvvInput").addEventListener("blur", ()=>{
 const cleave = new Cleave('#cardNumber', {
     creditCard: true,
     onCreditCardTypeChanged: function (type) {
-        
     }
 });
+
+
+function changeBankName() {
+    if (document.querySelector("#bankName").innerText != "" ){
+        bankName = (cleave.properties.creditCardType).toUpperCase();
+        document.querySelector("#bankName").innerText = bankName || "BANK NAME";
+    }
+}
 
 // VALIDATE EXPRESIONS
 
 const cardForm = document.querySelector("#cardForm");
 const cardInputs = document.querySelectorAll("#cardForm input");
-console.log(cardInputs);
 
 cardInputs.forEach( input => {
     input.addEventListener("keyup", (e)=>{

@@ -17,7 +17,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <title> LET IT BE | Login </title>
+    <title> LET IT BE | Payment Method </title>
 </head>
 <body>
     <!-- HEADER -->
@@ -39,10 +39,10 @@
               <a class="nav-link" href="../index.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link cart-nav-link" href="./cart.html"><i class="fa-solid fa-cart-shopping"></i> <span class="cart-counter d-none" id="cartCounter"></span></a>
+              <a class="nav-link cart-nav-link active" href="./cart.html" aria-current="page"><i class="fa-solid fa-cart-shopping"></i> <span class="cart-counter d-none" id="cartCounter"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./login.html"><i class="fa-solid fa-circle-user"></i></a>
+              <button class="navAccountButton"><i class="fa-solid fa-circle-user"></i></button>
             </li>
           </ul>
         </div>
@@ -50,10 +50,45 @@
     </nav>
   </header>
   <!-- MAIN -->
-  <main class="login-body main">
-    <div class="loading-circle"></div>
+  <main class="payment-select-main">
+    <div class="progress-bar">
+          <div class="no-selected-block-div"> CARRITO <i class="fa-solid fa-cart-shopping"></i></div>
+          <span class="div-arrow"></span>
+          <div class="selected-block-div"> FORMAS DE PAGO </div>
+          <span class="div-arrow"></span>
+          <div class="no-selected-block-div"> PAGAR <i class="fa-regular fa-credit-card"></i></div>
+    </div>
+    <div class="payments-wrapper">
+        <section class="payment-container">
+            <h1> SELECCIONA LA FORMA DE PAGO </h1>
+            <div class="payments-groups">
+                <input type="checkbox" id="cashPay">
+                <label for="cashPay">Pagar con transferencia bancaria.</label>    
+                <i class="fa-solid fa-money-bill-transfer"></i>
+            </div>  
+            <div class="payments-groups">
+                <input type="checkbox" id="cardPay">
+                <label for="cardPay">Pagar con tarjeta de débito o crédito en un pago.</label>
+                <i class="fa-regular fa-credit-card"></i>
+            </div> 
+            <div class="payments-groups">
+                <input type="checkbox" id="installmentsPay">
+                <label for="installmentsPay">Pagar con crédito en cuotas.</label>
+                <i class="fa-sharp fa-solid fa-building-columns"></i>
+            </div>     
+        </section>
+        <section class="payment-resume">
+            <h2> RESUMEN DE COMPRA </h2>
+            <ul class="resume-ul-list" id="buyListResume"></ul>
+            <h3> VALOR TOTAL </h3>
+            <p class="price-resume" id="priceResume"></p>
+        </section>
+    </div>
+    <div class="button-div">
+        <button id="confirmBuyButton"> Pagar ahora </button>
+    </div>
   </main>
-    <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <p class="footer-container__text">Síguenos en redes...</p>
@@ -71,10 +106,7 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous">
   </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <script src="../js/payment-method/payment-method.js"></script>
   <script src="../js/login/login.js"></script>
 </body>
 </html>
