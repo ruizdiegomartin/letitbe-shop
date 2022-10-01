@@ -46,6 +46,13 @@ document.querySelector("#finish-btn").addEventListener("click", ()=> {
   readyToPay = true; 
 }); 
 
+// CONTINUE SHOPPING BUTTON
+
+document.querySelector("#continueShoppingBtn").addEventListener("click", (e)=>{
+  e.preventDefault();
+  window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/index.html";
+});
+
 // CONTINUE TO PAY BUTTON EVENT
 document.querySelector("#continueToPayBtn").addEventListener("click", (e)=>{
   e.preventDefault();
