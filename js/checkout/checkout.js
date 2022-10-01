@@ -90,7 +90,7 @@ function createPaymentCheckedAdvise (){
     <p class="payment-done__info"> Estamos preparando tu pedido. Te enviamos un correo electrónico para que puedas seguirlo.</p>
     </div> `
     document.querySelector(".payment-main").append(paymentChecked);  
-    setTimeout(() => {clearStorage();refreshCartCounter(); window.location.href ="https://ruizdiegomartin.github.io/javascript-coder/index.html";}, 5000); 
+    setTimeout(() => {clearStorage();refreshCartCounter(); window.location.href ="https://ruizdiegomartin.github.io/LetItBe-JavaScript/index.html";}, 5000); 
 
 }
 
