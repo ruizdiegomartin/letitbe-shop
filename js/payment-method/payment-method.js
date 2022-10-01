@@ -56,7 +56,7 @@ confirmButton.addEventListener("click", ()=>{
             createBancaryPayDiv(); 
         } 
     else if (card.checked) {
-        window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment.html"
+        window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/checkout.html"
     }
     else if (cuotas.checked) {
         document.querySelector(".payment-container").classList.add("d-none");
@@ -70,7 +70,7 @@ confirmButton.addEventListener("click", ()=>{
                 // SAVE DATA IN LOCALSTORAGE
                 createPaymentObjectInStorage (button)
                 // REDIRECT TO CARD INFO
-                window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment.html";
+                window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/checkout.html";
             })
         });
     }

@@ -57,7 +57,7 @@ document.querySelector("#continueShoppingBtn").addEventListener("click", (e)=>{
 document.querySelector("#continueToPayBtn").addEventListener("click", (e)=>{
   e.preventDefault();
   if (readyToPay === true && total > 0){
-    window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment-select.html"
+    window.location.href = "https://ruizdiegomartin.github.io/javascript-coder/pages/payment-method.html"
   }
   else{
     adviseAlert (".cart-main", "Carrito vacío o compra sin calcular.");
