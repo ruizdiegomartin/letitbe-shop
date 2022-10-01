@@ -13,25 +13,84 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    & h3{
-        margin: 2rem 0;
+}
+
+.progress-bar{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 0 50px 0 ;
+    gap: 2rem;
+}
+
+.no-selected-block-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 170px;
+    height: 75px;
+    background-color: #272626;
+    color: #f8f2f2;
+    font-size: .8rem;
+    font-weight: 700;
+    padding: .5rem;
+    border-radius: .2rem;
+    & i{
+        margin-left: .3rem;
+        font-size: 1rem;
     }
 }
 
+.selected-block-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 170px;
+    height: 75px;
+    color: #f8f2f2;
+    font-size: .8rem;
+    font-weight: 700;
+    padding: .5rem;
+    border-radius: .2rem;
+    background-color: #e46d94;
+    border: solid 3px #d85681;
+    & i{
+        margin-left: .2rem;
+        font-size: 1rem;
+    }
+}
+
+.div-arrow{
+    width: 100px;
+    height: 10px;
+    background-color: #444242;
+}
+
 .wrapper {
-    width: 90%;
+    width: 100%;
+    & h1{
+        margin: 2rem 0 0 0;
+    }
 }
 
 .cart-sections{
     display: flex;
-    align-items: flex-start;
-    gap: 3rem;
+    max-height: 550px;
+    width: 100%;
+}
+.cart-section{
+    border-radius: 2rem;
+    background-color: #f8f2f2;
+    width:70%;
+    overflow-y: scroll;
 }
 
 .cart-table {
     border: none;
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
     padding: 10px; 
 }
 
@@ -44,16 +103,16 @@
 
 .tbody {
     text-align: center;
-    color: $color-white;
+    color: $color-black;
     padding: 5px;
 }
 
 .new-row-product{
     border: none;
     // background-color: #14141418;
-    background-color: #e0957f;
-    border-top: solid 10px $color-main;
-    border-bottom: solid 10px $color-main;
+    background-color: #f8f2f2;
+    border-top: solid 10px #f8f2f2;
+    border-bottom: solid 10px #f8f2f2;
     margin-bottom: 1rem;
 }
 
@@ -91,10 +150,19 @@
     width: 20%;
 }
 
+.cart-summary {
+    width: 30%;
+    display: flex;
+}
+
 .summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0 2rem 2rem 0;
     position: relative;
-    padding: 1rem;
-    width: 350px;
+    padding: 2rem;
+    width: 100%;
     min-height: 400px;
     background-color: #272626;
     & h2 {
@@ -124,6 +192,7 @@
 }
 
 .btn-buyNow {
+    border-radius: 0 0 2rem 0;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -167,10 +236,10 @@
 
 .continueToPayBtn-div {
     width: 100%;
-    margin-top: 25px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 .continueToPayBtn {

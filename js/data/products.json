@@ -1,0 +1,83 @@
+[
+    {
+       "id":1,
+       "img":"product_soy-candle.jpg",
+       "name":"Vela de soja",
+       "price":600,
+       "category":"velas",
+       "stock":20,
+       "amount":1
+    },
+    {
+       "id":2,
+       "img":"product_difusor.jpg",
+       "name":"Difusor aromático",
+       "price":500,
+       "category":"difusores",
+       "stock":35,
+       "amount":1
+    },
+    {
+       "id":3,
+       "img":"product-bolsa-aromatizadora.JPG",
+       "name":"Bolsa aromática",
+       "price":300,
+       "category":"difusores",
+       "stock":15,
+       "amount":1
+    },
+    {
+       "id":4,
+       "img":"product_splash.jpg",
+       "name":"Splash difusor",
+       "price":700,
+       "category":"difusores",
+       "stock":25,
+       "amount":1
+    },
+    {
+       "id":5,
+       "img":"product_liquid-soap.jpg",
+       "name":"Jabón líquido",
+       "price":650,
+       "category":"limpieza",
+       "stock":23,
+       "amount":1
+    },
+    {
+       "id":6,
+       "img":"product_nordic-blanket.jpg",
+       "name":"Manta nórdica",
+       "price":5000,
+       "category":"otros",
+       "stock":0,
+       "amount":1
+    },
+    {
+       "id":7,
+       "img":"product-aromatizador-auto.JPG",
+       "name":"Difusor de auto",
+       "price":450,
+       "category":"difusores",
+       "stock":15,
+       "amount":1
+    },
+    {
+       "id":8,
+       "img":"vela-silver.png",
+       "name":"Vela silver",
+       "price":750,
+       "category":"velas",
+       "stock":20,
+       "amount":1
+    },
+    {
+       "id":9,
+       "img":"product_bubble-candle.jpg",
+       "name":"Vela burbuja",
+       "price":700,
+       "category":"velas",
+       "stock":22,
+       "amount":1
+    }
+ ]
