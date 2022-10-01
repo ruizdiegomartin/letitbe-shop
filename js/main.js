@@ -57,7 +57,7 @@ function showProducts (array) {
     productCard.classList.add("product-card");
     const {id, img, name, price, category, stock, amount} = product;
     productCard.innerHTML = 
-      ` <img class="product-card__img" src="img/${img}" alt="${name}">
+      ` <img class="product-card__img" src="/img/${img}" alt="${name}">
         <h2 class="product-card__title">${name}</h2>
         <p class="product-card__description">Vela hecha a base de soja, en cuenco de madera. Variedad de aromas.</p>
         <p class="product-card__price"> $${price} </p>
