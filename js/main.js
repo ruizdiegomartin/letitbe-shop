@@ -27,7 +27,7 @@ let showAdvise = true;
 
 async function getProductsFromJson () {
   try {
-    const response = await fetch("./js/data/products.json")
+    const response = await fetch("/js/data/products.json")
     const data = await response.json();
     data.forEach(el => {
       productsCatalogue.push(el)
