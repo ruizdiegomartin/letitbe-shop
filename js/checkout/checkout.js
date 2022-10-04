@@ -132,7 +132,6 @@ const cleave = new Cleave('#cardNumber', {
     }
 });
 
-
 function changeBankName() {
     if (document.querySelector("#bankName").innerText != "" ){
         bankName = (cleave.properties.creditCardType).toUpperCase();

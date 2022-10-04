@@ -197,7 +197,7 @@ main {
   gap: 50px;
   width: 80%;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 100px 0 200px 0;
   justify-content: space-around;
 }
 
@@ -1137,6 +1137,7 @@ main {
 }
 
 .payment-select-main {
+  padding: 50px 0;
   min-height: calc(100vh - 172px);
   display: flex;
   flex-direction: column;

@@ -33,7 +33,7 @@ main {
     gap: 50px;
     width: 80%;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 100px 0 200px 0;
     justify-content: space-around;
 }  
 
@@ -41,22 +41,6 @@ main {
 .product-card {
     position: relative;
 }
-
-
-
-
-
-// .td-delete {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     align-items: center;
-//     text-align: center;
-//     background-color: $color-opacity;
-//     color: $color-white;
-//     padding: 5px;
-// }
-
 
 .number-amount {
     width: 50px;

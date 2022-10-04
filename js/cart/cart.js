@@ -3,8 +3,6 @@
 let total = 0;
 let subTotal = 0;
 let readyToPay = false;
-// let cantidad;
-// let productAdded = false;
 
 // CARRITO RENDER
 const cart = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -69,8 +67,8 @@ function calculateTotalsInResume() {
   let totalForEachProduct = 0;
   subTotal = 0;
   cart.forEach(product => {   
-  totalForEachProduct = product.amount * product.price;
-  subTotal = subTotal + totalForEachProduct;
+    totalForEachProduct = product.amount * product.price;
+    subTotal = subTotal + totalForEachProduct;
   });
   console.log(...cart);
   // PROMO DESCUENT

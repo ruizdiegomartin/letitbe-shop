@@ -1,8 +1,14 @@
-// // PRODUCTS ARRAY
+// // VARIABLES
 const productsCatalogue = [];
-// productsCatalogue.push(product1, product2, product3, product4, product5, product6, product7, product8, product9);
+const cart = JSON.parse(localStorage.getItem("carrito")) || [];
+const categories = ["limpieza", "velas", "difusores", "otros"];
+const checkboxInputs = document.querySelectorAll(`input[type="checkbox"]`);
 let showAdvise = true;
+let showFilters = false;
+let searchIdNotFound = false;
+let bannerShow = true;
 
+// PRODUCTS JSON
 async function getProductsFromJson () {
   try {
     const response = await fetch("./js/data/products.json")
@@ -15,18 +21,10 @@ async function getProductsFromJson () {
     console.log(error);
   }  
 };
-
 getProductsFromJson();
 console.log(productsCatalogue);
 
-// VARIABLES
-const cart = JSON.parse(localStorage.getItem("carrito")) || [];
-const categories = ["limpieza", "velas", "difusores", "otros"];
-const checkboxInputs = document.querySelectorAll(`input[type="checkbox"]`);
-let searchIdNotFound = false;
-
-// SHOW PRODUCTS
-
+// SHOW PRODUCTS FUNCTION
 function showProducts (array) {
   // Renderiza las cards de productos, en el array que entra por parámetro.
   document.querySelector("#main-container").innerHTML = "";
@@ -44,7 +42,6 @@ function showProducts (array) {
     document.querySelector("#main-container").append(productCard); 
   });
 };
-// showProducts(productsCatalogue);
 
 function createBuyButton (product) {
   // Crea el botón de añadir al carrito de las cards de los productos.
@@ -57,9 +54,7 @@ function createBuyButton (product) {
   return button;
 };
 
-
-// ADD TO CART 
-
+// ADD TO CART FUNCTION
 function addToCart (productToAdd) {
   // Añade un producto al array de carrito.
   let localAutentication = localStorage.getItem("autentication") || false;
@@ -73,11 +68,6 @@ function addToCart (productToAdd) {
       const existInStorage = cart.includes(findProductInCartStoraged);
       if (existInStorage === false) {
       cart.push(productToAdd);
-      // Swal.fire(
-      //   'Producto añadido al carrito',
-      //   '<i style="font-size: 3rem" class="fa-solid fa-cart-plus">',
-      //   'success'
-      // )
       notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
       }
       else {
@@ -89,7 +79,7 @@ function addToCart (productToAdd) {
     } 
   } 
   else {
-    adviseAlert("#main-container","Ingrese a su cuenta para acceder al carrito de compras.")
+    adviseAlert("#main-container","Debe loguearse para añadir productos al carrito de compras.")
   }  
 };
 
@@ -99,9 +89,7 @@ function updateLocalStorage () {
   localStorage.setItem("carrito", JSON.stringify(cart));
 };
 
-//SHOW/HIDE FILTERS
-
-let showFilters = false; 
+//SHOW/HIDE FILTERS 
 document.querySelector("#showFilters").addEventListener("click", ()=>{
   if (showFilters === false) {
   document.querySelector(".filters-container").classList.remove("d-none");
@@ -117,9 +105,9 @@ document.querySelector("#showFilters").addEventListener("click", ()=>{
 function categoryFilter (arr,filter) {
   const filtered = arr.filter((el)=>{
    return el.category.includes(filter)
-  })
+  });
   return filtered;
- }
+};
 
 categories.forEach(category => {
 filterCategory(category);
@@ -155,8 +143,8 @@ function selectOneCheck(input){
           else {
               el.checked = false;
           }
-      })
-  }
+      });
+  };
 };
    
 // PRICE FILTER
@@ -254,7 +242,6 @@ function cartCounter() {
   // Cuenta los productos que hay en el STORAGE del array carrito, y actualiza el contador del STORAGE.
   const carritoAMOUNT = JSON.parse(localStorage.getItem("carrito"));  
   let counter = carritoAMOUNT.length;
-  
   localStorage.setItem("carrito-counter", counter);
 };
 
@@ -274,7 +261,7 @@ function refreshCartCounter () {
 };
 refreshCartCounter();
 
-//FUNCION ALERT
+//FUNCION MESSAGE ALERT
 function adviseAlert (contenedorPadre, msj) {
   // Crea un mensaje de alerta en pantalla que dura dos segundos.
   const userLoginRequired = document.createElement("div");
@@ -299,15 +286,6 @@ const ProductAlreadyInCart = async function recover (productToAdd) {
   const data = await response.json();
   (showAdvise === true) && createAdviseAlreadyInCart(productToAdd);
 };
-
-//FUNCTION SHOW MESSAGE WHEN PRODUCT IS ALREADY IN CART
-// let showAdvise = true;
-// function alertProductAlreadyInCart(productToAdd) {
-//   if (showAdvise === true){
-//     createAdviseAlreadyInCart(productToAdd);
-//   }
-//   else{};
-// };
 
 const showAdviseAlreadyInCart = async function recover (productToAdd) {
   const response = await fetch("./js/data/products.json")
@@ -338,8 +316,6 @@ const createOutOfStockBanner = async function recover (productToAdd) {
   createBanner(data, productToAdd)
 };
 
-
-let bannerShow = true;
 function createBanner (arr, productToAdd){
   if (bannerShow === true){
     let founded = arr.find(el=> el.id === productToAdd.id);
@@ -355,25 +331,3 @@ function createBanner (arr, productToAdd){
   }
   else{};
 };
-
-// // FUNCION CONSTRUCTORA
-// function Product (id, img, product, price, category, stock, amount) {
-//   this.id = id;
-//   this.img = img;
-//   this.name = product;
-//   this.price = price;
-//   this.category = category;
-//   this.stock = stock;
-//   this.amount = amount;getDataFromJsongetDataFromJson
-// }
-
-// // PRODUCTS
-// const product1 = new Product (1,"product_soy-candle.jpg", "Vela de soja", 600, "velas", 20, 1);
-// const product2 = new Product (2,"product_difusor.jpg", "Difusor aromático", 500, "difusores", 35, 1);
-// const product3 = new Product (3,"product-bolsa-aromatizadora.JPG", "Bolsa aromática", 300, "difusores", 15, 1);
-// const product4 = new Product (4,"product_splash.jpg", "Splash difusor", 700, "difusores", 25, 1);
-// const product5 = new Product (5,"product_liquid-soap.jpg", "Jabón líquido", 650, "limpieza", 23, 1);
-// const product6 = new Product (6,"product_nordic-blanket.jpg", "Manta nórdica", 5000, "otros", 0, 1);
-// const product7 = new Product (7,"product-aromatizador-auto.JPG", "Difusor de auto", 450, "difusores", 15, 1);
-// const product8 = new Product (8,"vela-silver.png", "Vela silver", 750, "velas", 20, 1);
-// const product9 = new Product (9,"product_bubble-candle.jpg", "Vela burbuja", 700, "velas", 22, 1);

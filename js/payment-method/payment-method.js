@@ -2,12 +2,14 @@
 
 const productsList = document.querySelector("#buyListResume");
 const resumePrice = document.querySelector("#priceResume");
-
 const totalPriceFromStorage = parseInt(localStorage.getItem("precioCompra"));
 resumePrice.innerHTML = `$${totalPriceFromStorage}<span>.00</span>`
-
 const cart = JSON.parse(localStorage.getItem("carrito"));
 console.log(cart);
+const cash = document.querySelector("#cashPay");
+const card = document.querySelector("#cardPay");
+const cuotas = document.querySelector("#installmentsPay");
+const checkInputs = document.querySelectorAll(`input[type="checkbox"]`);
 
 
 cart.forEach(product => {
@@ -21,12 +23,6 @@ function createListItemProduct (img, name, amount) {
     li.innerHTML = `<img class="product-img-item" src="../img/${img}" alt="${name}"> <div class="list-data"> <p>${name}</p> <p>Cantidad: <strong>${amount}</strong></p> </div>`;
     productsList.append(li);
 }
-
-const cash = document.querySelector("#cashPay");
-const card = document.querySelector("#cardPay");
-const cuotas = document.querySelector("#installmentsPay");
-
-const checkInputs = document.querySelectorAll(`input[type="checkbox"]`);
 
 // CHECKBOX EVENT
 
@@ -51,10 +47,12 @@ function selectOneCheck(input){
 
 
 const confirmButton = document.querySelector("#confirmBuyButton");
-confirmButton.addEventListener("click", ()=>{
+confirmButton.addEventListener("click", paymentMethodSelect);
+
+function paymentMethodSelect() {
     if (cash.checked) {
-            createBancaryPayDiv(); 
-        } 
+        createBancaryPayDiv(); 
+    } 
     else if (card.checked) {
         window.location.href = "https://ruizdiegomartin.github.io/LetItBe-JavaScript/pages/checkout.html"
     }
@@ -77,7 +75,7 @@ confirmButton.addEventListener("click", ()=>{
     else {
         adviseAlert("main","Seleccione una forma de pago para continuar");
     }
-});
+};
 
 function adviseAlert (contenedorPadre, msj) {
     // Crea un mensaje de alerta en pantalla que dura dos segundos.
@@ -126,10 +124,10 @@ let cuotas4;
 
 function calculateCuotas(){
     // CALCULATE TOTALS
-    totalFor1 = totalPriceFromStorage;
-    totalFor2 = totalPriceFromStorage*1.20;
-    totalFor3 = totalPriceFromStorage*1.40;
-    totalFor4 = totalPriceFromStorage*1.60;
+    totalFor1 = Math.round(totalPriceFromStorage);
+    totalFor2 = Math.round(totalPriceFromStorage*1.20);
+    totalFor3 = Math.round(totalPriceFromStorage*1.40);
+    totalFor4 = Math.round(totalPriceFromStorage*1.60);
     //CALCULATE CUOTAS CON INTERÉS
     cuotas1 = totalFor1;
     cuotas2 = Math.round((totalFor2 / 3));
@@ -141,11 +139,12 @@ function calculateCuotas(){
     document.querySelector("#monthlyPay3").innerText =`$${cuotas3}`
     document.querySelector("#monthlyPay4").innerText =`$${cuotas4}`
     // SHOW PRECIO TOTAL
-    document.querySelector("#financingTotalEach1").innerText =`$${totalFor1}`
-    document.querySelector("#financingTotalEach2").innerText =`$${totalFor2}`
-    document.querySelector("#financingTotalEach3").innerText =`$${totalFor3}`
-    document.querySelector("#financingTotalEach4").innerText =`$${totalFor4}`
+    document.querySelector("#financingTotalEach1").innerText =`Total: $${totalFor1}`
+    document.querySelector("#financingTotalEach2").innerText =`Total: $${totalFor2}`
+    document.querySelector("#financingTotalEach3").innerText =`Total: $${totalFor3}`
+    document.querySelector("#financingTotalEach4").innerText =`Total: $${totalFor4}`
 }
+
 function createPaymentObjectInStorage (button) {
     // Crea un objeto en el Storage con la información de pago que eligió el usuario: número de cuotas, precio de cuota y precio total.
     if (button === document.querySelector("#financingButton1")) {

@@ -33,35 +33,7 @@ function checkLoggin () {
       main.removeChild(document.querySelector(".logout-container"));
     });
   }  
-}
-
-
-// // CREATE LOGGIN FORM
-
-// function createLoggin (){
-//   const body = document.querySelector(".login-body")
-//   body.innerHTML = "";
-//   const logginDiv = document.createElement("form");
-//   logginDiv.classList.add("form");
-//   logginDiv.setAttribute("id", "login-form")
-//   logginDiv.innerHTML = `
-//   <h1 class="form__title">User Login</h1>
-//   <p class="form__description">Ingrese a su cuenta para acceder al carrito de compras.</p>
-//   <div class="form__group">
-//     <label for="user-input" class="form__label">Usuario</label>
-//     <input id="user-input" type="text" class="form__input" placeholder="" autocomplete="off"> 
-//   </div>
-//   <div class="form__group" id="password-div">
-//     <label for="password-input" class="form__label">Password</label>
-//     <input id="password-input" type="password" class="form__input" placeholder="">
-//   </div>
-//   <div class="remember-me-group"><input type="checkbox" id="rememberMe"> <label for="rememberMe">Recordarme</label></div>
-//   <button type="button" id="login-btn" class="form__button">Ingresar</button>
-// `
-//   body.append(logginDiv);
-// }
-
-// CREATE LOGGIN FORM 
+};
 
 function createLoggin (containerQuery){
   // const body = document.querySelector(containerQuery)
@@ -85,23 +57,11 @@ function createLoggin (containerQuery){
   </form>
 `
   containerQuery.append(logginDiv);
-}
-
-
-// // GRAB AND PUT EVENT ON LOGIN BUTTON, IF LOGGIN FORM EXIST
-
-// if (loginCreated === true) {
-// (localAutentication == false && sessionAutentication == false) && document.querySelector("#login-btn").addEventListener("click", userLogin);
-// };
+};
 
 function removeLogginFormFromScreen(containerQuery){
   containerQuery.removeChild(document.querySelector("#login-form"));
-}
-
-// document.querySelector("#loginCloseButton").addEventListener("click",()=>{
-//   main.removeChild(document.querySelector(".form-container"));
-// })
-
+};
 
 // LOGIN FUNCTION
 function userLogin () {   
@@ -130,14 +90,6 @@ function createLogginErrorMessage (){
   loginError = true;
   setTimeout( function() {document.querySelector("#password-div").removeChild(loginFailAdvise); loginError = false;}, 1000 );
 }
-
-// // REMEMBER CHECKBOX EVENT SETTING, WHEN AUTENTICATION IS FALSE
-// if (loginCreated === true) {
-//   console.log(loginCreated);
-// (localAutentication == false && sessionAutentication == false) && document.querySelector("#rememberMe").addEventListener("change", ()=>{
-//   checkboxChecked = document.querySelector("#rememberMe").checked;});
-// }
-// CREATE LOGGED DIV
 
 function createLoggedDiv(user) {
   document.querySelector(".form-container").innerHTML ="";
