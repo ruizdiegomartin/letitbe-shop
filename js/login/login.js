@@ -156,3 +156,16 @@ function refreshCartCounter () {
   }
 }
 refreshCartCounter();
+
+function logIconStatus() {
+  // Cambia el icono de logueado, dependiendo si el usuario esta logueado o no.
+  if (localAutentication == "true" || sessionAutentication == "true") {
+    document.querySelector("#logIcon").classList.add("user-logged");
+    document.querySelector("#logIcon").classList.remove("navAccountButton");
+  }
+  else {
+    document.querySelector("#logIcon").classList.add("navAccountButton");
+    document.querySelector("#logIcon").classList.remove("user-logged");
+  }
+};
+logIconStatus();

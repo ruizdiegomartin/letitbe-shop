@@ -82,13 +82,31 @@
 }
 
 .navAccountButton{
+    position: relative;
     background: none;
     border: none;
     margin: 2px .5rem;
     & i{
+        background-color: $color-main;
+        color: $color-white;
         font-size: 1.5rem;
         &:hover{
-            color: rgb(87, 85, 85);
+            color: #575555;
+        }
+    }
+}
+
+.user-logged {
+    position: relative;
+    background: none;
+    border: none;
+    margin: 2px .5rem;
+    & i{
+        background-color: $color-white;
+        color: $color-black;
+        font-size: 1.5rem;
+        &:hover{
+            color: #575555;
         }
     }
 }
