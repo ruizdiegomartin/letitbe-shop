@@ -34,13 +34,8 @@ checkInputs.forEach(checkbox => {
 
 function selectOneCheck(input){
     if (input.checked === true) {
-        checkInputs.forEach(el =>{
-            if (el === input) {
-                el.checked = true;
-            }
-            else {
-                el.checked = false;
-            }
+        checkboxInputs.forEach(el =>{
+            (el === input) ? el.checked = true : el.checked = false;
         })
     }
 };

@@ -137,15 +137,11 @@ checkboxInputs.forEach(checkbox => {
 function selectOneCheck(input){
   if (input.checked === true) {
       checkboxInputs.forEach(el =>{
-          if (el === input) {
-              el.checked = true;
-          }
-          else {
-              el.checked = false;
-          }
-      });
-  };
+          (el === input) ? el.checked = true : el.checked = false;
+      })
+  }
 };
+
    
 // PRICE FILTER
 
