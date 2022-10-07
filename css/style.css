@@ -1156,7 +1156,7 @@ main {
 
 .payment-select-main {
   padding: 50px 0 50px 0;
-  min-height: calc(100vh - 272px);
+  min-height: calc(100vh - 172px);
   display: flex;
   flex-direction: column;
   align-items: center;
