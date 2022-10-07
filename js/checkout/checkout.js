@@ -72,10 +72,13 @@ document.querySelector("#paymentSubmitBtn").addEventListener("click", (e)=>{
     let mesVencimiento = document.querySelector("#expireMonth").value;
     let añoVencimiento = document.querySelector("#expireYear").value;
     let cvv = document.querySelector("#cvvInput").value;
-    const userCard = new PaymentCard (numeroTarjeta, titular, mesVencimiento, añoVencimiento, cvv);
-    payCard.push(userCard);
-    console.log(payCard);
-    createPaymentLoadingDiv();
+    if (numeroTarjeta != "" && titular != "" && mesVencimiento != "" && añoVencimiento != "" && cvv != ""){
+        const userCard = new PaymentCard (numeroTarjeta, titular, mesVencimiento, añoVencimiento, cvv);
+        payCard.push(userCard);
+        console.log(payCard);
+        createPaymentLoadingDiv();
+    }
+    else{adviseAlert("main", "Complete todos los campos para continuar")}
 });
 
 // FUNCTION TO CREATE DIV AFTER PAYING
@@ -137,55 +140,18 @@ function changeBankName() {
         bankName = (cleave.properties.creditCardType).toUpperCase();
         document.querySelector("#bankName").innerText = bankName || "BANK NAME";
     }
-}
-
-// VALIDATE EXPRESIONS
-
-const cardForm = document.querySelector("#cardForm");
-const cardInputs = document.querySelectorAll("#cardForm input");
-
-cardInputs.forEach( input => {
-    input.addEventListener("keyup", (e)=>{
-        formValidate(e);
-    })
-});
-
-function formValidate(e){
-    switch (e.target.name) {
-        case "number":
-
-        break;
-        case "cardholder":
-            if (expresions.cardholder.test(e.target.value)){
-                document.querySelector(".name-input i").classList.add("icon-correct");
-                document.querySelector(".name-input i").classList.remove("icon-incorrect");
-                document.querySelector(".name-input i").classList.remove("d-none");
-            } else {
-                document.querySelector(".name-input i").classList.remove("d-none");
-                document.querySelector(".name-input i").classList.remove("icon-correct");
-                document.querySelector(".name-input i").classList.add("icon-incorrect");
-                document.querySelector(".name-input i").classList.replace("fa-circle-check","fa-circle-xmark");
-            }
-        break;
-        case "expirationMonth":
-
-        break;
-        case "expirationYear":
-
-        break;
-        case "cvv":
-
-        break;
-    };
 };
 
-const expresions = {
-    number: /^[\d]$/,
-    cardholder: /^[a-zA-Z]+\s+[a-zA-Z]+\s?[a-zA-Z]+\s?[a-zA-Z]+$/,
-    month: /^[\d]{2}$/,
-    year: /^[\d]{2}$/,
-    cvv: /^[\d]{3}$/
+//FUNCION MESSAGE ALERT
+function adviseAlert (contenedorPadre, msj) {
+    // Crea un mensaje de alerta en pantalla que dura dos segundos.
+    const userLoginRequired = document.createElement("div");
+    userLoginRequired.classList.add("alert-div");
+    userLoginRequired.innerHTML = ` <div class="user-login-required"><p class="login-advise-required">${msj}</p></div>`
+    document.querySelector(contenedorPadre).append(userLoginRequired)
+    setTimeout( function() { document.querySelector(contenedorPadre).removeChild(userLoginRequired) }, 2000 )
 };
+
 
 
 
