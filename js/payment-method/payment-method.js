@@ -5,7 +5,6 @@ const resumePrice = document.querySelector("#priceResume");
 const totalPriceFromStorage = parseInt(localStorage.getItem("precioCompra"));
 resumePrice.innerHTML = `$${totalPriceFromStorage}<span>.00</span>`
 const cart = JSON.parse(localStorage.getItem("carrito"));
-console.log(cart);
 const cash = document.querySelector("#cashPay");
 const card = document.querySelector("#cardPay");
 const cuotas = document.querySelector("#installmentsPay");
@@ -34,7 +33,7 @@ checkInputs.forEach(checkbox => {
 
 function selectOneCheck(input){
     if (input.checked === true) {
-        checkboxInputs.forEach(el =>{
+        checkInputs.forEach(el =>{
             (el === input) ? el.checked = true : el.checked = false;
         })
     }

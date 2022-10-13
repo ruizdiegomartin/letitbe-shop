@@ -39,7 +39,6 @@ cart.forEach(product => {
 // CALCULATE PRICE BUTTON EVENT
 document.querySelector("#finish-btn").addEventListener("click", ()=> {
   calculateTotalsInResume();
-  console.log(cart);
   localStorage.setItem("precioCompra", total);
   readyToPay = true; 
 }); 
@@ -70,7 +69,6 @@ function calculateTotalsInResume() {
     totalForEachProduct = product.amount * product.price;
     subTotal = subTotal + totalForEachProduct;
   });
-  console.log(...cart);
   // PROMO DESCUENT
   applyDiscount(20, "LET10");
   // RENDER TOTAL AND SUBTOTAL PRICES

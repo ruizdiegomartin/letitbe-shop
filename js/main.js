@@ -22,7 +22,6 @@ async function getProductsFromJson () {
   }  
 };
 getProductsFromJson();
-console.log(productsCatalogue);
 
 // SHOW PRODUCTS FUNCTION
 function showProducts (array) {
@@ -67,8 +66,8 @@ function addToCart (productToAdd) {
       const findProductInCartStoraged = cart.find (el => el.id === productToAdd.id)
       const existInStorage = cart.includes(findProductInCartStoraged);
       if (existInStorage === false) {
-      cart.push(productToAdd);
-      notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
+        cart.push(productToAdd);
+        notificationAlert("#main-container", `Producto agregado al carrito <i class="fa-solid fa-cart-plus"></i>`);
       }
       else {
         showAdviseAlreadyInCart(productToAdd);
