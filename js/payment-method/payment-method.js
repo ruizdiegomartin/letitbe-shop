@@ -48,7 +48,7 @@ function paymentMethodSelect() {
         createBancaryPayDiv(); 
     } 
     else if (card.checked) {
-        window.location.href = "https://ruizdiegomartin.github.io/proyecto-final-js/pages/checkout.html"
+        window.location.href = "https://ruizdiegomartin.github.io/letitbe-shop/pages/checkout.html"
     }
     else if (cuotas.checked) {
         document.querySelector(".payment-container").classList.add("d-none");
@@ -62,7 +62,7 @@ function paymentMethodSelect() {
                 // SAVE DATA IN LOCALSTORAGE
                 createPaymentObjectInStorage (button)
                 // REDIRECT TO CARD INFO
-                window.location.href = "https://ruizdiegomartin.github.io/proyecto-final-js/pages/checkout.html";
+                window.location.href = "https://ruizdiegomartin.github.io/letitbe-shop/pages/checkout.html";
             })
         });
     }
@@ -86,7 +86,7 @@ function createBancaryPayDiv (){
     bancaryPay.classList.add("bancary-pay-div");
     bancaryPay.innerHTML = `<h3> Pedido procesado <i class="fa-solid fa-circle-check"></i></h3> <p> <span>¡Gracias por elegirnos!</span><br> Tu pedido fue procesado correctamente y será preparado una vez que se efectivice la transferencia bancaria. Luego, recibirás un correo electrónico explicando los pasos a seguir.</p>`;
     document.querySelector("main").append(bancaryPay);
-    setTimeout( function() { clearStorage(); window.location.href = "https://ruizdiegomartin.github.io/proyecto-final-js/index.html";}, 5000 );
+    setTimeout( function() { clearStorage(); window.location.href = "https://ruizdiegomartin.github.io/letitbe-shop/index.html";}, 5000 );
 }
 
 function clearStorage (){
