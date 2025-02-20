@@ -118,7 +118,7 @@ function createLoggout(containerQuery) {
   // document.querySelector(containerQuery).innerHTML ="";
   const logoutDiv = document.createElement("div");
   logoutDiv.classList.add("logout-container")
-  logoutDiv.innerHTML = `<form class="logout-div"><h3>User: <strong class="user-name">diego-dev</strong>.</h3>
+  logoutDiv.innerHTML = `<form class="logout-div"><h3>User: <strong class="user-name">Guest</strong>.</h3>
     <p> Agregá los productos que quieras al carrito.<br/>Te regalamos un código de descuento para tu primer compra de -20%: <strong>LET10</strong></p><button class="close-button" id="closeLogoutButton"><i class="fa-solid fa-circle-xmark"></i></button></form>`
   const addBtn = createLogOutButton();
   logoutDiv.append(addBtn)
