@@ -47,14 +47,14 @@ document.querySelector("#finish-btn").addEventListener("click", ()=> {
 
 document.querySelector("#continueShoppingBtn").addEventListener("click", (e)=>{
   e.preventDefault();
-  window.location.href = "https://ruizdiegomartin.github.io/proyecto-final-js/index.html";
+  window.location.href = "https://ruizdiegomartin.github.io/letitbe-shop/index.html";
 });
 
 // CONTINUE TO PAY BUTTON EVENT
 document.querySelector("#continueToPayBtn").addEventListener("click", (e)=>{
   e.preventDefault();
   if (readyToPay === true && total > 0){
-    window.location.href = "https://ruizdiegomartin.github.io/proyecto-final-js/pages/payment-method.html"
+    window.location.href = "https://ruizdiegomartin.github.io/letitbe-shop/pages/payment-method.html"
   }
   else{
     adviseAlert (".cart-main", "Carrito vacío o compra sin calcular.");
