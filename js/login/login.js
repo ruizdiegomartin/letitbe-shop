@@ -2,8 +2,8 @@
 //USER LOGIN
 
 let main = document.querySelector("main");
-let userStored = "diego-dev";
-let passwordStored = "coderhouse";
+let userStored = "guest";
+let passwordStored = "get-in";
 let loginError = false;
 let checkboxChecked;
 let loginCreated = false;
