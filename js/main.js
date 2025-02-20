@@ -78,7 +78,7 @@ function addToCart (productToAdd) {
     } 
   } 
   else {
-    adviseAlert("#main-container","Debe loguearse para añadir productos al carrito de compras.")
+    adviseAlert("#main-container",`Debe loguearse para añadir productos al carrito de compras.<br> User: <b>guest</b> & password: <b>get-in</b>`)
   }  
 };
 
